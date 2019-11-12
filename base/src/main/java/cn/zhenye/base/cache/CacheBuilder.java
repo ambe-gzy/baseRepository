@@ -9,7 +9,7 @@ import cn.zhenye.base.cache.encrypt.Encryption;
 import cn.zhenye.base.cache.parser.GsonParser;
 import cn.zhenye.base.cache.parser.Parser;
 import cn.zhenye.base.cache.serializer.Serializer;
-import cn.zhenye.base.cache.serializer.YoloSerializer;
+import cn.zhenye.base.cache.serializer.ZySerializer;
 
 /**
  * @author zhaibinme on 2018/7/21
@@ -39,7 +39,7 @@ public class CacheBuilder {
 
     public Serializer getSerializer() {
         if (mSerializer == null) {
-            mSerializer = new YoloSerializer();
+            mSerializer = new ZySerializer();
         }
         return mSerializer;
     }

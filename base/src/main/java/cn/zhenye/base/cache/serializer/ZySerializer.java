@@ -14,14 +14,14 @@ import java.util.Set;
  *
  * @author zhaibinme on 2018/7/21
  */
-public class YoloSerializer implements Serializer {
+public class ZySerializer implements Serializer {
 
 
     private static final char DELIMITER = '@';
     private static final String INFO_DELIMITER = "#";
     private static final char NEW_VERSION = 'V';
 
-    public YoloSerializer() {}
+    public ZySerializer() {}
 
     @Override
     public <T> String serialize(boolean needEncrypt, String cipherText, T originalGivenValue) {
@@ -91,7 +91,7 @@ public class YoloSerializer implements Serializer {
             try {
                 keyClazz = Class.forName(firstElement);
             } catch (ClassNotFoundException e) {
-                Log.d(YoloSerializer.class.getSimpleName(),"YoloSerializer -> " + e.getMessage());
+                Log.d(ZySerializer.class.getSimpleName(),"ZySerializer -> " + e.getMessage());
             }
         }
 
@@ -101,7 +101,7 @@ public class YoloSerializer implements Serializer {
             try {
                 valueClazz = Class.forName(secondElement);
             } catch (ClassNotFoundException e) {
-                Log.d(YoloSerializer.class.getSimpleName(),"YoloSerializer -> " + e.getMessage());
+                Log.d(ZySerializer.class.getSimpleName(),"ZySerializer -> " + e.getMessage());
             }
         }
 

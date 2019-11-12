@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 /**
  * @author zhaibinme on 2018/7/21
  */
-public class YoloCacheStorage {
+public class ZyCacheStorage {
 
     private static Cache mCache = null;
 

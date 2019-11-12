@@ -7,7 +7,7 @@ import cn.zhenye.base.cache.DataInfo;
  * <p>
  * <p>Use custom implementation if built-in implementation is not enough.</p>
  *
- * @see YoloSerializer
+ * @see ZySerializer
  */
 public interface Serializer {
 
