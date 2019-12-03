@@ -27,6 +27,7 @@ public class WaveSurfaceView extends SurfaceView implements Drawable.Callback {
     /**
      * 帧率为30帧，即每秒绘制 {@link #FRAME} 次，每次增加的点数为{@link #mAddPixelNum}
      * ,则每秒绘制的点数为FRAME*mAddPixelNum個點，需保证mDrawNum的个数大于每秒绘制的最大点数。
+     * 理清绘制速度与读取数据速度之间的关系。
      */
 
 
