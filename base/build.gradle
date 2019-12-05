@@ -36,5 +36,11 @@ dependencies {
     api 'com.google.code.gson:gson:2.8.5'
     api 'com.facebook.android:facebook-android-sdk:5.0.0'
     api  'com.facebook.conceal:conceal:1.1.2'
-    implementation 'com.facebook.conceal:conceal:2.0.1@aar'
+    api 'com.facebook.conceal:conceal:2.0.1@aar'
+
+    //room
+    api 'androidx.room:room-runtime:' + project.ROOM_VERSION
+    annotationProcessor 'androidx.room:room-compiler:' + project.ROOM_VERSION// use kapt for Kotlin
+    // optional - RxJava support for Room
+    api 'androidx.room:room-rxjava2:' + project.ROOM_VERSION
 }
