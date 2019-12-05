@@ -1,19 +1,79 @@
+//表明这是一个application
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+
+    //配置签名设置，标记App唯一性、保护App
+    signingConfigs{
+        release{
+            //签名证书中密钥别名
+            keyAlias 'baseProject'
+
+            //签名证书中该密钥的密码
+            keyPassword '87983367'
+
+            //签名证书文件
+            storeFile file('../base-project1.jks')
+
+            //签名证书文件的密码
+            storePassword '87983367'
+        }
+    }
+
+
+    //编译Android工程的SDK版本
+    compileSdkVersion 29
+
+    //用于定义所有的默认配置
     defaultConfig {
+
+        //指定App包名
         applicationId "cn.zhenye.runfuns"
+
+        //指定sdk最低支持的Android SDK
         minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+
+        //指定基于的Android SDK
+        targetSdkVersion 29
+
+        //配置Android App 的内部版本
+        versionCode Integer.parseInt(project.APP_VERSION_CODE)
+
+        //配置Android App 的版本名称
+        versionName project.APP_VERSION_NAME
+
+        //配置单元测试使用的Runner，默认为android.test.InstrumentationTestRunner
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    //作用是构建类型，在Android Gradle中内置了debug和release两个构建类型，差别在于能否在设备上调试和签名不同
     buildTypes {
         release {
-            minifyEnabled false
+
+            //是否启用Proguard混淆
+            minifyEnabled true
+
+            //是否生成一个可供调试的Apk
+            debuggable false
+
+            //是否开启开启zipalign优化，提高apk运行效率
+            zipAlignEnabled true
+
+            //是否自动清理未使用的资源，默认为false
+            shrinkResources true
+
+            //配置默认的签名信息，也是一个ProductFlavor，可直接配置
+//            signingConfig signingConfigs.release
+
+            //同时配置多个ProGuard配置文件
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            minifyEnabled false
+            zipAlignEnabled false
+            debuggable true
+//            signingConfig signingConfigs.release
         }
     }
 }

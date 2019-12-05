@@ -1,3 +1,4 @@
+//表明这是一个library
 apply plugin: 'com.android.library'
 
 android {
