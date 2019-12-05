@@ -4,8 +4,8 @@ apply plugin: 'com.android.application'
 android {
 
     //配置签名设置，标记App唯一性、保护App
-    signingConfigs{
-        release{
+    signingConfigs {
+        release {
             //签名证书中密钥别名
             keyAlias 'baseProject'
 
