@@ -11,7 +11,7 @@ import cn.zhenye.common.db.entity.AttendEntity;
 @Dao
 public interface AttendDao {
 
-    @Query("SELECT * FROM AttendEntity.ATTEND_ENTITY")
+    @Query("SELECT * FROM ATTEND_ENTITY ")
     List<AttendEntity>  getAll();
 
     @Insert

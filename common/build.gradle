@@ -33,6 +33,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':base')
 
-
+    //room
+    api 'androidx.room:room-runtime:' + project.ROOM_VERSION
+    annotationProcessor 'androidx.room:room-compiler:' + project.ROOM_VERSION// use kapt for Kotlin
+    // optional - RxJava support for Room
+    api 'androidx.room:room-rxjava2:' + project.ROOM_VERSION
 
 }

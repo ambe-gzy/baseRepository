@@ -8,7 +8,7 @@ public class AttendEntity {
     public static final String TABLE_NAME = "attend_entity";
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    public int id;
 
     /**
      * 签到的时间戳

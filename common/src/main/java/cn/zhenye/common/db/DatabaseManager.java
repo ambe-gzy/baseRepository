@@ -7,8 +7,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import cn.zhenye.common.db.dao.AttendDao;
+import cn.zhenye.common.db.entity.AttendEntity;
 
-@Database(entities = {AttendDao.class},version = 2)
+@Database(entities = {AttendEntity.class},version = 1,exportSchema = false)
 public abstract class DatabaseManager extends RoomDatabase {
     private static DatabaseManager mAppDatabase;
 
