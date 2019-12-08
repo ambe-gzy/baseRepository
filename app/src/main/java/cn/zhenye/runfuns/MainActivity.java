@@ -1,6 +1,7 @@
 package cn.zhenye.runfuns;
 
 import androidx.appcompat.app.AppCompatActivity;
+import cn.zhenye.MainSupplement;
 import cn.zhenye.base.cache.ZyCacheStorage;
 import cn.zhenye.common.db.DatabaseManager;
 
@@ -13,9 +14,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        ZyCacheStorage.init(getApplicationContext());
-        DatabaseManager.init(getApplicationContext());
-
     }
 
     public void btn1(View view) {

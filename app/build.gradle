@@ -20,7 +20,6 @@ android {
         }
     }
 
-
     //编译Android工程的SDK版本
     compileSdkVersion 29
 
