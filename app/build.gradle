@@ -88,8 +88,8 @@ dependencies {
     implementation project(path: ':base')
 
     //room
-    api 'androidx.room:room-runtime:' + project.ROOM_VERSION
+    implementation 'androidx.room:room-runtime:' + project.ROOM_VERSION
     annotationProcessor 'androidx.room:room-compiler:' + project.ROOM_VERSION// use kapt for Kotlin
     // optional - RxJava support for Room
-    api 'androidx.room:room-rxjava2:' + project.ROOM_VERSION
+    implementation 'androidx.room:room-rxjava2:' + project.ROOM_VERSION
 }

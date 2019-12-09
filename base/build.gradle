@@ -38,9 +38,12 @@ dependencies {
     api  'com.facebook.conceal:conceal:1.1.2'
     api 'com.facebook.conceal:conceal:2.0.1@aar'
 
-    //room
+    //room数据库
     api 'androidx.room:room-runtime:' + project.ROOM_VERSION
     annotationProcessor 'androidx.room:room-compiler:' + project.ROOM_VERSION// use kapt for Kotlin
     // optional - RxJava support for Room
     api 'androidx.room:room-rxjava2:' + project.ROOM_VERSION
+
+    // 简单的线程管理器
+    api 'com.github.yjfnypeu:EasyThread:'+project.EASY_THREAD_VERSION
 }
