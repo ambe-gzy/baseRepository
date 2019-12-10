@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">@color/color_FFEFE4</color>
+
     <color name="color_FF8998">#FF8998</color>
     <color name="color_FFEFE4">#FFEFE4</color>
     <color name="color_3C3885">#3C3885</color>
     <color name="color_A6A0C6">#A6A0C6</color>
+
 
 </resources>
