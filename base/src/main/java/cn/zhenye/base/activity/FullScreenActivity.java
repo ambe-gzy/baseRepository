@@ -59,8 +59,6 @@ public abstract class FullScreenActivity extends AppCompatActivity {
             LinearLayout mWindowView = super.findViewById(R.id.ll_toolbar_and_wrapper_view);
             fitStatusBar(mWindowView);
         }
-
-
     }
 
 
@@ -81,7 +79,7 @@ public abstract class FullScreenActivity extends AppCompatActivity {
 
     /**
      * 用于设置toolbar相关的属性
-     *
+     * 可隐藏toolbar
      * @return
      */
     public Toolbar getToolbar() {
