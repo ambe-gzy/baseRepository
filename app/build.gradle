@@ -73,6 +73,9 @@ android {
             zipAlignEnabled false
             debuggable true
 //            signingConfig signingConfigs.release
+
+            //同时配置多个ProGuard配置文件
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }

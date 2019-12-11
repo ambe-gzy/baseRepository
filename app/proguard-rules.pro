@@ -1,3 +1,7 @@
+
+#关闭压缩
+-dontshrink
+
 #友盟
 -keep class com.umeng.** {*;}
 -keepclassmembers class * {
