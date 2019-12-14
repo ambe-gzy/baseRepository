@@ -73,7 +73,7 @@ public abstract class FullScreenActivity extends AppCompatActivity {
      *
      * @return
      */
-    public FrameLayout getWindowBackground() {
+    public FrameLayout getWindowBackgroundManager() {
         return mWindowBackground;
     }
 

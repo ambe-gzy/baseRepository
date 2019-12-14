@@ -27,7 +27,7 @@ android {
     defaultConfig {
 
         //指定App包名
-        applicationId "cn.zhenye.runfuns"
+        applicationId project.APP_PACKAGE_NAME
 
         //指定sdk最低支持的Android SDK
         minSdkVersion 21

@@ -1,43 +1,39 @@
 package cn.zhenye.main;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import cn.zhenye.base.tool.ThreadManager;
-import cn.zhenye.common.db.DatabaseManager;
-import cn.zhenye.common.db.dao.AttendDao;
-import cn.zhenye.common.db.entity.AttendEntity;
+import cn.zhenye.base.activity.FullScreenActivity;
+import cn.zhenye.base.tool.ActivityUtil;
+import cn.zhenye.base.tool.StatusbarUtil;
+import cn.zhenye.voicereverse.VoiceReverseActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FullScreenActivity implements View.OnClickListener {
+    private LinearLayout mVoiceReverseBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-    AttendDao attendDao;
-    public void btn1(View view) {
-        attendDao = DatabaseManager.getInstance().attendDao();
-        AttendEntity entity = new AttendEntity();
-        entity.message = "cool";
-        entity.timeStamp = 995588;
-        ThreadManager.getNormal().execute(new Runnable() {
-            @Override
-            public void run() {
-                attendDao.insertData();
-            }
-        });
-
+        initUI();
     }
 
-    public void btn2(View view) {
-        ThreadManager.getNormal().execute(new Runnable() {
-            @Override
-            public void run() {
-                attendDao.getAll();
-            }
-        });
+    private void initUI(){
+        getWindowBackgroundManager().setBackgroundColor(getResources().getColor(R.color.color_FFE6A7));
+        StatusbarUtil.setStatusBarTextColor(getWindow(),true);
+        mVoiceReverseBtn = findViewById(R.id.ll_main_voice_reverse);
+        mVoiceReverseBtn.setOnClickListener(this);
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        switch (id){
+            case R.id.ll_main_voice_reverse:
+                ActivityUtil.safeStartActivityWithActivity(this, VoiceReverseActivity.class);
+        }
     }
 }

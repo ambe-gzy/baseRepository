@@ -1,0 +1,4 @@
+<ripple android:color="@color/color_ripple"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/bg_voice_reverse"/>
+</ripple>

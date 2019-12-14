@@ -44,4 +44,16 @@ public class ActivityUtil {
         return false;
     }
 
+    public static boolean safeStartActivityWithActivity(@NonNull Activity  fromActivity,@NonNull Class toActivity){
+        try {
+            Intent intent = new Intent();
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setClass(fromActivity.getApplicationContext(),toActivity);
+            fromActivity.startActivity(intent);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
