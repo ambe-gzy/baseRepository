@@ -7,16 +7,16 @@ android {
     signingConfigs {
         release {
             //签名证书中密钥别名
-            keyAlias 'baseProject'
+            keyAlias 'android'
 
             //签名证书中该密钥的密码
-            keyPassword '87983367'
+            keyPassword '87983367ok'
 
             //签名证书文件
-            storeFile file('../base-project1.jks')
+            storeFile file('../androidSignStore.jks')
 
             //签名证书文件的密码
-            storePassword '87983367'
+            storePassword '87983367ok'
         }
     }
 
@@ -62,7 +62,7 @@ android {
             shrinkResources true
 
             //配置默认的签名信息，也是一个ProductFlavor，可直接配置
-//            signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
 
             //同时配置多个ProGuard配置文件
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

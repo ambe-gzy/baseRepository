@@ -1,4 +1,4 @@
-package cn.zhenye.runfuns;
+package cn.zhenye.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 

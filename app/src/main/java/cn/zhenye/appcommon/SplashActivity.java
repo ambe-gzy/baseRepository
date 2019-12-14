@@ -3,8 +3,8 @@ package cn.zhenye.appcommon;
 import androidx.appcompat.app.AppCompatActivity;
 import cn.zhenye.base.tool.ActivityUtil;
 import cn.zhenye.base.tool.Daemon;
-import cn.zhenye.runfuns.MainActivity;
-import cn.zhenye.runfuns.R;
+import cn.zhenye.main.MainActivity;
+import cn.zhenye.main.R;
 
 import android.os.Bundle;
 
