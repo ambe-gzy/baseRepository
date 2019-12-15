@@ -25,5 +25,6 @@ public class SplashActivity extends ZyCommonActivity {
     //闪屏页选择activity进入
     private void switchActivity(){
         ActivityUtil.safeStartActivityWithIntentClass(getApplicationContext(), MainActivityBase.class);
+        finish();
     }
 }
