@@ -1,12 +1,12 @@
 package cn.zhenye.voicereverse;
 
-import cn.zhenye.base.activity.FullScreenActivity;
+import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.main.R;
 
 import android.os.Bundle;
 import android.view.View;
 
-public class VoiceReverseActivity extends FullScreenActivity {
+public class VoiceReverseActivity extends ZyCommonActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,6 +1,6 @@
 package cn.zhenye.main;
 
-import cn.zhenye.base.activity.FullScreenActivity;
+import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.base.tool.ActivityUtil;
 import cn.zhenye.base.tool.StatusbarUtil;
 import cn.zhenye.voicereverse.VoiceReverseActivity;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 
-public class MainActivity extends FullScreenActivity implements View.OnClickListener {
+public class MainActivityBase extends ZyCommonActivity implements View.OnClickListener {
     private LinearLayout mVoiceReverseBtn;
 
     @Override

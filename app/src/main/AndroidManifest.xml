@@ -29,7 +29,7 @@
         <activity android:name="cn.zhenye.auth.LoginActivity" />
         <activity android:name="cn.zhenye.auth.RegisterActivity" />
         <activity android:name="cn.zhenye.auth.ForgetPasswordActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivityBase"></activity>
     </application>
 
 </manifest>

@@ -15,7 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import cn.zhenye.base.R;
 import cn.zhenye.base.tool.StatusbarUtil;
 
-public abstract class FullScreenActivity extends AppCompatActivity {
+public abstract class BaseFullScreenActivity extends AppCompatActivity {
 
     private FrameLayout mWindowBackground;
     //布局容器
@@ -37,7 +37,7 @@ public abstract class FullScreenActivity extends AppCompatActivity {
 
     @Override
     public void setContentView(int layoutResID) {
-        LayoutInflater inflater = LayoutInflater.from(FullScreenActivity.this);
+        LayoutInflater inflater = LayoutInflater.from(BaseFullScreenActivity.this);
         mContentView = inflater.inflate(layoutResID, mContentWrapperView, true);
     }
 
