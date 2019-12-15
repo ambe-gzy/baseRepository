@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 
-public class MainActivityBase extends ZyCommonActivity implements View.OnClickListener {
+public class MainActivity extends ZyCommonActivity implements View.OnClickListener {
     private LinearLayout mVoiceReverseBtn;
 
     @Override

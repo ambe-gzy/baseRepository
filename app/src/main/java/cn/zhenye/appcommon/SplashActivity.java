@@ -2,7 +2,7 @@ package cn.zhenye.appcommon;
 
 import cn.zhenye.base.tool.ActivityUtil;
 import cn.zhenye.base.tool.Daemon;
-import cn.zhenye.main.MainActivityBase;
+import cn.zhenye.main.MainActivity;
 import cn.zhenye.main.R;
 
 import android.os.Bundle;
@@ -19,12 +19,11 @@ public class SplashActivity extends ZyCommonActivity {
                 switchActivity();
             }
         },1000);
-
     }
 
     //闪屏页选择activity进入
     private void switchActivity(){
-        ActivityUtil.safeStartActivityWithIntentClass(getApplicationContext(), MainActivityBase.class);
+        ActivityUtil.safeStartActivityWithIntentClass(getApplicationContext(), MainActivity.class);
         finish();
     }
 }

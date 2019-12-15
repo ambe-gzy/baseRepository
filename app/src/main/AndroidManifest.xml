@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/AppTheme">
         <activity android:name="cn.zhenye.voicereverse.VoiceReverseActivity"></activity>
         <activity android:name="cn.zhenye.appcommon.SplashActivity">
             <intent-filter>
@@ -29,7 +29,7 @@
         <activity android:name="cn.zhenye.auth.LoginActivity" />
         <activity android:name="cn.zhenye.auth.RegisterActivity" />
         <activity android:name="cn.zhenye.auth.ForgetPasswordActivity" />
-        <activity android:name=".MainActivityBase"></activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
