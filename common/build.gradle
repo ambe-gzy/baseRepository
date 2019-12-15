@@ -3,8 +3,6 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 28
 
-
-
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 28
@@ -39,4 +37,6 @@ dependencies {
     // optional - RxJava support for Room
     api 'androidx.room:room-rxjava2:' + project.ROOM_VERSION
 
+    api  'com.umeng.umsdk:analytics:8.0.0'
+    api  'com.umeng.umsdk:common:2.0.0'
 }

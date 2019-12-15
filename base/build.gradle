@@ -4,8 +4,6 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 28
 
-
-
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 28
@@ -13,7 +11,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -46,4 +43,7 @@ dependencies {
 
     // 简单的线程管理器
     api 'com.github.yjfnypeu:EasyThread:'+project.EASY_THREAD_VERSION
+
+    //友盟
+
 }

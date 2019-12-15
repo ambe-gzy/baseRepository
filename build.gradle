@@ -7,7 +7,7 @@ buildscript {
         google()
         //jcenter可以理解成是一个新的中央远程仓库，兼容maven中心仓库，而且性能更优。
         jcenter()
-        
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
     //依赖集合
     dependencies {
@@ -24,6 +24,7 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
 }
 
