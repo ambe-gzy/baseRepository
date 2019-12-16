@@ -17,10 +17,6 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.TextView;
 
-import java.security.Permissions;
-import java.security.acl.Permission;
-
-
 public class VoiceReverseActivity extends ZyCommonActivity implements View.OnClickListener {
     private VoiceRecorderManager mVoiceRecorderManager;
     private String mSavePath = new String();

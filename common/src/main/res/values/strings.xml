@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">common</string>
+    <string name="voice_list_add_file_tittle">点击此处新建项目</string>
+    <string name="voice_list_add_file">创建</string>
+
+    <string name="voice_list_file_list">文件</string>
+
+
 </resources>
