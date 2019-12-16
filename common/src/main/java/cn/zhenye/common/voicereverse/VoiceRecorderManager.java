@@ -27,11 +27,7 @@ public class VoiceRecorderManager {
     private String VoiceFormat = ".wav";
     private AudioRecord audioRecord = null;
 
-    //权限获取
-    private static final int REQUEST_STORAGE_PERMISSION = 10;
-    private static final String[] permissions1 = {
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.RECORD_AUDIO};
+
 
     //录音相关
     private boolean isRecording = false;
@@ -42,18 +38,15 @@ public class VoiceRecorderManager {
 
     private String mSavePath = null;
 
-    public VoiceRecorderManager(){}
 
-    public VoiceRecorderManager(Activity activity){
-        initData(activity);
+    public VoiceRecorderManager(){
+        initData();
     }
 
     /**
      * 初始化录音功能
      */
-    private void initData(Activity activity) {
-        //请求权限
-        ActivityCompat.requestPermissions(activity,permissions1,REQUEST_STORAGE_PERMISSION);
+    private void initData() {
         //录音配置
         bufferSizeInBytes = AudioRecord.getMinBufferSize(sampleRate,
                 channelConfiguration, audioEncoding); // need to be larger than size of a frame
@@ -63,16 +56,10 @@ public class VoiceRecorderManager {
                 bufferSizeInBytes); //麦克风
     }
 
-    public static void initInstance(Activity activity){
-        if (INSTANCE == null){
-            INSTANCE = new VoiceRecorderManager(activity);
-        }
-    }
-
     public static VoiceRecorderManager getInstance() {
         try{
             if (INSTANCE == null){
-                throw new Exception("你要先调用 initInstance方法");
+                INSTANCE = new VoiceRecorderManager();
             }
             return INSTANCE;
         }catch (Exception e){
