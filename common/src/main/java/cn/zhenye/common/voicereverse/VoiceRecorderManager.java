@@ -28,10 +28,10 @@ public class VoiceRecorderManager {
     private AudioRecord audioRecord = null;
 
     //权限获取
-    private static final int REQUEST_STORAGE_PERMISSION = 101;
-    private static final String[] permissions1 = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
-    private static String [] permissions2 = {Manifest.permission.RECORD_AUDIO};
+    private static final int REQUEST_STORAGE_PERMISSION = 10;
+    private static final String[] permissions1 = {
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.RECORD_AUDIO};
 
     //录音相关
     private boolean isRecording = false;
@@ -54,7 +54,6 @@ public class VoiceRecorderManager {
     private void initData(Activity activity) {
         //请求权限
         ActivityCompat.requestPermissions(activity,permissions1,REQUEST_STORAGE_PERMISSION);
-        ActivityCompat.requestPermissions(activity,permissions2,REQUEST_RECORD_AUDIO_PERMISSION);
         //录音配置
         bufferSizeInBytes = AudioRecord.getMinBufferSize(sampleRate,
                 channelConfiguration, audioEncoding); // need to be larger than size of a frame

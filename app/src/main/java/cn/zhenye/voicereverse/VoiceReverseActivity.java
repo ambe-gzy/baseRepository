@@ -8,11 +8,9 @@ import cn.zhenye.main.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.umeng.analytics.MobclickAgent;
 
 public class VoiceReverseActivity extends ZyCommonActivity implements View.OnClickListener {
     private VoiceRecorderManager mVoiceRecorderManager;

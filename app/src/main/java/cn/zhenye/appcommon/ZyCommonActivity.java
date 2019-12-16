@@ -11,11 +11,13 @@ public abstract class ZyCommonActivity extends BaseFullScreenActivity {
 
     @Override
     protected void onResume() {
+        MobclickAgent.onResume(this);
         super.onResume();
     }
 
     @Override
     protected void onPause() {
+        MobclickAgent.onPause(this);
         super.onPause();
     }
 }

@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.umeng.analytics.MobclickAgent;
+
 
 public class MainActivity extends ZyCommonActivity implements View.OnClickListener {
     private LinearLayout mVoiceReverseBtn;
