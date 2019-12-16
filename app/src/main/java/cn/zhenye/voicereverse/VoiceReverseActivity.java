@@ -1,25 +1,32 @@
 package cn.zhenye.voicereverse;
 
 import cn.zhenye.appcommon.ZyCommonActivity;
+import cn.zhenye.base.tool.StatusbarUtil;
 import cn.zhenye.common.voicereverse.VoiceRecorderManager;
 import cn.zhenye.main.R;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.umeng.analytics.MobclickAgent;
+
 public class VoiceReverseActivity extends ZyCommonActivity implements View.OnClickListener {
     private VoiceRecorderManager mVoiceRecorderManager;
-    private String mSavePath;
+    private String mSavePath = new String();
     public static String mSavePathKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_reverse);
+        StatusbarUtil.setStatusBarTextColor(getWindow(),true);
         getToolbar().setVisibility(View.VISIBLE);
         handleIntent();
+        mSavePath = Environment.getExternalStorageDirectory().getAbsolutePath();
         initUI();
         initRecorder();
     }
@@ -62,7 +69,8 @@ public class VoiceReverseActivity extends ZyCommonActivity implements View.OnCli
     }
 
     private String getFileName(){
-        return null;
+        String name  = System.currentTimeMillis()+".wav";
+        return name;
     }
 
 }

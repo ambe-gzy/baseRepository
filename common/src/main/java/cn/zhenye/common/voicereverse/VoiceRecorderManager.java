@@ -62,7 +62,6 @@ public class VoiceRecorderManager {
         audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC,//配置AudioRecord
                 sampleRate, channelConfiguration, audioEncoding,
                 bufferSizeInBytes); //麦克风
-        INSTANCE = new VoiceRecorderManager();
     }
 
     public static void initInstance(Activity activity){
@@ -88,6 +87,11 @@ public class VoiceRecorderManager {
             Log.d(TAG,"path or name can't be null");
             return;
         }
+        if (isRecording){
+            return;
+        }
+
+        Log.d(TAG,"保存目录:"+path+"\n保存名称"+name);
         ThreadManager.getNormal().execute(new Runnable() {
             @Override
             public void run() {
@@ -106,6 +110,7 @@ public class VoiceRecorderManager {
                     //开始录音
                     audioRecord.startRecording();
                     isRecording = true;
+                    Log.d(TAG,"开始录音");
                     while (isRecording) {
                         bufferReadResult = audioRecord.read(buffer, 0,
                                 bufferSizeInBytes);
@@ -149,6 +154,7 @@ public class VoiceRecorderManager {
         try {
             audioRecord.stop();
             isRecording = false;
+            Log.d(TAG,"结束录音");
             return true;
 
         } catch (Exception e) {
