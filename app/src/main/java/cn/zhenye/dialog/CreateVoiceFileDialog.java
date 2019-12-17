@@ -1,8 +1,12 @@
 package cn.zhenye.dialog;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +22,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import cn.zhenye.main.R;
 
-public class CreateVoiceFileDialog extends DialogFragment implements View.OnClickListener {
+public class CreateVoiceFileDialog extends DialogFragment implements View.OnClickListener,OnDismissListener {
     private View mView;
 
     private TextView mTvPositiveBtn;
@@ -30,6 +34,7 @@ public class CreateVoiceFileDialog extends DialogFragment implements View.OnClic
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        getDialog().setOnDismissListener(this);
         mView = inflater.inflate(R.layout.dialog_voice_file_create,container,false);
         return mView;
     }
@@ -79,8 +84,33 @@ public class CreateVoiceFileDialog extends DialogFragment implements View.OnClic
                 dismiss();
                 break;
             case R.id.tv_voice_file_ok:
-                dismiss();
+                if (createVoiceName()){
+                    dismiss();
+                }else {
+                    showError();
+                }
                 break;
         }
+    }
+
+    private void showError() {
+
+    }
+
+    private boolean createVoiceName() {
+        String fileName = mEtFileName.getText().toString();
+        if (TextUtils.isEmpty(fileName)){
+            //TODO
+            return false;
+        }else {
+            //todo 保存
+            return true;
+        }
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        Log.d("aaa","dismiss");
     }
 }
