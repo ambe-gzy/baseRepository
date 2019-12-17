@@ -6,7 +6,7 @@ import cn.zhenye.main.R;
 import android.os.Bundle;
 
 public class VoiceFileCreateActivity extends AppCompatActivity {
-
+    public static int VOICE_FILE_CREATE_KEY = 11;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
