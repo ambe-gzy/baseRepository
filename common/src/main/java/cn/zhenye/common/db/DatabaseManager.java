@@ -7,9 +7,13 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import cn.zhenye.common.db.dao.AttendDao;
+import cn.zhenye.common.db.dao.VoiceDao;
+import cn.zhenye.common.db.dao.VoiceFileDao;
 import cn.zhenye.common.db.entity.AttendEntity;
+import cn.zhenye.common.db.entity.VoiceEntity;
+import cn.zhenye.common.db.entity.VoiceFileEntity;
 
-@Database(entities = {AttendEntity.class},version = 1,exportSchema = false)
+@Database(entities = {AttendEntity.class, VoiceFileEntity.class, VoiceEntity.class},version = 2,exportSchema = false)
 public abstract class DatabaseManager extends RoomDatabase {
     private static DatabaseManager mAppDatabase;
 
@@ -30,4 +34,8 @@ public abstract class DatabaseManager extends RoomDatabase {
     }
 
     public abstract AttendDao attendDao();
+
+    public abstract VoiceFileDao voiceFileDao();
+
+    public abstract VoiceDao voiceDao();
 }
