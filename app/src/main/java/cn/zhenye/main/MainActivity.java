@@ -3,17 +3,18 @@ package cn.zhenye.main;
 import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.base.tool.ActivityUtil;
 import cn.zhenye.base.tool.StatusbarUtil;
-import cn.zhenye.base.view.RecyclerViewNormalItem;
 import cn.zhenye.voicereverse.VoiceReverseActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.umeng.analytics.MobclickAgent;
+
 
 public class MainActivity extends ZyCommonActivity implements View.OnClickListener {
     private LinearLayout mVoiceReverseBtn;
-    private RecyclerViewNormalItem item;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,6 @@ public class MainActivity extends ZyCommonActivity implements View.OnClickListen
     }
 
     private void initUI(){
-        getWindowBackgroundManager().setBackgroundColor(getResources().getColor(R.color.color_FFE6A7));
         StatusbarUtil.setStatusBarTextColor(getWindow(),true);
         mVoiceReverseBtn = findViewById(R.id.ll_main_voice_reverse);
         mVoiceReverseBtn.setOnClickListener(this);

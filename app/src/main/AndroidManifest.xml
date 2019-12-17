@@ -18,9 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="cn.zhenye.voicereverse.VoiceFileActivity"></activity>
+        <activity android:name="cn.zhenye.voicereverse.VoiceFileCreateActivity"></activity>
+        <activity android:name="cn.zhenye.voicereverse.VoiceFileActivity" />
         <activity android:name="cn.zhenye.voicereverse.VoiceReverseActivity" />
-        <activity android:name="cn.zhenye.appcommon.SplashActivity"></activity>
+        <activity android:name="cn.zhenye.appcommon.SplashActivity" />
         <activity android:name="cn.zhenye.auth.LoginActivity" />
         <activity android:name="cn.zhenye.auth.RegisterActivity" />
         <activity android:name="cn.zhenye.auth.ForgetPasswordActivity" />

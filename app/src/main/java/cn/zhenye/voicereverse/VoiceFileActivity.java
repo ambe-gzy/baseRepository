@@ -2,12 +2,14 @@ package cn.zhenye.voicereverse;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import cn.zhenye.base.tool.StatusbarUtil;
 import cn.zhenye.main.R;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 
-public class VoiceFileActivity extends AppCompatActivity {
+public class VoiceFileActivity extends AppCompatActivity implements View.OnClickListener {
     private LinearLayout mLlAddFile;
     private RecyclerView mFileRecyclerView;
 
@@ -15,6 +17,7 @@ public class VoiceFileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_file_create);
+        StatusbarUtil.setStatusBarTextColor(getWindow(),true);
         initUI();
         initRecyclerView();
     }
@@ -28,4 +31,12 @@ public class VoiceFileActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.ll_voice_file_create_add:
+                
+                break;
+        }
+    }
 }
