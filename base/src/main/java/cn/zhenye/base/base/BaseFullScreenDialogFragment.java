@@ -1,4 +1,4 @@
-package cn.zhenye.base.baseview;
+package cn.zhenye.base.base;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

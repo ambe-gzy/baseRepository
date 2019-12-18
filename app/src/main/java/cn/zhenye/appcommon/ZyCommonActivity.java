@@ -2,7 +2,7 @@ package cn.zhenye.appcommon;
 
 import com.umeng.analytics.MobclickAgent;
 
-import cn.zhenye.base.baseview.BaseFullScreenActivity;
+import cn.zhenye.base.base.BaseFullScreenActivity;
 
 /**
  * 在此配置基础方法
