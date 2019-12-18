@@ -25,4 +25,15 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <cn.zhenye.base.view.RecyclerNormalItem
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:leftIcon = "@mipmap/ic_micro_phone" />
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

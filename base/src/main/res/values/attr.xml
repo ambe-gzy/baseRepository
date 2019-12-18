@@ -1,0 +1,9 @@
+<resources>
+    <declare-styleable name="RecyclerNormalItemStyle">
+        <attr name="messageColor" format="color"/>
+        <attr name="message" format="string|reference"/>
+        <attr name="messageSize" format="dimension"/>
+        <attr name="leftIcon" format="reference"/>
+        <attr name="rightIcon" format="reference"/>
+    </declare-styleable>
+</resources>

@@ -2,11 +2,11 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -25,7 +25,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:appcompat-v7:29.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -44,6 +44,6 @@ dependencies {
     // 简单的线程管理器
     api 'com.github.yjfnypeu:EasyThread:'+project.EASY_THREAD_VERSION
 
-    api 'com.android.support:recyclerview-v7:28.0.0'//这里面的28，要与上面ompileSdkVersion 28 的后面数字相同
+    api 'com.android.support:recyclerview-v7:29.0.0'//这里面的28，要与上面ompileSdkVersion 28 的后面数字相同
 
 }
