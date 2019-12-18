@@ -44,6 +44,9 @@ dependencies {
     // 简单的线程管理器
     api 'com.github.yjfnypeu:EasyThread:'+project.EASY_THREAD_VERSION
 
+    //RecyclerView
     api 'com.android.support:recyclerview-v7:29.0.0'//这里面的28，要与上面ompileSdkVersion 28 的后面数字相同
 
+    // ViewModel and LiveData
+    api 'androidx.lifecycle:lifecycle-extensions:'+project.VIEW_MODEL_LIVE_DATA_VERSION
 }
