@@ -84,6 +84,14 @@ public class VoiceFileActivity extends AppCompatActivity implements View.OnClick
         mFileRecyclerView = findViewById(R.id.rv_voice_file_create_recycler_view);
         mFileRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mFileRecyclerView.setAdapter(mVoiceFileAdapter);
+        mVoiceFileAdapter.setListenr(new VoiceFileAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(VoiceFileEntity entity) {
+                Intent intent = new Intent(VoiceFileActivity.this,VoiceReverseActivity.class);
+                intent.putExtra(VoiceReverseActivity.mSavePathKey,entity.savePath);
+                ActivityUtil.safeStartActivityWithIntent(getApplicationContext(),intent);
+            }
+        });
     }
 
     @Override

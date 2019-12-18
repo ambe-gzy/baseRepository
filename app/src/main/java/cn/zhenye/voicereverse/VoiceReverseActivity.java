@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -32,8 +33,6 @@ public class VoiceReverseActivity extends ZyCommonActivity implements View.OnCli
         initUI();
         initRecorder();
     }
-
-
 
     @Override
     public void onClick(View view) {
@@ -58,6 +57,8 @@ public class VoiceReverseActivity extends ZyCommonActivity implements View.OnCli
             return;
         }
         mSavePath = intent.getStringExtra(mSavePathKey);
+        if (mSavePath!=null)
+        Log.d("COOL",mSavePath);
     }
 
     private void initRecorder() {
@@ -70,22 +71,6 @@ public class VoiceReverseActivity extends ZyCommonActivity implements View.OnCli
         TextView mStopTv = findViewById(R.id.tv_record_voice_stop);
         mStartTv.setOnClickListener(this);
         mStopTv.setOnClickListener(this);
-    }
-
-    private boolean requestPermission(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)!= PackageManager.PERMISSION_GRANTED
-         || ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.RECORD_AUDIO)
-                    || ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)){
-                //展示为什么要录音权限,存储权限
-                PermissionUtil.requestRecordPermission(this);
-            }else {
-                PermissionUtil.requestRecordPermission(this);
-            }
-            return true;
-        }else {
-            return false;
-        }
     }
 
     private String getFileName(){

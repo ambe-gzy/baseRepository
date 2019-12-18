@@ -5,41 +5,50 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import cn.zhenye.base.tool.DateUtil;
+import cn.zhenye.common.db.entity.VoiceEntity;
 import cn.zhenye.common.db.entity.VoiceFileEntity;
 import cn.zhenye.main.R;
 
 public class VoiceFileAdapter extends RecyclerView.Adapter<VoiceFileAdapter.VoiceFileViewHolder> {
     private List<VoiceFileEntity> voiceFileEntities;
+    private OnItemClickListener mOnItemClickListener;
 
     @NonNull
     @Override
     public VoiceFileViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new VoiceFileViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_voice_file,parent,false));
+        return new VoiceFileViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_voice_file, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VoiceFileViewHolder holder, int position) {
-        if (voiceFileEntities == null || voiceFileEntities.size()<=position){
+    public void onBindViewHolder(@NonNull final VoiceFileViewHolder holder, int position) {
+        if (voiceFileEntities == null || voiceFileEntities.size() <= position) {
             return;
         }
-        VoiceFileEntity voiceFileEntity = voiceFileEntities.get(position);
+        final VoiceFileEntity voiceFileEntity = voiceFileEntities.get(position);
         holder.fileName.setText(voiceFileEntity.fileName);
-        holder.fileCreateTime.setText(DateUtil.getDateToString(voiceFileEntity.createTimestamp,DateUtil.ACCURATE_TO_S));
+        holder.fileCreateTime.setText(DateUtil.getDateToString(voiceFileEntity.createTimestamp, DateUtil.ACCURATE_TO_S));
         holder.fileNum.setText(String.valueOf(voiceFileEntity.fileNum));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mOnItemClickListener !=null){
+                    mOnItemClickListener.onClick(voiceFileEntity);
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return voiceFileEntities == null?0:voiceFileEntities.size();
+        return voiceFileEntities == null ? 0 : voiceFileEntities.size();
     }
 
-    class VoiceFileViewHolder extends RecyclerView.ViewHolder{
+    class VoiceFileViewHolder extends RecyclerView.ViewHolder {
         TextView fileName;
         TextView fileNum;
         TextView fileCreateTime;
@@ -52,8 +61,16 @@ public class VoiceFileAdapter extends RecyclerView.Adapter<VoiceFileAdapter.Voic
         }
     }
 
-    public void refreshAdapter(List<VoiceFileEntity> voiceFileEntities){
+    public void refreshAdapter(List<VoiceFileEntity> voiceFileEntities) {
         this.voiceFileEntities = voiceFileEntities;
         notifyDataSetChanged();
+    }
+
+    public void setListenr(OnItemClickListener onItemClickListener){
+        mOnItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onClick(VoiceFileEntity entity);
     }
 }
