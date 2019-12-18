@@ -1,17 +1,10 @@
 package cn.zhenye.voicereverse;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import cn.zhenye.appcommon.ZyCommonActivity;
-import cn.zhenye.base.tool.PermissionUtil;
 import cn.zhenye.base.tool.StatusbarUtil;
 import cn.zhenye.common.voicereverse.VoiceRecorderManager;
 import cn.zhenye.main.R;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
