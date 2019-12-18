@@ -1,4 +1,4 @@
-package cn.zhenye.base.activity;
+package cn.zhenye.base.baseview;
 
 import android.os.Build;
 import android.os.Bundle;
