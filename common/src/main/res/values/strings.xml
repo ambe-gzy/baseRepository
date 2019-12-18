@@ -13,6 +13,9 @@
     <string name="dialog_negative_btn">取消</string>
     <string name="dialog_positive_btn">确认</string>
 
+    <string name="activity_main_voice_reverse">语音倒放挑战</string>
+    <string name="activity_main_voice_reverse_us">voice reverse challenge</string>
+
 
 
 </resources>
