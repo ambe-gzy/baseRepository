@@ -69,9 +69,8 @@
             android:padding="5dp"
             android:src="@mipmap/ic_page_in"/>
     </LinearLayout>
-
-    <cn.zhenye.base.view.RecyclerNormalItem
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <cn.zhenye.base.view.RecyclerViewNormalItem
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" />
 
 </LinearLayout>

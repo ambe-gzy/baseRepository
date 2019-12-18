@@ -3,6 +3,7 @@ package cn.zhenye.main;
 import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.base.tool.ActivityUtil;
 import cn.zhenye.base.tool.StatusbarUtil;
+import cn.zhenye.base.view.RecyclerViewNormalItem;
 import cn.zhenye.voicereverse.VoiceReverseActivity;
 
 import android.os.Bundle;
@@ -12,7 +13,7 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends ZyCommonActivity implements View.OnClickListener {
     private LinearLayout mVoiceReverseBtn;
-
+    private RecyclerViewNormalItem item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

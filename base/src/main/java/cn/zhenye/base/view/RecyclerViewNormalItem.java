@@ -1,12 +1,10 @@
 package cn.zhenye.base.view;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,13 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
-import androidx.annotation.DimenRes;
-import androidx.annotation.IntegerRes;
 import androidx.annotation.Nullable;
 
 import cn.zhenye.base.R;
 
-public class RecyclerNormalItem extends LinearLayout {
+public class RecyclerViewNormalItem extends LinearLayout {
     private ImageView mIvLeftIcon;
     private TextView mTvMessage;
     private ImageView mIvRightIcon;
@@ -33,25 +29,25 @@ public class RecyclerNormalItem extends LinearLayout {
     private Drawable mRightIconDrawable;
 
 
-    public RecyclerNormalItem(Context context) {
+    public RecyclerViewNormalItem(Context context) {
         super(context);
     }
 
-    public RecyclerNormalItem(Context context, @Nullable AttributeSet attrs) {
+    public RecyclerViewNormalItem(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initView(context,attrs);
     }
 
-    public RecyclerNormalItem(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public RecyclerViewNormalItem(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public RecyclerNormalItem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public RecyclerViewNormalItem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     private void initView(Context context, AttributeSet attr){
-        View.inflate(context, R.layout.item_recycler_normal, RecyclerNormalItem.this);
+        View.inflate(context, R.layout.item_recycler_normal, RecyclerViewNormalItem.this);
         mIvLeftIcon = this.findViewById(R.id.iv_icon_left);
         mTvMessage = this.findViewById(R.id.tv_message);
         mIvRightIcon = this.findViewById(R.id.iv_icon_right);
