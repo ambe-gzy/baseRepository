@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
-    android:layout_height="60dp"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
     android:layout_marginStart="15dp"
     android:layout_marginEnd="15dp"
     android:layout_marginBottom="5dp"
     android:paddingStart="5dp"
     android:paddingEnd="5dp"
-    android:paddingBottom="5dp"
-    tools:visibility="visible"
     android:gravity="center_vertical"
     android:background="@drawable/ripple_add_voice_file"
     android:orientation="horizontal"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:clickable="true"
+    android:focusable="true"
+    tools:visibility="visible">
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -55,11 +57,13 @@
             android:gravity="center"
             android:textSize="13dp"
             android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
             tools:text="7条"/>
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="10dp"
             android:padding="5dp"
+            android:layout_gravity="center_vertical"
             android:src="@mipmap/ic_page_in"/>
     </LinearLayout>

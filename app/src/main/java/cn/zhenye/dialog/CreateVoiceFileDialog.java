@@ -5,9 +5,14 @@ import android.content.DialogInterface.OnDismissListener;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
+import android.text.method.KeyListener;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +21,19 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.IOException;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
+import cn.zhenye.base.tool.DateUtil;
+import cn.zhenye.base.tool.PathUtil;
+import cn.zhenye.base.tool.ThreadManager;
+import cn.zhenye.common.db.DatabaseManager;
+import cn.zhenye.common.db.dao.VoiceFileDao;
+import cn.zhenye.common.db.entity.VoiceFileEntity;
 import cn.zhenye.main.R;
 
 public class CreateVoiceFileDialog extends DialogFragment implements View.OnClickListener,OnDismissListener {
@@ -29,6 +43,9 @@ public class CreateVoiceFileDialog extends DialogFragment implements View.OnClic
     private TextView mTvNegativeBtn;
     private TextView mTvCreateTime;
     private EditText mEtFileName;
+    private TextView mTvErrorMessage;
+
+    private static boolean isShowing = false;
 
     @Nullable
     @Override
@@ -56,9 +73,12 @@ public class CreateVoiceFileDialog extends DialogFragment implements View.OnClic
         mTvCreateTime = mView.findViewById(R.id.tv_voice_file_create_time);
         mTvNegativeBtn = mView.findViewById(R.id.tv_voice_file_cancel);
         mTvPositiveBtn = mView.findViewById(R.id.tv_voice_file_ok);
+        mTvErrorMessage = mView.findViewById(R.id.tv_voice_file_error_message);
 
         mTvPositiveBtn.setOnClickListener(this);
         mTvNegativeBtn.setOnClickListener(this);
+
+        mTvCreateTime.setText(DateUtil.getCurDate(DateUtil.ACCURATE_TO_MIN));
     }
 
     @Override
@@ -84,33 +104,61 @@ public class CreateVoiceFileDialog extends DialogFragment implements View.OnClic
                 dismiss();
                 break;
             case R.id.tv_voice_file_ok:
-                if (createVoiceName()){
+                if (createVoiceFile()){
                     dismiss();
-                }else {
-                    showError();
                 }
                 break;
         }
     }
 
-    private void showError() {
-
-    }
-
-    private boolean createVoiceName() {
+    private boolean createVoiceFile() {
         String fileName = mEtFileName.getText().toString();
         if (TextUtils.isEmpty(fileName)){
-            //TODO
+            mTvErrorMessage.setText(getResources().getText(R.string.voice_file_error_file_name_null));
             return false;
         }else {
-            //todo 保存
-            return true;
+            //创建
+            File filePath = new File(PathUtil.getCacheDir(getContext()),fileName);
+            if (!filePath.exists()){
+                if (filePath.mkdirs()){
+                    saveToRoom(fileName,filePath.getAbsolutePath());
+                    return true;
+                }
+                mTvErrorMessage.setText(getResources().getText(R.string.voice_file_error_file_create_fail));
+                return false;
+            }
+            mTvErrorMessage.setText(getResources().getText(R.string.voice_file_error_file_exit));
+            return false;
         }
+    }
+
+    private void saveToRoom(final String name, final String path){
+        //保存
+        ThreadManager.getNormal().execute(new Runnable() {
+            @Override
+            public void run() {
+                VoiceFileDao dao = DatabaseManager.getInstance().voiceFileDao();
+                VoiceFileEntity entity = new VoiceFileEntity(name, System.currentTimeMillis(),path,0);
+                dao.saveVoiceFileEntity(entity);
+            }
+        });
+
+
     }
 
     @Override
     public void onDismiss(DialogInterface dialog) {
         super.onDismiss(dialog);
         Log.d("aaa","dismiss");
+        isShowing =false;
+    }
+
+    public static void CreateVoiceFileDialog(FragmentManager fragmentManager){
+        if (isShowing){
+            return;
+        }
+        isShowing = true;
+        CreateVoiceFileDialog dialog = new CreateVoiceFileDialog();
+        dialog.show(fragmentManager,"cool");
     }
 }

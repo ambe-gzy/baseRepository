@@ -5,10 +5,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import cn.zhenye.base.tool.DateUtil;
 import cn.zhenye.common.db.entity.VoiceFileEntity;
 import cn.zhenye.main.R;
 
@@ -27,9 +29,8 @@ public class VoiceFileAdapter extends RecyclerView.Adapter<VoiceFileAdapter.Voic
             return;
         }
         VoiceFileEntity voiceFileEntity = voiceFileEntities.get(position);
-//        String createTime =
         holder.fileName.setText(voiceFileEntity.fileName);
-//        holder.fileCreateTime.setText(voiceFileEntity.createTimestamp);
+        holder.fileCreateTime.setText(DateUtil.getDateToString(voiceFileEntity.createTimestamp,DateUtil.ACCURATE_TO_S));
         holder.fileNum.setText(String.valueOf(voiceFileEntity.fileNum));
     }
 

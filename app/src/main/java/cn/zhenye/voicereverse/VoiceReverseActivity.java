@@ -28,34 +28,12 @@ public class VoiceReverseActivity extends ZyCommonActivity implements View.OnCli
         setContentView(R.layout.activity_voice_reverse);
         StatusbarUtil.setStatusBarTextColor(getWindow(),true);
         getToolbar().setVisibility(View.VISIBLE);
-        PermissionUtil.requestRecordPermission(this);
         handleIntent();
         initUI();
-        if (!requestPermission()){
-            initRecorder();
-        }
+        initRecorder();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        //判断权限是否已获取
-        if (requestCode == PermissionUtil.REQUEST_STORAGE_PERMISSION_AND_AUDIO){
-            if (grantResults.length>0){
-                boolean isSuccess = true;
-                for (int grantResult : grantResults) {
-                    if (grantResult != PackageManager.PERMISSION_GRANTED) {
-                        isSuccess = false;
-                    }
-                }
-                if (isSuccess){
-                    initRecorder();
-                }else {
-                    //todo 弹窗，告诉用户需要获取权限。
-                }
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
+
 
     @Override
     public void onClick(View view) {

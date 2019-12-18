@@ -1,5 +1,6 @@
 package cn.zhenye.voicereverse;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -8,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cn.zhenye.base.tool.ActivityUtil;
+import cn.zhenye.base.tool.PermissionUtil;
 import cn.zhenye.base.tool.StatusbarUtil;
 import cn.zhenye.common.db.entity.VoiceFileEntity;
 import cn.zhenye.dialog.CreateVoiceFileDialog;
@@ -16,6 +18,7 @@ import cn.zhenye.voicereverse.adapter.VoiceFileAdapter;
 import cn.zhenye.voicereverse.vm.VoiceFileViewModel;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -36,6 +39,28 @@ public class VoiceFileActivity extends AppCompatActivity implements View.OnClick
         initUI();
         initRecyclerView();
         initViewModel();
+        PermissionUtil.requestRecordPermission(this);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        //判断权限是否已获取
+        if (requestCode == PermissionUtil.REQUEST_STORAGE_PERMISSION_AND_AUDIO){
+            if (grantResults.length>0){
+                boolean isSuccess = true;
+                for (int grantResult : grantResults) {
+                    if (grantResult != PackageManager.PERMISSION_GRANTED) {
+                        isSuccess = false;
+                    }
+                }
+                if (isSuccess){
+                }else {
+                    //todo 弹窗，告诉用户需要获取权限。
+                    finish();
+                }
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     private void initViewModel() {
@@ -66,8 +91,7 @@ public class VoiceFileActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.ll_voice_file_create_add:
-                CreateVoiceFileDialog dialog = new CreateVoiceFileDialog();
-                dialog.show(getSupportFragmentManager(),"cool");
+                CreateVoiceFileDialog.CreateVoiceFileDialog(getSupportFragmentManager());
                 break;
         }
     }
