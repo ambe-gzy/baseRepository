@@ -95,4 +95,10 @@ dependencies {
     annotationProcessor 'androidx.room:room-compiler:' + project.ROOM_VERSION// use kapt for Kotlin
     // optional - RxJava support for Room
     implementation 'androidx.room:room-rxjava2:' + project.ROOM_VERSION
+
+    //RecyclerView
+    implementation 'com.android.support:recyclerview-v7:29.0.0'//这里面的28，要与上面ompileSdkVersion 28 的后面数字相同
+
+    // ViewModel and LiveData
+    implementation 'androidx.lifecycle:lifecycle-extensions:'+project.VIEW_MODEL_LIVE_DATA_VERSION
 }

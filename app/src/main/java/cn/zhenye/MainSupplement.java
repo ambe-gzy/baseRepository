@@ -16,9 +16,8 @@ public class MainSupplement {
         initCacheStore(context.getApplicationContext());
         initDatabase(context.getApplicationContext());
         //友盟
-        MainSupplement.initUM(context,
-                UMConstants.UM_APP_KEY, UMConstants.TEST_CHANNEL
-                ,UMConfigure.DEVICE_TYPE_PHONE,null);
+        MainSupplement.initUM(context
+        );
     }
 
     //初始化cacheStore
@@ -34,15 +33,11 @@ public class MainSupplement {
     /**
      * 初始化友盟接口
      * @param context 上下文
-     * @param appkey appid
-     * @param channel 渠道
-     * @param deviceType {UMConfigure}
-     * @param pushSecret 输入null即可
+     *
      */
-    private static void initUM(Context context, String appkey,
-                              String channel, int deviceType, String pushSecret){
+    private static void initUM(Context context){
         //初始化sdk
-        UMConfigure.init(context, appkey, channel, deviceType, pushSecret);
+        UMConfigure.init(context, UMConstants.UM_APP_KEY, UMConstants.TEST_CHANNEL, UMConfigure.DEVICE_TYPE_PHONE, null);
         // 选用AUTO页面采集模式
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
         // 支持在子进程中统计自定义事件

@@ -23,6 +23,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.umeng.analytics.MobclickAgent;
+
 import java.util.List;
 
 public class VoiceFileActivity extends AppCompatActivity implements View.OnClickListener {

@@ -37,7 +37,8 @@ dependencies {
     // optional - RxJava support for Room
     api 'androidx.room:room-rxjava2:' + project.ROOM_VERSION
 
+    //友盟
     api  'com.umeng.umsdk:analytics:8.0.0'
     api  'com.umeng.umsdk:common:2.0.0'
-
+    api  'com.umeng.umsdk:utdid:1.1.5.3'
 }

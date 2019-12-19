@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.umeng.analytics.MobclickAgent;
+
 
 public class MainActivity extends ZyCommonActivity implements View.OnClickListener {
     private LinearLayout mVoiceReverseBtn;
@@ -46,5 +48,17 @@ public class MainActivity extends ZyCommonActivity implements View.OnClickListen
                 //todo 显示如何玩；
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        MobclickAgent.onResume(this);
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        MobclickAgent.onPause(this);
+        super.onPause();
     }
 }
