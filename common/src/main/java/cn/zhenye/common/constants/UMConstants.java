@@ -1,5 +1,8 @@
 package cn.zhenye.common.constants;
 
+/**
+ * 友盟的数据
+ */
 public class UMConstants {
     //友盟:Android唯一Appkey
     public static final String UM_APP_KEY = "5df596143fc19534dc000948";

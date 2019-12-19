@@ -1,7 +1,7 @@
 package cn.zhenye.common.constants;
 
 /**
- * 的广告位id
+ * 广告位的id
  * Created by chaotao on 2019-06-20 .
  **/
 public class PositionId {

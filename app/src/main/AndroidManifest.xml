@@ -26,16 +26,17 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name="cn.zhenye.voicereverse.VoiceFileActivity" />
         <activity android:name="cn.zhenye.voicereverse.VoiceReverseActivity" />
-        <activity android:name="cn.zhenye.appcommon.SplashActivity" />
-        <activity android:name="cn.zhenye.auth.LoginActivity" />
-        <activity android:name="cn.zhenye.auth.RegisterActivity" />
-        <activity android:name="cn.zhenye.auth.ForgetPasswordActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="cn.zhenye.appcommon.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="cn.zhenye.auth.LoginActivity" />
+        <activity android:name="cn.zhenye.auth.RegisterActivity" />
+        <activity android:name="cn.zhenye.auth.ForgetPasswordActivity" />
+        <activity android:name=".MainActivity">
         </activity>
 
         <provider

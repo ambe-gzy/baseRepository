@@ -2,6 +2,7 @@ package cn.zhenye.appcommon;
 
 import cn.zhenye.base.tool.ActivityUtil;
 import cn.zhenye.base.tool.Daemon;
+import cn.zhenye.common.constants.GDTConstants;
 import cn.zhenye.common.constants.PositionId;
 import cn.zhenye.main.BuildConfig;
 import cn.zhenye.main.MainActivity;
@@ -84,16 +85,8 @@ public class SplashActivity extends Activity implements SplashADListener {
             checkAndRequestPermission();
         } else {
             // 如果是Android6.0以下的机器，建议在manifest中配置相关权限，这里可以直接调用SDK
-            fetchSplashAD(this, container, skipView,BuildConfig.APPLICATION_ID, getPosId(), this, 0);
+            fetchSplashAD(this, container, skipView, GDTConstants.APPID, PositionId.SPLASH_POS_ID, this, 0);
         }
-    }
-
-    /**
-     * 开屏广告位ID
-     * @return
-     */
-    private String getPosId() {
-        return PositionId.SPLASH_POS_ID;
     }
 
     /**
@@ -125,7 +118,7 @@ public class SplashActivity extends Activity implements SplashADListener {
 
         // 如果需要的权限都已经有了，那么直接调用SDK
         if (lackedPermission.size() == 0) {
-            fetchSplashAD(this, container, skipView, BuildConfig.APPLICATION_ID, getPosId(), this, 0);
+            fetchSplashAD(this, container, skipView, GDTConstants.APPID, PositionId.SPLASH_POS_ID, this, 0);
         } else {
             // 否则，建议请求所缺少的权限，在onRequestPermissionsResult中再看是否获得权限
             String[] requestPermissions = new String[lackedPermission.size()];
@@ -147,7 +140,7 @@ public class SplashActivity extends Activity implements SplashADListener {
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1024 && hasAllPermissionsGranted(grantResults)) {
-            fetchSplashAD(this, container, skipView, BuildConfig.APPLICATION_ID, getPosId(), this, 0);
+            fetchSplashAD(this, container, skipView, GDTConstants.APPID, PositionId.SPLASH_POS_ID, this, 0);
         } else {
             Toast.makeText(this, "应用缺少必要的权限！请点击\"权限\"，打开所需要的权限。", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -230,6 +223,8 @@ public class SplashActivity extends Activity implements SplashADListener {
             @Override
             public void run() {
                 //todo 此处跳转到主页
+                SplashActivity.this.startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                SplashActivity.this.finish();
 //                if (needStartDemoList) {
 ////                    SplashActivity.this.startActivity(new Intent(SplashActivity.this, DemoListActivity.class));
 //                }
@@ -244,7 +239,9 @@ public class SplashActivity extends Activity implements SplashADListener {
      */
     private void next() {
         if (canJump) {
-            //todo 跳转到主页
+            //todo 此处跳转到主页
+            SplashActivity.this.startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            SplashActivity.this.finish();
 //            if (needStartDemoList) {
 //                this.startActivity(new Intent(this, DemoListActivity.class));
 //            }
