@@ -8,6 +8,9 @@ buildscript {
         //jcenter可以理解成是一个新的中央远程仓库，兼容maven中心仓库，而且性能更优。
         jcenter()
         maven { url 'https://dl.bintray.com/umsdk/release' }
+        flatDir {
+            dirs 'libs'
+        }
     }
     //依赖集合
     dependencies {
