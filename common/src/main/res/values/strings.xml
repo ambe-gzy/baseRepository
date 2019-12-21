@@ -18,6 +18,9 @@
     <string name="activity_main_navigation_game">游戏</string>
     <string name="activity_main_navigation_coin">积分</string>
 
+    <string name="activity_voice_navigation_challenge">挑战</string>
+    <string name="activity_voice_navigation_record">记录</string>
+
 
 
 </resources>

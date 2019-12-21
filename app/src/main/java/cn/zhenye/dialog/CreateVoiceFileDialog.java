@@ -149,7 +149,7 @@ public class CreateVoiceFileDialog extends DialogFragment implements View.OnClic
     @Override
     public void onDismiss(DialogInterface dialog) {
         super.onDismiss(dialog);
-        Log.d("aaa","dismiss");
+        Log.d(dialog.getClass().getCanonicalName(),"dismiss");
         isShowing =false;
     }
 
