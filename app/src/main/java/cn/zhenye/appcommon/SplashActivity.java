@@ -1,11 +1,9 @@
 package cn.zhenye.appcommon;
 
-import cn.zhenye.base.tool.ActivityUtil;
-import cn.zhenye.base.tool.Daemon;
+import cn.zhenye.base.tool.StatusbarUtil;
 import cn.zhenye.common.constants.GDTConstants;
 import cn.zhenye.common.constants.PositionId;
-import cn.zhenye.main.BuildConfig;
-import cn.zhenye.main.MainActivity;
+import cn.zhenye.main.HomeActivity;
 import cn.zhenye.main.R;
 
 import android.Manifest;
@@ -19,8 +17,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
-import android.provider.SyncStateContract;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -29,7 +25,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidquery.util.Constants;
 import com.qq.e.ads.splash.SplashAD;
 import com.qq.e.ads.splash.SplashADListener;
 import com.qq.e.comm.util.AdError;
@@ -68,6 +63,8 @@ public class SplashActivity extends Activity implements SplashADListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StatusbarUtil.setStatusBarTextColor(getWindow(),true);
+        StatusbarUtil.setWindowFullScreenWithStatusBar(getWindow(),true);
         setContentView(R.layout.activity_splash);
         container = (ViewGroup) this.findViewById(R.id.splash_container);
         boolean customSkipBtn = getIntent().getBooleanExtra("custom_skip_btn", false);
@@ -223,7 +220,7 @@ public class SplashActivity extends Activity implements SplashADListener {
             @Override
             public void run() {
                 //todo 此处跳转到主页
-                SplashActivity.this.startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                SplashActivity.this.startActivity(new Intent(SplashActivity.this, HomeActivity.class));
                 SplashActivity.this.finish();
 //                if (needStartDemoList) {
 ////                    SplashActivity.this.startActivity(new Intent(SplashActivity.this, DemoListActivity.class));
@@ -240,7 +237,7 @@ public class SplashActivity extends Activity implements SplashADListener {
     private void next() {
         if (canJump) {
             //todo 此处跳转到主页
-            SplashActivity.this.startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            SplashActivity.this.startActivity(new Intent(SplashActivity.this, HomeActivity.class));
             SplashActivity.this.finish();
 //            if (needStartDemoList) {
 //                this.startActivity(new Intent(this, DemoListActivity.class));

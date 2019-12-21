@@ -10,13 +10,13 @@ import cn.zhenye.common.constants.UMConstants;
 import cn.zhenye.common.db.DatabaseManager;
 import cn.zhenye.main.BuildConfig;
 
-public class MainSupplement {
+public class AppSupplement {
 
     public static void init(Context context){
         initCacheStore(context.getApplicationContext());
         initDatabase(context.getApplicationContext());
         //友盟
-        MainSupplement.initUM(context
+        AppSupplement.initUM(context
         );
     }
 
