@@ -35,9 +35,7 @@ public class MainActivity extends ZyCommonActivity implements View.OnClickListen
         mVoiceReverseBtn = findViewById(R.id.ll_main_voice_reverse);
         mIvGuide = findViewById(R.id.iv_main_guide);
         mNavigationBar = findViewById(R.id.nvb_activity_main_navigation_bar);
-
         mIvGuide.setColorFilter(getResources().getColor(R.color.color_3C3885), PorterDuff.Mode.SRC_IN);
-
         mVoiceReverseBtn.setOnClickListener(this);
         mIvGuide.setOnClickListener(this);
     }
@@ -50,7 +48,7 @@ public class MainActivity extends ZyCommonActivity implements View.OnClickListen
         BottomNavigationItem itemCoin  = new BottomNavigationItem(coinIcon,R.string.activity_main_navigation_coin)
                 .setActiveColorResource(R.color.white);//item被选中时BottomNavigationBar的背景颜色
 
-        mNavigationBar.setMode(BottomNavigationBar.MODE_FIXED).
+        mNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING).
                 setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE).
                 setAnimationDuration(250).//动画效果持续时长
                 setActiveColor(R.color.white).//BottomNavigationBar背景顏色
