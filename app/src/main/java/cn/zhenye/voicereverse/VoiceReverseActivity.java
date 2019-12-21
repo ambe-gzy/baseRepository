@@ -1,4 +1,5 @@
 package cn.zhenye.voicereverse;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import cn.zhenye.appcommon.ZyCommonActivity;
@@ -12,6 +13,7 @@ import cn.zhenye.voicereverse.fragment.VoiceReverseChallengeFragment;
 import cn.zhenye.voicereverse.fragment.VoiceReverseRecordFragment;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,9 +29,9 @@ import com.mintegral.msdk.base.fragment.BaseFragment;
 public class VoiceReverseActivity extends ZyCommonActivity {
     private static String TAG = VoiceReverseActivity.class.getName();
     private VoiceRecorderManager mVoiceRecorderManager;
-    private String mSavePath = new String();
     public static String mSavePathKey;
 
+    private Toolbar mToolbar;
     private BottomNavigationBar mNavigationBar;
     private volatile Fragment mCurrentFragment;
     private static final String STATE_CURRENT_FRAGMENT_TAG = "state_current_fragment_tag"; // HomeActivity被回收重启后，用于恢复当前Fragment的标志
@@ -39,8 +41,8 @@ public class VoiceReverseActivity extends ZyCommonActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_reverse);
         StatusbarUtil.setStatusBarTextColor(getWindow(),true);
-        getToolbar().setVisibility(View.VISIBLE);
         handleIntent();
+        initToolbar();
         initUI();
         initNavigationBarAndFragment(savedInstanceState);
     }
@@ -55,6 +57,22 @@ public class VoiceReverseActivity extends ZyCommonActivity {
 
     private void initUI(){
         mNavigationBar = findViewById(R.id.nvb_voice_navigation_bar);
+    }
+
+    private void initToolbar(){
+        mToolbar = getToolbar();
+        mToolbar.setVisibility(View.VISIBLE);
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.color_3C3885));
+
+        Drawable back = getResources().getDrawable(R.mipmap.ic_back);
+        back.setColorFilter(getResources().getColor(R.color.color_3C3885), PorterDuff.Mode.SRC_IN);
+        mToolbar.setNavigationIcon(back);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void initNavigationBarAndFragment(Bundle savedInstanceState) {
@@ -79,9 +97,11 @@ public class VoiceReverseActivity extends ZyCommonActivity {
             public void onTabSelected(int position) {
                 switch (position){
                     case 0:
+                        mToolbar.setTitle(R.string.activity_voice_tittle_challenge);
                         switchFragment(mCurrentFragment,challengeFragment);
                         break;
                     case 1:
+                        mToolbar.setTitle(R.string.activity_voice_tittle_record);
                         switchFragment(mCurrentFragment,recordFragment);
                         break;
                 }
@@ -125,9 +145,9 @@ public class VoiceReverseActivity extends ZyCommonActivity {
         if (intent == null) {
             return;
         }
-        mSavePath = intent.getStringExtra(mSavePathKey);
-        if (mSavePath!=null)
-        Log.d(TAG,mSavePath);
+        String mSavePath = intent.getStringExtra(mSavePathKey);
+        if (mSavePath !=null)
+        Log.d(TAG, mSavePath);
     }
 
     private void switchFragment(final Fragment from, final Fragment to) {

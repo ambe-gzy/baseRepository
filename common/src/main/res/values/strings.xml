@@ -20,6 +20,8 @@
 
     <string name="activity_voice_navigation_challenge">挑战</string>
     <string name="activity_voice_navigation_record">记录</string>
+    <string name="activity_voice_tittle_challenge">语音倒放挑战</string>
+    <string name="activity_voice_tittle_record">历史记录</string>
 
 
 
