@@ -1,7 +1,6 @@
 package cn.zhenye.voicereverse;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,7 +14,7 @@ import cn.zhenye.common.db.entity.VoiceFileEntity;
 import cn.zhenye.dialog.CreateVoiceFileDialog;
 import cn.zhenye.main.R;
 import cn.zhenye.voicereverse.adapter.VoiceFileAdapter;
-import cn.zhenye.voicereverse.vm.VoiceFileViewModel;
+import cn.zhenye.voicereverse.vm.VoiceViewModel;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -23,14 +22,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.umeng.analytics.MobclickAgent;
-
 import java.util.List;
 
 public class VoiceFileActivity extends AppCompatActivity implements View.OnClickListener {
     private LinearLayout mLlAddFile;
     private RecyclerView mFileRecyclerView;
-    private VoiceFileViewModel mVoiceFileViewModel;
+    private VoiceViewModel mVoiceFileViewModel;
     private VoiceFileAdapter mVoiceFileAdapter;
 
     @Override
@@ -66,7 +63,7 @@ public class VoiceFileActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void initViewModel() {
-        mVoiceFileViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(VoiceFileViewModel.class);
+        mVoiceFileViewModel =  ViewModelProviders.of(this).get(VoiceViewModel.class);
         mVoiceFileViewModel.getVoiceFileEntityLiveData().observe(this, new Observer<List<VoiceFileEntity>>() {
             @Override
             public void onChanged(List<VoiceFileEntity> voiceFileEntities) {
@@ -90,7 +87,7 @@ public class VoiceFileActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onClick(VoiceFileEntity entity) {
                 Intent intent = new Intent(VoiceFileActivity.this,VoiceReverseActivity.class);
-                intent.putExtra(VoiceReverseActivity.mSavePathKey,entity.savePath);
+                intent.putExtra(VoiceReverseActivity.SAVE_PATH_KEY,entity.savePath);
                 ActivityUtil.safeStartActivityWithIntent(getApplicationContext(),intent);
             }
         });

@@ -25,6 +25,8 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
     //toolbar
     private Toolbar mToolbar;
 
+    private View mStatusbarBg;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
         mWindowBackground = super.findViewById(R.id.fl_window_background);
         mContentWrapperView = super.findViewById(R.id.fl_content_wrapper_view);
         mToolbar = super.findViewById(R.id.tl_toolbar);
+        mStatusbarBg = super.findViewById(R.id.view_statusbar_bg);
     }
 
     private void initWindow() {
@@ -84,6 +87,14 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
      */
     public Toolbar getToolbar() {
         return mToolbar;
+    }
+
+    public void setStatusBg(int color){
+        if (mToolbar.getVisibility() != View.VISIBLE){
+            return;
+        }
+        mToolbar.setBackgroundColor(color);
+        mStatusbarBg.setBackgroundColor(color);
     }
 
 }

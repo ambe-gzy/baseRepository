@@ -4,6 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <View
+        android:id="@+id/view_statusbar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tool_bar_height"/>
+
     <LinearLayout
         android:id="@+id/ll_toolbar_and_wrapper_view"
         android:layout_width="match_parent"

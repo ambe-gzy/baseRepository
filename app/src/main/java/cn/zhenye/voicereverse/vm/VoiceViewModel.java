@@ -7,24 +7,36 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import cn.zhenye.base.tool.ThreadManager;
 import cn.zhenye.common.db.DatabaseManager;
 import cn.zhenye.common.db.dao.VoiceFileDao;
 import cn.zhenye.common.db.entity.VoiceFileEntity;
 
-public class VoiceFileViewModel extends AndroidViewModel {
-    private LiveData<List<VoiceFileEntity>> voiceFileEntityLiveData;
+public class VoiceViewModel extends AndroidViewModel {
+    //录音文件目录
+    private LiveData<List<VoiceFileEntity>> mVoiceFileEntityLiveData;
+    //当前选中的录音目录
+    private MutableLiveData<String> mCurrentFilePah = new MutableLiveData<>();
+
     private VoiceFileDao dao;
 
-    public VoiceFileViewModel(@NonNull Application application) {
+    public VoiceViewModel(@NonNull Application application) {
         super(application);
         dao = DatabaseManager.getInstance().voiceFileDao();
-        voiceFileEntityLiveData = dao.getAllEntityLiveData();
+        mVoiceFileEntityLiveData = dao.getAllEntityLiveData();
      }
 
+    public MutableLiveData<String> getCurrentFilePah() {
+        return mCurrentFilePah;
+    }
+
+    public void setCurrentFilePah(String mCurrentFilePah) {
+        this.mCurrentFilePah.setValue(mCurrentFilePah);
+    }
 
     public LiveData<List<VoiceFileEntity>> getVoiceFileEntityLiveData() {
-        return voiceFileEntityLiveData;
+        return mVoiceFileEntityLiveData;
     }
 
     public void setVoiceFileEntityLiveData(final LiveData<VoiceFileEntity> voiceFileEntityLiveData) {

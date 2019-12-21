@@ -41,9 +41,6 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
     private void initUI(){
         StatusbarUtil.setStatusBarTextColor(getWindow(),true);
         mNavigationBar = findViewById(R.id.nvb_main_navigation_bar);
-        Toolbar toolbar = getToolbar();
-        toolbar.setVisibility(View.VISIBLE);
-        toolbar.setBackgroundColor(Color.TRANSPARENT);
     }
 
     private void initNavigationBarAndFragment(Bundle savedInstanceState) {

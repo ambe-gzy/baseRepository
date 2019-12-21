@@ -1,17 +1,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="cn.zhenye.voicereverse.fragment.VoiceChallengeFragment">
+    tools:context="cn.zhenye.voicereverse.fragment.VoicePlayFragment">
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/fragment_voice_tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/tool_bar_height"/>
+        android:layout_height="@dimen/tab_layout_height"
+        android:background="@color/color_F1C3C3"
+        android:elevation="10dp"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorColor="@color/color_3C3885"
+        app:tabTextColor="@color/color_3C3885" />
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/fragment_voice_container"
+        android:id="@+id/fragment_voice_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>
