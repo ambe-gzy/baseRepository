@@ -128,4 +128,7 @@ dependencies {
     //navigationbar
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
 
+    implementation 'com.android.support:support-v4:29.0.0'
+    implementation 'com.android.support:design:29.0.0'
+
 }

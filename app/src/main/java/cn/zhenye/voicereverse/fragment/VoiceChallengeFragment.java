@@ -14,14 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class VoiceReverseChallengeFragment extends Fragment implements View.OnClickListener {
-    private VoiceRecorderManager mVoiceRecorderManager;
-    private String mSavePath = new String();
-    public static String mSavePathKey;
+public class VoiceChallengeFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_voice_reverse_challenge, container, false);
     }
 
@@ -32,25 +28,11 @@ public class VoiceReverseChallengeFragment extends Fragment implements View.OnCl
         initRecorder();
     }
 
-    @Override
-    public void onClick(View view) {
-        int id = view.getId();
-        switch (id){
-
-        }
-    }
-
     private void initUI(View view){
     }
 
-    private String getFileName(){
-        String name  = System.currentTimeMillis()+".wav";
-        return name;
-    }
-
     private void initRecorder() {
-        mSavePath = Environment.getExternalStorageDirectory().getAbsolutePath();
-        mVoiceRecorderManager = VoiceRecorderManager.getInstance();
+        VoiceRecorderManager.getInstance();
     }
 
 }

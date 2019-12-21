@@ -8,5 +8,6 @@
     <dimen name="shifting_height">@dimen/default_height</dimen>
     <dimen name="shifting_no_title_icon_container_width">@dimen/default_height</dimen>
 
+    <dimen name="tool_bar_height">56dp</dimen>
 
 </resources>

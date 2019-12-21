@@ -5,22 +5,17 @@ import androidx.fragment.app.FragmentTransaction;
 import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.base.tool.StatusbarUtil;
 import cn.zhenye.common.voicereverse.VoiceRecorderManager;
-import cn.zhenye.main.HomeCoinFragment;
-import cn.zhenye.main.HomeGameFragment;
-import cn.zhenye.main.HomeSupplement;
 import cn.zhenye.main.R;
-import cn.zhenye.voicereverse.fragment.VoiceReverseChallengeFragment;
-import cn.zhenye.voicereverse.fragment.VoiceReverseRecordFragment;
+import cn.zhenye.voicereverse.fragment.VoiceChallengeFragment;
+import cn.zhenye.voicereverse.fragment.VoiceRecordFragment;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -28,7 +23,6 @@ import com.mintegral.msdk.base.fragment.BaseFragment;
 
 public class VoiceReverseActivity extends ZyCommonActivity {
     private static String TAG = VoiceReverseActivity.class.getName();
-    private VoiceRecorderManager mVoiceRecorderManager;
     public static String mSavePathKey;
 
     private Toolbar mToolbar;
@@ -46,7 +40,6 @@ public class VoiceReverseActivity extends ZyCommonActivity {
         initUI();
         initNavigationBarAndFragment(savedInstanceState);
     }
-
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -76,8 +69,8 @@ public class VoiceReverseActivity extends ZyCommonActivity {
     }
 
     private void initNavigationBarAndFragment(Bundle savedInstanceState) {
-        final Fragment challengeFragment = new VoiceReverseChallengeFragment();
-        final Fragment recordFragment = new VoiceReverseRecordFragment();
+        final Fragment challengeFragment = new VoiceChallengeFragment();
+        final Fragment recordFragment = new VoiceRecordFragment();
         final Drawable gameIcon = getResources().getDrawable(R.mipmap.ic_tab_game_micro);
         final Drawable coinIcon = getResources().getDrawable(R.mipmap.ic_tab_game_micro_result);
         BottomNavigationItem itemGame  = new BottomNavigationItem(gameIcon,R.string.activity_voice_navigation_challenge)

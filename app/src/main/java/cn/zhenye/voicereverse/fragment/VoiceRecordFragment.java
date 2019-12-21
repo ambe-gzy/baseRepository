@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import cn.zhenye.main.R;
 
 
-public class VoiceReverseRecordFragment extends Fragment {
+public class VoiceRecordFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
