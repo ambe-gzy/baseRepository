@@ -1,5 +1,9 @@
+import com.android.build.gradle.api.BaseVariant
+
 //表明这是一个application
 apply plugin: 'com.android.application'
+apply plugin: 'walle'
+apply from: rootProject.file('quality.gradle')
 
 android {
 
@@ -80,9 +84,13 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'androidx.appcompat:appcompat:1.2.0-alpha01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.android.support:appcompat-v7:29.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -124,4 +132,28 @@ dependencies {
     implementation 'com.android.support:support-v4:29.0.0'
     implementation 'com.android.support:design:29.0.0'
 
+    //多渠道包获取渠道号
+    implementation 'com.meituan.android.walle:library:1.1.6'
+
+}
+
+walle {
+    apkOutputFolder = new File("${project.buildDir}/outputs/channels/${project.APP_VERSION_CODE}")
+//    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}-${flavorName}.apk'
+    apkFileNameFormat = '${packageName}-${channel}-${buildType}-v${versionName}.apk'
+    //configFile与channelFile两者必须存在一个，否则无法生成渠道包。两者都存在时优先执行configFile
+    channelFile = new File("${project.getProjectDir()}/channel")
+    //configFile = new File("${project.getProjectDir()}/config.json")
+}
+
+// 根据不同的applicationId来配置不同的channelFile／configFile
+afterEvaluate {
+    project.android.applicationVariants.all { BaseVariant variant ->
+        variant.assemble.doFirst {
+            if (variant.applicationId.endsWith(".debug")) {
+
+                project.walle.channelFile = new File("${project.getProjectDir()}/channel_debug")
+            }
+        }
+    }
 }

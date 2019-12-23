@@ -14,10 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.meituan.android.walle.WalleChannelReader;
 
 public class HomeGameFragment extends Fragment implements View.OnClickListener {
     private LinearLayout mVoiceReverseBtn;
     private ImageView mIvGuide;
+    private TextView channel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +42,9 @@ public class HomeGameFragment extends Fragment implements View.OnClickListener {
         mIvGuide.setColorFilter(getResources().getColor(R.color.color_3C3885), PorterDuff.Mode.SRC_IN);
         mVoiceReverseBtn.setOnClickListener(this);
         mIvGuide.setOnClickListener(this);
+
+        channel = getView().findViewById(R.id.channel);
+        channel.setText(WalleChannelReader.getChannel(getActivity().getApplicationContext()));
     }
 
     @Override
