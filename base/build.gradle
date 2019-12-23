@@ -30,8 +30,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    api 'com.google.code.gson:gson:2.8.5'
-    api 'com.facebook.android:facebook-android-sdk:5.0.0'
+    api 'com.google.code.gson:gson:2.8.6'
+    api 'com.facebook.android:facebook-android-sdk:5.0.3'
     api  'com.facebook.conceal:conceal:1.1.2'
     api 'com.facebook.conceal:conceal:2.0.1@aar'
 
@@ -45,7 +45,7 @@ dependencies {
     api 'com.github.yjfnypeu:EasyThread:'+project.EASY_THREAD_VERSION
 
     //RecyclerView
-    api 'com.android.support:recyclerview-v7:29.0.0'//这里面的28，要与上面ompileSdkVersion 29 的后面数字相同
+    api 'androidx.recyclerview:recyclerview:1.2.0-alpha01'//这里面的28，要与上面ompileSdkVersion 28 的后面数字相同
 
     // ViewModel and LiveData
     api 'androidx.lifecycle:lifecycle-extensions:'+project.VIEW_MODEL_LIVE_DATA_VERSION
