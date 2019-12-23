@@ -1,7 +1,5 @@
 package cn.zhenye.common.voicereverse;
 
-import android.Manifest;
-import android.app.Activity;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
@@ -14,9 +12,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import javax.annotation.Nullable;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NavUtils;
 import cn.zhenye.base.tool.ThreadManager;
 
 public class VoiceRecorderManager {
