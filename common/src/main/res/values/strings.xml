@@ -12,6 +12,9 @@
 
     <string name="dialog_negative_btn">取消</string>
     <string name="dialog_positive_btn">确认</string>
+    <string name="dialog_create_time">创建时间</string>
+    <string name="dialog_voice_user_guide_tittle">用户须知</string>
+    <string name="dialog_voice_user_guide_message">- 每次录音消耗%d积分\n-保存录音消耗%d积分\n-积分可通过积分页面获得\n-祝您游戏愉快</string>
 
     <string name="activity_main_voice_reverse">语音倒放挑战</string>
     <string name="activity_main_voice_reverse_us">voice reverse challenge</string>

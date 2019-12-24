@@ -43,4 +43,8 @@ dependencies {
 
     // ViewModel and LiveData
     api 'androidx.lifecycle:lifecycle-extensions:'+project.VIEW_MODEL_LIVE_DATA_VERSION
+
+    //glide
+    api 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 }

@@ -14,6 +14,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
+
+
+
     <application
         android:name="cn.zhenye.ZyApplication"
         android:allowBackup="true"
@@ -27,16 +30,21 @@
         <activity android:name="cn.zhenye.voicereverse.VoiceFileActivity" />
         <activity android:name="cn.zhenye.voicereverse.VoiceReverseActivity" />
         <activity android:name="cn.zhenye.appcommon.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity android:name="cn.zhenye.auth.LoginActivity" />
         <activity android:name="cn.zhenye.auth.RegisterActivity" />
         <activity android:name="cn.zhenye.auth.ForgetPasswordActivity" />
         <activity android:name=".HomeActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
 
         <provider

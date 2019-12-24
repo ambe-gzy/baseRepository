@@ -6,7 +6,7 @@
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="250dp"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_dialog"
         android:layout_centerInParent="true"
         android:orientation="vertical">
@@ -18,40 +18,21 @@
             android:layout_marginTop="20dp"
             android:textSize="20dp"
             android:textColor="@color/black"
-            android:text="@string/voice_file_create_tittle"/>
-
-        <EditText
-            android:id="@+id/et_voice_file_create_file_name"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="20dp"
-            android:hint="@string/voice_file_create_input_name"
-            android:gravity="center"
-            android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/color_8B8B8B"/>
+            android:text="@string/dialog_voice_user_guide_tittle"/>
 
         <TextView
             android:id="@+id/tv_voice_file_create_time"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:gravity="start"
             android:textColor="@color/black"
             android:textSize="15dp"
-            android:text="创建时间"/>
-
-        <TextView
-            android:id="@+id/tv_voice_file_error_message"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center"
-            tools:text="输入名称不能为空！"
-            android:textColor="@color/color_D92524"/>
+            android:text="@string/dialog_voice_user_guide_message"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,7 +40,7 @@
             android:layout_marginBottom="30dp"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/tv_voice_file_cancel"
+                android:id="@+id/tv_voice_cancel"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="15dp"
                 android:layout_width="0dp"
@@ -73,7 +54,7 @@
                 android:gravity="center"
                 android:background="@drawable/ripple_btn"/>
             <TextView
-                android:id="@+id/tv_voice_file_ok"
+                android:id="@+id/tv_voice_ok"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="20dp"
                 android:layout_width="0dp"
