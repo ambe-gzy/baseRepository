@@ -10,6 +10,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import javax.annotation.Nullable;
 import cn.zhenye.base.tool.ThreadManager;
@@ -22,8 +25,6 @@ public class VoiceRecorderManager {
     private String VoiceFormat = ".wav";
     private AudioRecord audioRecord = null;
 
-
-
     //录音相关
     private boolean isRecording = false;
     private int channelConfiguration = AudioFormat.CHANNEL_IN_MONO;
@@ -32,6 +33,7 @@ public class VoiceRecorderManager {
     private int bufferSizeInBytes;
 
     private String mSavePath = null;
+    private String mReversePath = null;
 
 
     public VoiceRecorderManager(){
@@ -77,16 +79,26 @@ public class VoiceRecorderManager {
             @Override
             public void run() {
                 OutputStream out = null;
+                OutputStream outReverse = null;
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 byte[] buffer = new byte[bufferSizeInBytes];
+                byte[] bufferReverse = new byte[bufferSizeInBytes];
                 int bufferReadResult;
 
                 String filename = name;
+                String reverseFileName;
                 if (!name.contains(VoiceFormat)){
                     filename = name+VoiceFormat;
+                    reverseFileName = name+"_reverse"+VoiceFormat;
+                }else {
+                    reverseFileName = System.currentTimeMillis()+"_reverse"+VoiceFormat;
                 }
+                //正放
                 File recordingData = new File(path, filename);
                 putSavePath(recordingData.getAbsolutePath());
+                //倒放
+                File reverseRecordingData = new File(path,reverseFileName);
+                putReverseSavePath(reverseRecordingData.getAbsolutePath());
                 try {
                     //开始录音
                     audioRecord.startRecording();
@@ -102,9 +114,15 @@ public class VoiceRecorderManager {
 
                     //录音结束，处理录音结果,保存为.wav格式音频
                     buffer = baos.toByteArray();
+                    //todo 将字符串倒序。
+//                    bufferReverse = Arrays.copyOf(buffer,buffer.length);
                     out = new FileOutputStream(recordingData);
                     out.write(getWavHeader(buffer.length));
                     out.write(buffer);
+                    outReverse = new FileOutputStream(reverseRecordingData);
+                    outReverse.write(getWavHeader(buffer.length));
+                    outReverse.write(bufferReverse);
+
                     //TODO 将录音信息保存到数据库中
 
                 } catch (IOException e) {
@@ -114,6 +132,13 @@ public class VoiceRecorderManager {
                         try {
                             out.close();
                         } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (outReverse !=null){
+                        try {
+                            out.close();
+                        }catch (IOException e){
                             e.printStackTrace();
                         }
                     }
@@ -149,9 +174,22 @@ public class VoiceRecorderManager {
         mSavePath = path;
     }
 
+    private void putReverseSavePath(String path){
+        mReversePath = null;
+        mReversePath = path;
+    }
+
+    public boolean isRecord(){
+        return isRecording;
+    }
+
     @Nullable
     public String getSavePath(){
         return mSavePath;
+    }
+
+    public String getReversePath(){
+        return mReversePath;
     }
 
     /**

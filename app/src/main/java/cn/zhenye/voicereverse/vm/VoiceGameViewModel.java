@@ -10,6 +10,16 @@ public class VoiceGameViewModel extends AndroidViewModel {
     private MutableLiveData<Boolean> isAuthorStart = new MutableLiveData<>();
     private MutableLiveData<Boolean> isChallengerStart = new MutableLiveData<>();
 
+    public MutableLiveData<Boolean> getIsAudioStartRecord() {
+        return isAudioStartRecord;
+    }
+
+    public void setIsAudioStartRecord(boolean isAudioStartRecord) {
+        this.isAudioStartRecord.setValue(isAudioStartRecord);
+    }
+
+    private MutableLiveData<Boolean> isAudioStartRecord = new MutableLiveData<>();
+
     public VoiceGameViewModel(@NonNull Application application) {
         super(application);
     }

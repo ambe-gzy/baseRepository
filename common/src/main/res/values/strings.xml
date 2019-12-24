@@ -28,5 +28,8 @@
 
     <string name="fragment_voice_author">创作者</string>
     <string name="fragment_voice_challenger">挑战者</string>
+    <string name="fragment_voice_author_reverse">倒放</string>
+    <string name="fragment_voice_author_finish">完成</string>
+    <string name="fragment_voice_author_record_again">清空</string>
 
 </resources>
