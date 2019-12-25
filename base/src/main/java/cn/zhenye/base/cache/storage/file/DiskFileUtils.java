@@ -132,7 +132,7 @@ public class DiskFileUtils {
         if (Version.hasFroyo()) {
             File path = context.getExternalCacheDir();
 
-            // In some case, even the sd card is mounted, getExternalCacheDir will return null, may be it is nearly full.
+            // In some case, even the sd card is mounted, getExternalAppDir will return null, may be it is nearly full.
             if (path != null) {
                 return path;
             }

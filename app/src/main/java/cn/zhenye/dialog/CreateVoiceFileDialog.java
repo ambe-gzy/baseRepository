@@ -5,14 +5,9 @@ import android.content.DialogInterface.OnDismissListener;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.format.DateUtils;
-import android.text.method.KeyListener;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,14 +17,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.File;
-import java.io.IOException;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import cn.zhenye.base.tool.DateUtil;
-import cn.zhenye.base.tool.PathUtil;
+import cn.zhenye.base.tool.FileUtil;
 import cn.zhenye.base.tool.ThreadManager;
 import cn.zhenye.common.db.DatabaseManager;
 import cn.zhenye.common.db.dao.VoiceFileDao;
@@ -118,7 +112,14 @@ public class CreateVoiceFileDialog extends DialogFragment implements View.OnClic
             return false;
         }else {
             //创建
-            File filePath = new File(PathUtil.getCacheDir(getContext()),fileName);
+            File filePath = null;
+            try {
+                filePath = new File(FileUtil.getExternalAppDir(),fileName);
+            } catch (Exception e) {
+                mTvErrorMessage.setText(getResources().getText(R.string.voice_file_error_sdcard_null));
+                e.printStackTrace();
+                return false;
+            }
             if (!filePath.exists()){
                 if (filePath.mkdirs()){
                     saveToRoom(fileName,filePath.getAbsolutePath());

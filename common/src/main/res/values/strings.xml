@@ -9,6 +9,7 @@
     <string name="voice_file_error_file_name_null">输入项目名不能为空！</string>
     <string name="voice_file_error_file_create_fail">创建项目失败，请确保程序拥有存储权限！</string>
     <string name="voice_file_error_file_exit">创建失败，项目已存在，请修改项目名</string>
+    <string name="voice_file_error_sdcard_null">创建失败，读取存储权限失败</string>
 
     <string name="dialog_negative_btn">取消</string>
     <string name="dialog_positive_btn">确认</string>
