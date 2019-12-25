@@ -111,6 +111,7 @@ public class VoiceAuthorFragment extends Fragment implements View.OnClickListene
                     mPlayBtn.setImageResource(R.mipmap.ic_play);
                     return;
                 }
+                mPlayBtn.setClickable(false);
 
                 if (!aBoolean){
                     mPlayBtn.setImageResource(R.mipmap.ic_pause);
@@ -159,12 +160,13 @@ public class VoiceAuthorFragment extends Fragment implements View.OnClickListene
     @Override
     public void onRecordStart(String savePath, String reverseSavePath) {
         //开始录音
-
+        mPlayBtn.setClickable(true);
     }
 
     @Override
     public void onRecordStop(String savePath, String reverseSavePath) {
         //停止录音
+        mPlayBtn.setClickable(true);
 
     }
 }

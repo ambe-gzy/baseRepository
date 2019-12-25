@@ -32,9 +32,6 @@ public class VoiceRecorderManager {
     private String mSavePath = null;
     private String mReversePath = null;
 
-    private OnRecordListener mListener;
-
-
     private VoiceRecorderManager(){
         initData();
     }
