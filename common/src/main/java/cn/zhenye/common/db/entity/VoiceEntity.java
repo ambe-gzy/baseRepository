@@ -13,20 +13,28 @@ public class VoiceEntity {
     @PrimaryKey
     public int id;
 
+    //出题者正常播放的语音保存地址
     public String normalVoicePath;
 
+    //出题者倒放的语音保存地址
     public String normalReverseVoicePath;
 
+    //挑战者正常播放的语音保存地址
     public String answerVoicePath;
 
+    //挑战者倒放的语音保存地址
     public String answerReverseVoicePath;
 
+    //保存时间
     public long createTimestamp;
 
+    //保存路径
     public String savePath;
 
+    //保存名字
     public String saveName;
 
+    //是否显示
     public boolean isShow;
 
     public VoiceEntity(String normalVoicePath,String normalReverseVoicePath,

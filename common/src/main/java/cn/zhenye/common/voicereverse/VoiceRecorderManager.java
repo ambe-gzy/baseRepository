@@ -10,9 +10,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 import javax.annotation.Nullable;
 import cn.zhenye.base.tool.ThreadManager;
@@ -35,8 +32,10 @@ public class VoiceRecorderManager {
     private String mSavePath = null;
     private String mReversePath = null;
 
+    private OnRecordListener mListener;
 
-    public VoiceRecorderManager(){
+
+    private VoiceRecorderManager(){
         initData();
     }
 
@@ -65,7 +64,7 @@ public class VoiceRecorderManager {
         return INSTANCE;
     }
 
-    public void startRecord(final String path,final String name){
+    public void startRecord(final String path, final String name, final OnRecordListener listener){
         if (path == null || name == null){
             Log.d(TAG,"path or name can't be null");
             return;
@@ -73,7 +72,9 @@ public class VoiceRecorderManager {
         if (isRecording){
             return;
         }
-
+        if (listener!=null){
+            listener.onRecordPrepare();
+        }
         Log.d(TAG,"保存目录:"+path+"\n保存名称"+name);
         ThreadManager.getNormal().execute(new Runnable() {
             @Override
@@ -82,7 +83,7 @@ public class VoiceRecorderManager {
                 OutputStream outReverse = null;
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 byte[] buffer = new byte[bufferSizeInBytes];
-                byte[] bufferReverse = new byte[bufferSizeInBytes];
+                byte[] bufferReverse;
                 int bufferReadResult;
 
                 String filename = name;
@@ -104,6 +105,9 @@ public class VoiceRecorderManager {
                     audioRecord.startRecording();
                     isRecording = true;
                     Log.d(TAG,"开始录音");
+                    if (listener!=null){
+                        listener.onRecordStart(getSavePath(),getReversePath());
+                    }
                     while (isRecording) {
                         bufferReadResult = audioRecord.read(buffer, 0,
                                 bufferSizeInBytes);
@@ -115,15 +119,13 @@ public class VoiceRecorderManager {
                     //录音结束，处理录音结果,保存为.wav格式音频
                     buffer = baos.toByteArray();
                     //todo 将字符串倒序。
-//                    bufferReverse = Arrays.copyOf(buffer,buffer.length);
+                    bufferReverse = reverseBuffer(buffer);
                     out = new FileOutputStream(recordingData);
                     out.write(getWavHeader(buffer.length));
                     out.write(buffer);
                     outReverse = new FileOutputStream(reverseRecordingData);
                     outReverse.write(getWavHeader(buffer.length));
                     outReverse.write(bufferReverse);
-
-                    //TODO 将录音信息保存到数据库中
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -137,7 +139,7 @@ public class VoiceRecorderManager {
                     }
                     if (outReverse !=null){
                         try {
-                            out.close();
+                            outReverse.close();
                         }catch (IOException e){
                             e.printStackTrace();
                         }
@@ -147,8 +149,10 @@ public class VoiceRecorderManager {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    if (listener!=null){
+                        listener.onRecordStop(getSavePath(),getReversePath());
+                    }
                 }
-                Log.d(TAG,"record_stop_success");
             }
         });
     }
@@ -249,6 +253,16 @@ public class VoiceRecorderManager {
         header[42] = (byte) ((totalAudioLen >> 16) & 0xff);
         header[43] = (byte) ((totalAudioLen >> 24) & 0xff);
         return header;
+    }
+
+    private byte[] reverseBuffer(byte[] bytes){
+        byte[] outputBytes = new byte[bytes.length];
+        int currentPosition = 0;
+        for (int i = bytes.length-1;i>=0;i--){
+            outputBytes[currentPosition] = bytes[i];
+            currentPosition++;
+        }
+        return outputBytes;
     }
 
 }

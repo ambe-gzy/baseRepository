@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import cn.zhenye.common.voicereverse.OnRecordListener;
 import cn.zhenye.common.voicereverse.VoiceRecorderManager;
 import cn.zhenye.main.R;
 import cn.zhenye.voicereverse.dialog.VoicePlayConfirmDialog;
@@ -27,7 +28,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 
-public class VoiceAuthorFragment extends Fragment implements View.OnClickListener {
+public class VoiceAuthorFragment extends Fragment implements View.OnClickListener , OnRecordListener {
     private static String TAG = VoiceAuthorFragment.class.getName();
     private VoiceViewModel mVoiceViewModel;
     private VoiceGameViewModel mVoiceGameViewModel;
@@ -113,7 +114,7 @@ public class VoiceAuthorFragment extends Fragment implements View.OnClickListene
 
                 if (!aBoolean){
                     mPlayBtn.setImageResource(R.mipmap.ic_pause);
-                    VoiceRecorderManager.getInstance().startRecord(mSavePath,String.valueOf(System.currentTimeMillis()));
+                    VoiceRecorderManager.getInstance().startRecord(mSavePath,String.valueOf(System.currentTimeMillis()),VoiceAuthorFragment.this);
                 }else {
                     mPlayBtn.setImageResource(R.mipmap.ic_play);
                     VoiceRecorderManager.getInstance().stopRecord();
@@ -147,5 +148,23 @@ public class VoiceAuthorFragment extends Fragment implements View.OnClickListene
             case R.id.tv_voice_play_finish:
                 //todo 完成录制
         }
+    }
+
+    @Override
+    public void onRecordPrepare() {
+        //准备录音
+
+    }
+
+    @Override
+    public void onRecordStart(String savePath, String reverseSavePath) {
+        //开始录音
+
+    }
+
+    @Override
+    public void onRecordStop(String savePath, String reverseSavePath) {
+        //停止录音
+
     }
 }
