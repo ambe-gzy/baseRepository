@@ -11,14 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mintegral.msdk.base.fragment.BaseFragment;
+
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
-import cn.zhenye.main.R;
+import cn.zhenye.home.R;
 import cn.zhenye.voicereverse.vm.VoiceViewModel;
 
 
-public class VoiceRecordFragment extends Fragment {
+public class VoiceRecordFragment extends BaseFragment {
     private VoiceViewModel mVoiceViewModel;
     private static String TAG = VoiceRecordFragment.class.getName();
 

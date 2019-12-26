@@ -1,4 +1,4 @@
-package cn.zhenye.main;
+package cn.zhenye.home;
 
 public class HomeSupplement {
 

@@ -5,10 +5,12 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
+import cn.zhenye.common.db.entity.VoiceEntity;
 
 public class VoiceGameViewModel extends AndroidViewModel {
     private MutableLiveData<Boolean> isAuthorStart = new MutableLiveData<>();
     private MutableLiveData<Boolean> isChallengerStart = new MutableLiveData<>();
+    private MutableLiveData<VoiceEntity> currentRecordPath = new MutableLiveData<>();
 
     public MutableLiveData<Boolean> getIsAudioStartRecord() {
         return isAudioStartRecord;
@@ -29,7 +31,6 @@ public class VoiceGameViewModel extends AndroidViewModel {
     }
 
     public void setIsAuthorStart(boolean isAuthorStart) {
-
         this.isAuthorStart.setValue(isAuthorStart);
     }
 
@@ -40,4 +41,13 @@ public class VoiceGameViewModel extends AndroidViewModel {
     public void setIsChallengerStart(Boolean isChallengerStart) {
         this.isChallengerStart.setValue(isChallengerStart);
     }
+
+    public MutableLiveData<VoiceEntity> getCurrentRecordPath() {
+        return currentRecordPath;
+    }
+
+    public void setCurrentRecordPath(VoiceEntity currentRecordPath) {
+        this.currentRecordPath.setValue(currentRecordPath);
+    }
 }
+

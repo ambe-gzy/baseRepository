@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cn.zhenye.main.R;
+import com.mintegral.msdk.base.fragment.BaseFragment;
+
+import cn.zhenye.home.R;
 
 
-public class VoiceChallengerFragment extends Fragment {
+public class VoiceChallengerFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

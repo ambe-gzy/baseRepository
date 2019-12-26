@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 import cn.zhenye.base.base.BaseDialogFragment;
-import cn.zhenye.main.R;
+import cn.zhenye.home.R;
 
 public class VoicePlayConfirmDialog extends BaseDialogFragment implements View.OnClickListener {
     private static boolean isShow = false;

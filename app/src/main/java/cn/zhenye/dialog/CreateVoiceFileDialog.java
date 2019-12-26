@@ -22,13 +22,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
-import cn.zhenye.base.tool.DateUtil;
+import cn.zhenye.base.tool.TimeUtil;
 import cn.zhenye.base.tool.FileUtil;
 import cn.zhenye.base.tool.ThreadManager;
 import cn.zhenye.common.db.DatabaseManager;
 import cn.zhenye.common.db.dao.VoiceFileDao;
 import cn.zhenye.common.db.entity.VoiceFileEntity;
-import cn.zhenye.main.R;
+import cn.zhenye.home.R;
 
 public class CreateVoiceFileDialog extends DialogFragment implements View.OnClickListener,OnDismissListener {
     private View mView;
@@ -72,7 +72,7 @@ public class CreateVoiceFileDialog extends DialogFragment implements View.OnClic
         mTvPositiveBtn.setOnClickListener(this);
         mTvNegativeBtn.setOnClickListener(this);
 
-        mTvCreateTime.setText(DateUtil.getCurDate(DateUtil.ACCURATE_TO_MIN));
+        mTvCreateTime.setText(TimeUtil.getCurDate(TimeUtil.ACCURATE_TO_MIN));
     }
 
     @Override

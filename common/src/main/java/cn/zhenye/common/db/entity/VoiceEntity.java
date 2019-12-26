@@ -35,7 +35,9 @@ public class VoiceEntity {
     public String saveName;
 
     //是否显示
-    public boolean isShow;
+    public boolean isShow = false;
+
+    public VoiceEntity(){}
 
     public VoiceEntity(String normalVoicePath,String normalReverseVoicePath,
                        String answerVoicePath,String answerReverseVoicePath,

@@ -9,10 +9,9 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import cn.zhenye.base.tool.DateUtil;
-import cn.zhenye.common.db.entity.VoiceEntity;
+import cn.zhenye.base.tool.TimeUtil;
 import cn.zhenye.common.db.entity.VoiceFileEntity;
-import cn.zhenye.main.R;
+import cn.zhenye.home.R;
 
 public class VoiceFileAdapter extends RecyclerView.Adapter<VoiceFileAdapter.VoiceFileViewHolder> {
     private List<VoiceFileEntity> voiceFileEntities;
@@ -31,7 +30,7 @@ public class VoiceFileAdapter extends RecyclerView.Adapter<VoiceFileAdapter.Voic
         }
         final VoiceFileEntity voiceFileEntity = voiceFileEntities.get(position);
         holder.fileName.setText(voiceFileEntity.fileName);
-        holder.fileCreateTime.setText(DateUtil.getDateToString(voiceFileEntity.createTimestamp, DateUtil.ACCURATE_TO_S));
+        holder.fileCreateTime.setText(TimeUtil.getDateToString(voiceFileEntity.createTimestamp, TimeUtil.ACCURATE_TO_S));
         holder.fileNum.setText(String.valueOf(voiceFileEntity.fileNum));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

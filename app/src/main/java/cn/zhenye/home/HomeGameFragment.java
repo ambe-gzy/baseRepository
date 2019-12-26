@@ -1,4 +1,4 @@
-package cn.zhenye.main;
+package cn.zhenye.home;
 
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -17,8 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.meituan.android.walle.WalleChannelReader;
+import com.mintegral.msdk.base.fragment.BaseFragment;
 
-public class HomeGameFragment extends Fragment implements View.OnClickListener {
+public class HomeGameFragment extends BaseFragment implements View.OnClickListener {
     private LinearLayout mVoiceReverseBtn;
     private ImageView mIvGuide;
     private TextView channel;

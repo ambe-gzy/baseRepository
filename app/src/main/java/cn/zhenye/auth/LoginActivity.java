@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import cn.zhenye.main.R;
+import cn.zhenye.home.R;
 
 public class LoginActivity extends AppCompatActivity {
 

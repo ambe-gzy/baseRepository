@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.base.tool.StatusbarUtil;
-import cn.zhenye.main.R;
+import cn.zhenye.home.R;
 import cn.zhenye.voicereverse.fragment.VoicePlayFragment;
 import cn.zhenye.voicereverse.fragment.VoiceRecordFragment;
 import cn.zhenye.voicereverse.vm.VoiceViewModel;

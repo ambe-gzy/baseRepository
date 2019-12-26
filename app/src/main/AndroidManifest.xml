@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="cn.zhenye.main">
+    package="cn.zhenye.home">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -39,7 +39,7 @@
         <activity android:name="cn.zhenye.auth.LoginActivity" />
         <activity android:name="cn.zhenye.auth.RegisterActivity" />
         <activity android:name="cn.zhenye.auth.ForgetPasswordActivity" />
-        <activity android:name=".HomeActivity">
+        <activity android:name="cn.zhenye.home.HomeActivity">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 

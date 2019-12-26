@@ -8,7 +8,7 @@ import com.umeng.commonsdk.UMConfigure;
 import cn.zhenye.base.cache.ZyCacheStorage;
 import cn.zhenye.common.constants.UMConstants;
 import cn.zhenye.common.db.DatabaseManager;
-import cn.zhenye.main.BuildConfig;
+import cn.zhenye.home.BuildConfig;
 
 public class AppSupplement {
 

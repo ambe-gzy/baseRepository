@@ -1,12 +1,10 @@
-package cn.zhenye.main;
+package cn.zhenye.home;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.base.tool.StatusbarUtil;
 
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;

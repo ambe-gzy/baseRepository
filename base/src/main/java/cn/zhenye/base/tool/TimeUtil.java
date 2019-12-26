@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DateUtil {
+public class TimeUtil {
     public static String ACCURATE_TO_S = "yyyy-MM-dd HH:mm:ss";
     public static String ACCURATE_TO_DAY = "yyyy-MM-dd";
     public static String ACCURATE_TO_S_CN = "yyyy年MM月dd日 HH时mm分ss秒";
@@ -119,5 +119,57 @@ public class DateUtil {
         } else {
             return false;
         }
+    }
+
+    /**
+     * 转化为时分秒格式
+     * @param seconds
+     * @return
+     */
+    public static String secToTime(int seconds) {
+        int hour = seconds / 3600;
+        int minute = (seconds - hour * 3600) / 60;
+        int second = (seconds - hour * 3600 - minute * 60);
+
+        StringBuilder  sb = new StringBuilder();
+        if (hour > 0 && hour<10) {
+            sb.append("0").append(hour).append(":");
+        }else if (hour>=10){
+            sb.append(hour).append(":");
+        }
+        if (minute >= 0 && minute<10) {
+            sb.append("0").append(minute).append(":");
+        }else if (minute>=10){
+            sb.append(minute).append(":");
+        }
+        if (second >= 0 && second <10) {
+            sb.append("0").append(second);
+        }else {
+            sb.append(second);
+        }
+        return sb.toString();
+    }
+    public static String secToTime(long seconds) {
+        long hour = seconds / 3600;
+        long minute = (seconds - hour * 3600) / 60;
+        long second = (seconds - hour * 3600 - minute * 60);
+
+        StringBuilder  sb = new StringBuilder();
+        if (hour > 0 && hour<10) {
+            sb.append("0").append(hour).append(":");
+        }else if (hour>=10){
+            sb.append(hour).append(":");
+        }
+        if (minute >= 0 && minute<10) {
+            sb.append("0").append(minute).append(":");
+        }else if (minute>=10){
+            sb.append(minute).append(":");
+        }
+        if (second >= 0 && second <10) {
+            sb.append("0").append(second);
+        }else {
+            sb.append(second);
+        }
+        return sb.toString();
     }
 }

@@ -7,13 +7,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import cn.zhenye.base.tool.TimeUtil;
+import cn.zhenye.common.db.entity.VoiceEntity;
 import cn.zhenye.common.voicereverse.OnRecordListener;
 import cn.zhenye.common.voicereverse.VoiceRecorderManager;
-import cn.zhenye.main.R;
+import cn.zhenye.home.R;
 import cn.zhenye.voicereverse.dialog.VoicePlayConfirmDialog;
 import cn.zhenye.voicereverse.vm.VoiceGameViewModel;
 import cn.zhenye.voicereverse.vm.VoiceViewModel;
 
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,9 +29,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.mintegral.msdk.base.fragment.BaseFragment;
 
 
-public class VoiceAuthorFragment extends Fragment implements View.OnClickListener , OnRecordListener {
+public class VoiceAuthorFragment extends BaseFragment implements View.OnClickListener , OnRecordListener {
     private static String TAG = VoiceAuthorFragment.class.getName();
     private VoiceViewModel mVoiceViewModel;
     private VoiceGameViewModel mVoiceGameViewModel;
@@ -38,7 +42,7 @@ public class VoiceAuthorFragment extends Fragment implements View.OnClickListene
     private LinearLayout mLlPlayBg;
     private Chronometer mTimer;
     private TextView mTvTotalTime;
-    private ImageView mPlayBtn;
+    private TextView mPlayBtn;
     private TextView mPlayReverseBtn;
     private TextView mPlayAgainBtn;
     private TextView mPlayFinishBtn;
@@ -54,8 +58,8 @@ public class VoiceAuthorFragment extends Fragment implements View.OnClickListene
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initVM();
         initUI(view);
+        initVM();
     }
 
     private void initUI(View view) {
@@ -65,12 +69,14 @@ public class VoiceAuthorFragment extends Fragment implements View.OnClickListene
         mLlPlayBg  = view.findViewById(R.id.ll_voice_author_play_bg);
         mTimer = view.findViewById(R.id.timer_voice_author_play);
         mTvTotalTime = view.findViewById(R.id.tv_voice_total_time);
-        mPlayBtn = view.findViewById(R.id.iv_voice_play);
+        mPlayBtn = view.findViewById(R.id.tv_voice_play);
         mPlayReverseBtn = view.findViewById(R.id.tv_voice_play_reverse);
         mPlayAgainBtn = view.findViewById(R.id.tv_voice_play_again);
         mPlayFinishBtn = view.findViewById(R.id.tv_voice_play_finish);
 
         Glide.with(getContext()).load(R.mipmap.gif_rest_book).into(mTitleGif);
+        mTimer.setFormat("%mm:%ss");
+
         mGameStartBtn.setOnClickListener(this);
         mPlayBtn.setOnClickListener(this);
         mPlayReverseBtn.setOnClickListener(this);
@@ -94,31 +100,33 @@ public class VoiceAuthorFragment extends Fragment implements View.OnClickListene
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean){
-                    mRlPrepareBg.setVisibility(View.GONE);
-                    mLlPlayBg.setVisibility(View.VISIBLE);
+                       mRlPrepareBg.setVisibility(View.GONE);
+                        mLlPlayBg.setVisibility(View.VISIBLE);
                 }else {
                     mRlPrepareBg.setVisibility(View.VISIBLE);
                     mLlPlayBg.setVisibility(View.GONE);
                 }
             }
         });
-        //是否开始录音
+        //更新ui
         mVoiceGameViewModel.getIsAudioStartRecord().observe(getActivity(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (mSavePath == null){
                     Toast.makeText(getContext(),"保存路径为空，请重试",Toast.LENGTH_LONG).show();
-                    mPlayBtn.setImageResource(R.mipmap.ic_play);
+                    mPlayBtn.setText(getResources().getString(R.string.fragment_voice_author_play));
                     return;
                 }
-                mPlayBtn.setClickable(false);
-
-                if (!aBoolean){
-                    mPlayBtn.setImageResource(R.mipmap.ic_pause);
-                    VoiceRecorderManager.getInstance().startRecord(mSavePath,String.valueOf(System.currentTimeMillis()),VoiceAuthorFragment.this);
+                if (aBoolean){
+                    mPlayBtn.setClickable(true);
+                    mTimer.setBase(SystemClock.elapsedRealtime());
+                    mTimer.start();
                 }else {
-                    mPlayBtn.setImageResource(R.mipmap.ic_play);
-                    VoiceRecorderManager.getInstance().stopRecord();
+                    mPlayBtn.setClickable(true);
+                    mTimer.stop();
+                    mTimer.setText(getResources().getString(R.string.fragment_play_default_time));
+                    long currentTime = SystemClock.elapsedRealtime() - mTimer.getBase();
+                    mTvTotalTime.setText(TimeUtil.secToTime(currentTime/1000));
                 }
             }
         });
@@ -136,9 +144,16 @@ public class VoiceAuthorFragment extends Fragment implements View.OnClickListene
                     }
                 });
                 break;
-            case R.id.iv_voice_play:
-                //TODO 操作开始播放
-                mVoiceGameViewModel.setIsAudioStartRecord(VoiceRecorderManager.getInstance().isRecord());
+            case R.id.tv_voice_play:
+                //TODO 开始播放
+                mPlayBtn.setClickable(false);
+                if (!VoiceRecorderManager.getInstance().isRecord()){
+                    mPlayBtn.setText(getResources().getString(R.string.fragment_voice_author_stop));
+                    VoiceRecorderManager.getInstance().startRecord(mSavePath,String.valueOf(System.currentTimeMillis()),VoiceAuthorFragment.this);
+                }else {
+                    mPlayBtn.setText(getResources().getString(R.string.fragment_voice_author_play));
+                    VoiceRecorderManager.getInstance().stopRecord();
+                }
                 break;
             case R.id.tv_voice_play_reverse:
                 //todo 倒放
@@ -159,14 +174,23 @@ public class VoiceAuthorFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onRecordStart(String savePath, String reverseSavePath) {
-        //开始录音
-        mPlayBtn.setClickable(true);
+        //保存播放地址
+        VoiceEntity entity = mVoiceGameViewModel.getCurrentRecordPath().getValue();
+        if (entity == null){
+            entity = new VoiceEntity();
+        }
+        entity.normalVoicePath = savePath;
+        entity.answerReverseVoicePath = reverseSavePath;
+        mVoiceGameViewModel.getCurrentRecordPath().postValue(entity);
+        mVoiceGameViewModel.getIsAudioStartRecord().postValue(true);
+
     }
 
     @Override
     public void onRecordStop(String savePath, String reverseSavePath) {
-        //停止录音
-        mPlayBtn.setClickable(true);
+
+        mVoiceGameViewModel.getIsAudioStartRecord().postValue(false);
+
 
     }
 }

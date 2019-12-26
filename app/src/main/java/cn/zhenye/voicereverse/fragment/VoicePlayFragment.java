@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import cn.zhenye.common.voicereverse.VoiceRecorderManager;
-import cn.zhenye.main.R;
+import cn.zhenye.home.R;
 import cn.zhenye.voicereverse.fragment.viewpager.VoicePagerAdapter;
 
 import android.view.LayoutInflater;
@@ -15,12 +15,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
+import com.mintegral.msdk.base.fragment.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class VoicePlayFragment extends Fragment{
+public class VoicePlayFragment extends BaseFragment {
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
 

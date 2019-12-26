@@ -3,8 +3,8 @@ package cn.zhenye.appcommon;
 import cn.zhenye.base.tool.StatusbarUtil;
 import cn.zhenye.common.constants.GDTConstants;
 import cn.zhenye.common.constants.PositionId;
-import cn.zhenye.main.HomeActivity;
-import cn.zhenye.main.R;
+import cn.zhenye.home.HomeActivity;
+import cn.zhenye.home.R;
 
 import android.Manifest;
 import android.annotation.TargetApi;
