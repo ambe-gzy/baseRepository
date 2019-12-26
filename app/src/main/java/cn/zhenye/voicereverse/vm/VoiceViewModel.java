@@ -2,6 +2,7 @@ package cn.zhenye.voicereverse.vm;
 
 import android.app.Application;
 
+import java.io.File;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,10 @@ public class VoiceViewModel extends AndroidViewModel {
     }
 
     public void setCurrentFilePah(String mCurrentFilePah) {
+        File file = new File(mCurrentFilePah);
+        if (!file.exists()){
+            file.mkdirs();
+        }
         this.mCurrentFilePah.setValue(mCurrentFilePah);
     }
 

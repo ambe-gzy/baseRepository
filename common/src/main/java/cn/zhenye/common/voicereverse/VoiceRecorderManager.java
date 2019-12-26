@@ -26,7 +26,7 @@ public class VoiceRecorderManager {
     private boolean isRecording = false;
     private int channelConfiguration = AudioFormat.CHANNEL_IN_MONO;
     private int audioEncoding = AudioFormat.ENCODING_PCM_16BIT;
-    private int sampleRate = 16000;//设置采样频率
+    private int sampleRate = 8000;//设置采样频率
     private int bufferSizeInBytes;
 
     private String mSavePath = null;
@@ -93,10 +93,10 @@ public class VoiceRecorderManager {
                 }
                 //正放
                 File recordingData = new File(path, filename);
-                putSavePath(recordingData.getAbsolutePath());
+                putSavePath(recordingData);
                 //倒放
                 File reverseRecordingData = new File(path,reverseFileName);
-                putReverseSavePath(reverseRecordingData.getAbsolutePath());
+                putReverseSavePath(reverseRecordingData);
                 try {
                     //开始录音
                     audioRecord.startRecording();
@@ -115,13 +115,14 @@ public class VoiceRecorderManager {
 
                     //录音结束，处理录音结果,保存为.wav格式音频
                     buffer = baos.toByteArray();
-                    //todo 将字符串倒序。
-                    bufferReverse = reverseBuffer(buffer);
                     out = new FileOutputStream(recordingData);
                     out.write(getWavHeader(buffer.length));
                     out.write(buffer);
+
+                    //todo 将字符串倒序。
+                    bufferReverse = reverseBuffer(buffer);
                     outReverse = new FileOutputStream(reverseRecordingData);
-                    outReverse.write(getWavHeader(buffer.length));
+                    outReverse.write(getWavHeader(bufferReverse.length));
                     outReverse.write(bufferReverse);
 
                 } catch (IOException e) {
@@ -170,14 +171,30 @@ public class VoiceRecorderManager {
         }
     }
 
-    private void putSavePath(String path){
-        mSavePath = null;
-        mSavePath = path;
+    private void putSavePath(File file){
+        if (!file.exists()){
+            try {
+                if (file.createNewFile()){
+                    mSavePath = null;
+                    mSavePath = file.getAbsolutePath();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    private void putReverseSavePath(String path){
-        mReversePath = null;
-        mReversePath = path;
+    private void putReverseSavePath(File file){
+        if (!file.exists()){
+            try {
+                if (file.createNewFile()){
+                    mReversePath = null;
+                    mReversePath = file.getAbsolutePath();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public boolean isRecord(){
@@ -253,13 +270,13 @@ public class VoiceRecorderManager {
     }
 
     private byte[] reverseBuffer(byte[] bytes){
-        byte[] outputBytes = new byte[bytes.length];
-        int currentPosition = 0;
-        for (int i = bytes.length-1;i>=0;i--){
-            outputBytes[currentPosition] = bytes[i];
-            currentPosition++;
+        int current = bytes.length;
+        byte[] newBytes = new byte[bytes.length];
+        for (int i = 0;i<current;i++){
+            Log.d(TAG,bytes[i]+"");
+            newBytes[i] = bytes[current-i-1];
         }
-        return outputBytes;
+        return newBytes;
     }
 
 }
