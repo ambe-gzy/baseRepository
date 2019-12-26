@@ -69,7 +69,7 @@ public class VoiceFileActivity extends BaseFullScreenActivity implements View.On
         mToolbar = getToolbar();
         mToolbar.setVisibility(View.VISIBLE);
         mToolbar.setTitleTextColor(getResources().getColor(R.color.color_3C3885));
-        mToolbar.setElevation(0);
+        mToolbar.setTitle(getResources().getString(R.string.activity_voice_create_file));
         setStatusBg(getResources().getColor(R.color.color_A6A0C6));
 
         Drawable back = getResources().getDrawable(R.mipmap.ic_back);

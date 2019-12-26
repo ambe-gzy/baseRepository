@@ -26,6 +26,7 @@
     <string name="activity_voice_navigation_record">记录</string>
     <string name="activity_voice_tittle_challenge">语音倒放挑战</string>
     <string name="activity_voice_tittle_record">历史记录</string>
+    <string name="activity_voice_create_file">创建项目</string>
 
     <string name="fragment_voice_author">创作者</string>
     <string name="fragment_voice_challenger">挑战者</string>
