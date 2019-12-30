@@ -2,6 +2,10 @@ package cn.zhenye.ffmpeg;
 
 import android.os.AsyncTask;
 
+/**
+ * https://www.jianshu.com/p/e0c32c8b0ebc
+ * @author zhenye on 20191230
+ */
 public class FFmpegKit {
     public interface KitInterface{
         void onStart();
