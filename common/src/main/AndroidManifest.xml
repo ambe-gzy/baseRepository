@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.zhenye.common" />
+    package="cn.zhenye.common">
+    <application>
+        <service android:name="com.zlw.main.recorderlib.recorder.RecordService" />
+    </application>
+
+</manifest>

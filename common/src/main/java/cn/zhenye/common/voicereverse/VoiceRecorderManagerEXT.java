@@ -12,11 +12,12 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import javax.annotation.Nullable;
+
 import cn.zhenye.base.tool.ThreadManager;
 
-public class VoiceRecorderManager {
-    private static String TAG = VoiceRecorderManager.class.getName();
-    private static VoiceRecorderManager INSTANCE;
+public class VoiceRecorderManagerEXT {
+    private static String TAG = VoiceRecorderManagerEXT.class.getName();
+    private static VoiceRecorderManagerEXT INSTANCE;
 
     //音频格式 wav，mp3
     private String VoiceFormat = ".wav";
@@ -32,7 +33,7 @@ public class VoiceRecorderManager {
     private String mSavePath = null;
     private String mReversePath = null;
 
-    private VoiceRecorderManager(){
+    private VoiceRecorderManagerEXT(){
         initData();
     }
 
@@ -49,10 +50,10 @@ public class VoiceRecorderManager {
                 bufferSizeInBytes); //麦克风
     }
 
-    public static VoiceRecorderManager getInstance() {
+    public static VoiceRecorderManagerEXT getInstance() {
         try{
             if (INSTANCE == null){
-                INSTANCE = new VoiceRecorderManager();
+                INSTANCE = new VoiceRecorderManagerEXT();
             }
             return INSTANCE;
         }catch (Exception e){

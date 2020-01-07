@@ -4,13 +4,12 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import cn.zhenye.base.tool.TimeUtil;
 import cn.zhenye.common.db.entity.VoiceEntity;
+import cn.zhenye.common.voicereverse.AudioRecordManager;
 import cn.zhenye.common.voicereverse.OnRecordListener;
-import cn.zhenye.common.voicereverse.VoiceRecorderManager;
 import cn.zhenye.home.R;
 import cn.zhenye.voicereverse.dialog.VoicePlayConfirmDialog;
 import cn.zhenye.voicereverse.vm.VoiceGameViewModel;
@@ -60,6 +59,7 @@ public class VoiceAuthorFragment extends BaseFragment implements View.OnClickLis
         super.onViewCreated(view, savedInstanceState);
         initUI(view);
         initVM();
+        AudioRecordManager.getInstance().setListener(this);
     }
 
     private void initUI(View view) {
@@ -92,7 +92,7 @@ public class VoiceAuthorFragment extends BaseFragment implements View.OnClickLis
             @Override
             public void onChanged(String s) {
                 Log.d(TAG,"save path is: "+s);
-                mSavePath = s;
+                mSavePath = s+"/";
             }
         });
         //是否开始游戏
@@ -147,12 +147,13 @@ public class VoiceAuthorFragment extends BaseFragment implements View.OnClickLis
             case R.id.tv_voice_play:
                 //TODO 开始播放
                 mPlayBtn.setClickable(false);
-                if (!VoiceRecorderManager.getInstance().isRecord()){
+                if (!AudioRecordManager.getInstance().isRecording()){
                     mPlayBtn.setText(getResources().getString(R.string.fragment_voice_author_stop));
-                    VoiceRecorderManager.getInstance().startRecord(mSavePath,String.valueOf(System.currentTimeMillis()),VoiceAuthorFragment.this);
+                    String savePath = mSavePath;
+                    AudioRecordManager.getInstance().start(savePath);
                 }else {
                     mPlayBtn.setText(getResources().getString(R.string.fragment_voice_author_play));
-                    VoiceRecorderManager.getInstance().stopRecord();
+                    AudioRecordManager.getInstance().stop();
                 }
                 break;
             case R.id.tv_voice_play_reverse:

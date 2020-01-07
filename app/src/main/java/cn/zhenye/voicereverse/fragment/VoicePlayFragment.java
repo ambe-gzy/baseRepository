@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-import cn.zhenye.common.voicereverse.VoiceRecorderManager;
+import cn.zhenye.common.voicereverse.AudioRecordManager;
 import cn.zhenye.home.R;
 import cn.zhenye.voicereverse.fragment.viewpager.VoicePagerAdapter;
 
@@ -60,7 +60,7 @@ public class VoicePlayFragment extends BaseFragment {
     }
 
     private void initRecorder() {
-        VoiceRecorderManager.getInstance();
+        AudioRecordManager.getInstance().init(getActivity().getApplication());
     }
 
 }

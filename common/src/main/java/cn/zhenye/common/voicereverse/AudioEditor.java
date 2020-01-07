@@ -32,6 +32,12 @@ public class AudioEditor {
      * @param listener
      */
     public static void reverse(String audioInput, String audioOutput, OnEditorListener listener) {
+        if (audioInput == null || audioOutput == null){
+            Log.e(TAG, "you can't put the null path of input path and output path.");
+            listener.onFailure();
+            return;
+        }
+
         if (audioInput.equals(audioOutput)) {
             Log.e(TAG, "you can't put the same path of input path and output path.");
             listener.onFailure();
@@ -43,9 +49,41 @@ public class AudioEditor {
             return;
         }
         CmdList cmd = new CmdList();
-        cmd.append("ffmpeg").append("-y").append("-i").append(audioInput).append("-af").append("areverse").append(audioOutput);
+        cmd.append("ffmpeg").append("-y")
+                .append("-i").append(audioInput)
+                .append("-af").append("areverse")
+                .append(audioOutput);
         String[] cmds = cmd.toArray(new String[cmd.size()]);
         FFmpegCmd.exec(cmds, 0, listener);
     }
 
+    /**
+     * pcm转MP3
+     * @param audioInput
+     * @param audioOutput
+     * @param listener
+     */
+    public static void pcmToMP3(String audioInput,String audioOutput,OnEditorListener listener){
+        if (audioInput.equals(audioOutput)) {
+            Log.e(TAG, "you can't put the same path of input path and output path.");
+            listener.onFailure();
+            return;
+        }
+        if (TextUtils.isEmpty(audioInput) || TextUtils.isEmpty(audioOutput)) {
+            Log.e(TAG,"the path is null.");
+            listener.onFailure();
+            return;
+        }
+        CmdList cmd = new CmdList();
+        cmd.append("ffmpeg").append("-y")
+//                .append("-f").append("s16le")
+                .append("-ac").append("1")
+                .append("-ar").append("8000")
+                .append("-c:a").append("libmp3lame ")
+                .append("-q:a").append("2")
+//                .append("-acodec").append("pcm_s16le")
+                .append("-i").append(audioInput).append(audioOutput);
+        String[] cmds = cmd.toArray(new String[cmd.size()]);
+        FFmpegCmd.exec(cmds, 0, listener);
+    }
 }
