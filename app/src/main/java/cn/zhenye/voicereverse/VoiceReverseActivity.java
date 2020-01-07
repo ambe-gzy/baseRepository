@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import cn.zhenye.appcommon.ZyCommonActivity;
-import cn.zhenye.base.tool.StatusbarUtil;
+import cn.zhenye.base.tool.ZStatusbarUtils;
 import cn.zhenye.home.R;
 import cn.zhenye.voicereverse.fragment.VoicePlayFragment;
 import cn.zhenye.voicereverse.fragment.VoiceRecordFragment;
@@ -37,7 +37,7 @@ public class VoiceReverseActivity extends ZyCommonActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_reverse);
-        StatusbarUtil.setStatusBarTextColor(getWindow(),true);
+        ZStatusbarUtils.setStatusBarTextColor(getWindow(),true);
         initVM();
         handleIntent();
         initToolbar();

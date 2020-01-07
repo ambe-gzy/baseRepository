@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cn.zhenye.base.base.BaseFullScreenActivity;
-import cn.zhenye.base.tool.ActivityUtil;
-import cn.zhenye.base.tool.PermissionUtil;
-import cn.zhenye.base.tool.StatusbarUtil;
+import cn.zhenye.base.tool.ZActivityUtils;
+import cn.zhenye.base.tool.ZPermissionUtils;
+import cn.zhenye.base.tool.ZStatusbarUtils;
 import cn.zhenye.common.db.entity.VoiceFileEntity;
 import cn.zhenye.dialog.CreateVoiceFileDialog;
 import cn.zhenye.home.R;
@@ -37,18 +37,18 @@ public class VoiceFileActivity extends BaseFullScreenActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_file_create);
-        StatusbarUtil.setStatusBarTextColor(getWindow(),true);
+        ZStatusbarUtils.setStatusBarTextColor(getWindow(),true);
         initUI();
         initToolbar();
         initRecyclerView();
         initViewModel();
-        PermissionUtil.requestRecordPermission(this);
+        ZPermissionUtils.requestRecordPermission(this);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         //判断权限是否已获取
-        if (requestCode == PermissionUtil.REQUEST_STORAGE_PERMISSION_AND_AUDIO){
+        if (requestCode == ZPermissionUtils.REQUEST_STORAGE_PERMISSION_AND_AUDIO){
             if (grantResults.length>0){
                 boolean isSuccess = true;
                 for (int grantResult : grantResults) {
@@ -109,7 +109,7 @@ public class VoiceFileActivity extends BaseFullScreenActivity implements View.On
             public void onClick(VoiceFileEntity entity) {
                 Intent intent = new Intent(VoiceFileActivity.this,VoiceReverseActivity.class);
                 intent.putExtra(VoiceReverseActivity.SAVE_PATH_KEY,entity.savePath);
-                ActivityUtil.safeStartActivityWithIntent(getApplicationContext(),intent);
+                ZActivityUtils.safeStartActivityWithIntent(getApplicationContext(),intent);
             }
         });
     }

@@ -7,7 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import cn.zhenye.base.tool.TimeUtil;
+import cn.zhenye.base.tool.ZTimeUtils;
+import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.db.entity.VoiceEntity;
 import cn.zhenye.common.voicereverse.AudioPlayer;
 import cn.zhenye.common.voicereverse.AudioRecordManager;
@@ -45,10 +46,10 @@ public class VoiceAuthorFragment extends BaseFragment
     private LinearLayout mLlPlayBg;
     private Chronometer mTimer;
     private TextView mTvTotalTime;
+    private Chronometer mCurrentTime;
     private TextView mRecordBtn;
     private TextView mPlayReverseBtn;
     private TextView mPlayBtn;
-    private TextView mPlayFinishBtn;
     private String mSavePath;
 
     @Override
@@ -76,16 +77,16 @@ public class VoiceAuthorFragment extends BaseFragment
         mRecordBtn = view.findViewById(R.id.tv_voice_record);
         mPlayReverseBtn = view.findViewById(R.id.tv_voice_play_reverse);
         mPlayBtn = view.findViewById(R.id.tv_voice_play);
-        mPlayFinishBtn = view.findViewById(R.id.tv_voice_play_finish);
+        mCurrentTime = view.findViewById(R.id.tv_voice_current_time);
 
         Glide.with(getContext()).load(R.mipmap.gif_rest_book).into(mTitleGif);
         mTimer.setFormat("%mm:%ss");
+        mCurrentTime.setFormat("%mm:%ss");
 
         mGameStartBtn.setOnClickListener(this);
         mRecordBtn.setOnClickListener(this);
         mPlayReverseBtn.setOnClickListener(this);
         mPlayBtn.setOnClickListener(this);
-        mPlayFinishBtn.setOnClickListener(this);
     }
 
     private void initVM() {
@@ -130,7 +131,7 @@ public class VoiceAuthorFragment extends BaseFragment
                     mTimer.stop();
                     mTimer.setText(getResources().getString(R.string.fragment_play_default_time));
                     long currentTime = SystemClock.elapsedRealtime() - mTimer.getBase();
-                    mTvTotalTime.setText(TimeUtil.secToTime(currentTime/1000));
+                    mTvTotalTime.setText(ZTimeUtils.secToTime(currentTime/1000));
                 }
             }
         });
@@ -149,7 +150,6 @@ public class VoiceAuthorFragment extends BaseFragment
                 });
                 break;
             case R.id.tv_voice_record:
-                //TODO 开始录制
                 mRecordBtn.setClickable(false);
                 if (!AudioRecordManager.getInstance().isRecording()){
                     mRecordBtn.setText(getResources().getString(R.string.fragment_voice_author_stop));
@@ -161,27 +161,20 @@ public class VoiceAuthorFragment extends BaseFragment
                 }
                 break;
             case R.id.tv_voice_play_reverse:
-                //todo 倒放
                 if (AudioRecordManager.getInstance().isRecording()){
-
+                    ZToastUtils.showShort(R.string.toast_please_stop_recording);
                     return;
                 }
 
-                AudioPlayer.getInstance().play(AudioRecordManager.getInstance().getReversePath(),mPlayBtn,this);
+                AudioPlayer.getInstance().play(AudioRecordManager.getInstance().getReversePath(),mPlayReverseBtn,this);
                 break;
             case R.id.tv_voice_play:
-                //todo 播放
                 if (AudioRecordManager.getInstance().isRecording()){
+                    ZToastUtils.showShort(R.string.toast_please_stop_recording);
                     return;
                 }
 
-                AudioPlayer.getInstance().play(AudioRecordManager.getInstance().getSavePath(),mPlayReverseBtn,this);
-                break;
-            case R.id.tv_voice_play_finish:
-                //todo 完成录制
-                if (AudioRecordManager.getInstance().isRecording()){
-                    return;
-                }
+                AudioPlayer.getInstance().play(AudioRecordManager.getInstance().getSavePath(),mPlayBtn,this);
                 break;
         }
     }
@@ -218,16 +211,19 @@ public class VoiceAuthorFragment extends BaseFragment
     public void audioStart(TextView btn) {
         btn.setBackgroundResource(R.drawable.bg_btn_unable);
         btn.setClickable(false);
+        mCurrentTime.setBase(SystemClock.elapsedRealtime());
+        mCurrentTime.start();
     }
 
     @Override
     public void audioPlaying(TimedText timedText) {
-
     }
 
     @Override
     public void audioStop(TextView btn) {
         btn.setBackgroundResource(R.drawable.ripple_btn);
         btn.setClickable(true);
+        mCurrentTime.stop();
+        mCurrentTime.setText(getResources().getString(R.string.fragment_play_default_time));
     }
 }

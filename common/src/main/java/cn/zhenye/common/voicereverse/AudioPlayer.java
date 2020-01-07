@@ -2,7 +2,9 @@ package cn.zhenye.common.voicereverse;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
+import android.media.AudioRouting;
 import android.media.MediaPlayer;
+import android.media.TimedMetaData;
 import android.media.TimedText;
 import android.net.Uri;
 import android.widget.TextView;

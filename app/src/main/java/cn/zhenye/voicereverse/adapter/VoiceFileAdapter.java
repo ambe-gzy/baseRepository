@@ -9,7 +9,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import cn.zhenye.base.tool.TimeUtil;
+import cn.zhenye.base.tool.ZTimeUtils;
 import cn.zhenye.common.db.entity.VoiceFileEntity;
 import cn.zhenye.home.R;
 
@@ -30,7 +30,7 @@ public class VoiceFileAdapter extends RecyclerView.Adapter<VoiceFileAdapter.Voic
         }
         final VoiceFileEntity voiceFileEntity = voiceFileEntities.get(position);
         holder.fileName.setText(voiceFileEntity.fileName);
-        holder.fileCreateTime.setText(TimeUtil.getDateToString(voiceFileEntity.createTimestamp, TimeUtil.ACCURATE_TO_S));
+        holder.fileCreateTime.setText(ZTimeUtils.getDateToString(voiceFileEntity.createTimestamp, ZTimeUtils.ACCURATE_TO_S));
         holder.fileNum.setText(String.valueOf(voiceFileEntity.fileNum));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

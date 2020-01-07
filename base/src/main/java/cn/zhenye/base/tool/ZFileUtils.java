@@ -9,7 +9,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class FileUtil {
+public class ZFileUtils {
     private static String EXTERNAL_FILE_NAME = "voice_reverse_fun";
 
     public static String getCacheDir(Context context){

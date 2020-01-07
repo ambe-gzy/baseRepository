@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import cn.zhenye.base.tool.ThreadManager;
+import cn.zhenye.base.tool.ZThreadManager;
 import cn.zhenye.common.db.DatabaseManager;
 import cn.zhenye.common.db.dao.VoiceFileDao;
 import cn.zhenye.common.db.entity.VoiceFileEntity;
@@ -45,7 +45,7 @@ public class VoiceViewModel extends AndroidViewModel {
     }
 
     public void setVoiceFileEntityLiveData(final LiveData<VoiceFileEntity> voiceFileEntityLiveData) {
-        ThreadManager.getNormal().execute(new Runnable() {
+        ZThreadManager.getNormal().execute(new Runnable() {
             @Override
             public void run() {
                 dao.saveVoiceFileEntity(voiceFileEntityLiveData.getValue());

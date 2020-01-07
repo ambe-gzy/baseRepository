@@ -22,9 +22,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
-import cn.zhenye.base.tool.TimeUtil;
-import cn.zhenye.base.tool.FileUtil;
-import cn.zhenye.base.tool.ThreadManager;
+import cn.zhenye.base.tool.ZTimeUtils;
+import cn.zhenye.base.tool.ZFileUtils;
+import cn.zhenye.base.tool.ZThreadManager;
 import cn.zhenye.common.db.DatabaseManager;
 import cn.zhenye.common.db.dao.VoiceFileDao;
 import cn.zhenye.common.db.entity.VoiceFileEntity;
@@ -72,7 +72,7 @@ public class CreateVoiceFileDialog extends DialogFragment implements View.OnClic
         mTvPositiveBtn.setOnClickListener(this);
         mTvNegativeBtn.setOnClickListener(this);
 
-        mTvCreateTime.setText(TimeUtil.getCurDate(TimeUtil.ACCURATE_TO_MIN));
+        mTvCreateTime.setText(ZTimeUtils.getCurDate(ZTimeUtils.ACCURATE_TO_MIN));
     }
 
     @Override
@@ -114,7 +114,7 @@ public class CreateVoiceFileDialog extends DialogFragment implements View.OnClic
             //创建
             File filePath = null;
             try {
-                filePath = new File(FileUtil.getExternalAppDir(),fileName);
+                filePath = new File(ZFileUtils.getExternalAppDir(),fileName);
             } catch (Exception e) {
                 mTvErrorMessage.setText(getResources().getText(R.string.voice_file_error_sdcard_null));
                 e.printStackTrace();
@@ -135,7 +135,7 @@ public class CreateVoiceFileDialog extends DialogFragment implements View.OnClic
 
     private void saveToRoom(final String name, final String path){
         //保存
-        ThreadManager.getNormal().execute(new Runnable() {
+        ZThreadManager.getNormal().execute(new Runnable() {
             @Override
             public void run() {
                 VoiceFileDao dao = DatabaseManager.getInstance().voiceFileDao();

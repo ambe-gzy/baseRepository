@@ -13,7 +13,7 @@ import java.io.OutputStream;
 
 import javax.annotation.Nullable;
 
-import cn.zhenye.base.tool.ThreadManager;
+import cn.zhenye.base.tool.ZThreadManager;
 
 public class VoiceRecorderManagerEXT {
     private static String TAG = VoiceRecorderManagerEXT.class.getName();
@@ -74,7 +74,7 @@ public class VoiceRecorderManagerEXT {
             listener.recordPrepare();
         }
         Log.d(TAG,"保存目录:"+path+"\n保存名称"+name);
-        ThreadManager.getNormal().execute(new Runnable() {
+        ZThreadManager.getNormal().execute(new Runnable() {
             @Override
             public void run() {
                 OutputStream out = null;

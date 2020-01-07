@@ -1,6 +1,6 @@
 package cn.zhenye.appcommon;
 
-import cn.zhenye.base.tool.StatusbarUtil;
+import cn.zhenye.base.tool.ZStatusbarUtils;
 import cn.zhenye.common.constants.GDTConstants;
 import cn.zhenye.common.constants.PositionId;
 import cn.zhenye.home.HomeActivity;
@@ -63,8 +63,8 @@ public class SplashActivity extends Activity implements SplashADListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusbarUtil.setStatusBarTextColor(getWindow(),true);
-        StatusbarUtil.setWindowFullScreenWithStatusBar(getWindow(),true);
+        ZStatusbarUtils.setStatusBarTextColor(getWindow(),true);
+        ZStatusbarUtils.setWindowFullScreenWithStatusBar(getWindow(),true);
         setContentView(R.layout.activity_splash);
         container = (ViewGroup) this.findViewById(R.id.splash_container);
         boolean customSkipBtn = getIntent().getBooleanExtra("custom_skip_btn", false);

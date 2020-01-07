@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class TimeUtil {
+public class ZTimeUtils {
     public static String ACCURATE_TO_S = "yyyy-MM-dd HH:mm:ss";
     public static String ACCURATE_TO_DAY = "yyyy-MM-dd";
     public static String ACCURATE_TO_S_CN = "yyyy年MM月dd日 HH时mm分ss秒";

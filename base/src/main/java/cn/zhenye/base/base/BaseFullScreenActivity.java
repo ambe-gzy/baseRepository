@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import cn.zhenye.base.R;
-import cn.zhenye.base.tool.StatusbarUtil;
+import cn.zhenye.base.tool.ZStatusbarUtils;
 
 public abstract class BaseFullScreenActivity extends AppCompatActivity {
 
@@ -57,7 +57,7 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
 
     private void initWindow() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            StatusbarUtil.setWindowFullScreenWithStatusBar(getWindow(), true);
+            ZStatusbarUtils.setWindowFullScreenWithStatusBar(getWindow(), true);
             //适配状态栏高度
             LinearLayout mWindowView = super.findViewById(R.id.ll_toolbar_and_wrapper_view);
             fitStatusBar(mWindowView);
@@ -67,7 +67,7 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
 
     private void fitStatusBar(View view) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) view.getLayoutParams();
-        lp.topMargin = StatusbarUtil.getStatusBarHeight(getApplicationContext());
+        lp.topMargin = ZStatusbarUtils.getStatusBarHeight(getApplicationContext());
         view.setLayoutParams(lp);
     }
 

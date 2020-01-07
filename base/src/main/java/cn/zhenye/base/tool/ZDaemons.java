@@ -7,7 +7,7 @@ import android.os.Looper;
  * @author zhenye on 20191209
  * 获取handler
  */
-public class Daemon {
+public class ZDaemons {
     private static Handler sMainHandler = new Handler(Looper.getMainLooper());
 
     public static synchronized Handler getMainHandler() {

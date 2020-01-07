@@ -5,8 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import cn.zhenye.base.tool.ActivityUtil;
+import cn.zhenye.base.tool.ZActivityUtils;
 import cn.zhenye.voicereverse.VoiceFileActivity;
 
 import android.view.LayoutInflater;
@@ -52,7 +51,7 @@ public class HomeGameFragment extends BaseFragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.ll_main_voice_reverse:
-                ActivityUtil.safeStartActivityWithActivity(getActivity(), VoiceFileActivity.class);
+                ZActivityUtils.safeStartActivityWithActivity(getActivity(), VoiceFileActivity.class);
                 break;
             case R.id.iv_main_guide:
                 //todo 显示如何玩；

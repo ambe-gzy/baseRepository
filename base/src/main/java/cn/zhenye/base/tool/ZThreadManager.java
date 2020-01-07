@@ -8,7 +8,7 @@ import com.lzh.easythread.EasyThread;
 /**
  * @author WilliamChik on 2018/6/8.
  */
-public final class ThreadManager {
+public final class ZThreadManager {
 
     private final static EasyThread normal;
 

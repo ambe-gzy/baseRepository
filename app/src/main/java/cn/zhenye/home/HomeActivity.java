@@ -3,7 +3,7 @@ package cn.zhenye.home;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import cn.zhenye.appcommon.ZyCommonActivity;
-import cn.zhenye.base.tool.StatusbarUtil;
+import cn.zhenye.base.tool.ZStatusbarUtils;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -37,7 +37,7 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
     }
 
     private void initUI(){
-        StatusbarUtil.setStatusBarTextColor(getWindow(),true);
+        ZStatusbarUtils.setStatusBarTextColor(getWindow(),true);
         mNavigationBar = findViewById(R.id.nvb_main_navigation_bar);
     }
 

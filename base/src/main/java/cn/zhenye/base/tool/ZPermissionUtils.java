@@ -5,7 +5,7 @@ import android.app.Activity;
 
 import androidx.core.app.ActivityCompat;
 
-public class PermissionUtil {
+public class ZPermissionUtils {
     //权限获取
     public static final int REQUEST_STORAGE_PERMISSION_AND_AUDIO = 10;
     private static final String[] permissionsRecord = {

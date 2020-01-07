@@ -34,8 +34,10 @@
     <string name="fragment_voice_author_finish">完成</string>
     <string name="fragment_voice_author_record_play">播放</string>
     <string name="fragment_voice_author_stop">停止</string>
-    <string name="fragment_voice_author_play">开始</string>
+    <string name="fragment_voice_author_play">录音</string>
     <string name="fragment_play_default_time">00:00</string>
     <string name="fragment_voice_author_prepare">点击屏幕开始游戏</string>
+
+    <string name="toast_please_stop_recording">当前正在录音，请录音结束再进行其他操作</string>
 
 </resources>

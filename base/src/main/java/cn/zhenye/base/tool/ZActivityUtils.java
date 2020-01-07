@@ -6,7 +6,7 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
-public class ActivityUtil {
+public class ZActivityUtils {
 
     public static boolean safeStartActivityWithIntentClass(@NonNull Context context, @NonNull Class className) {
         return safeStartActivityWithIntent(context, new Intent(context, className));

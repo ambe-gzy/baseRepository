@@ -9,7 +9,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.ColorInt;
 
-public class StatusbarUtil {
+public class ZStatusbarUtils {
     private static int statusBarHeight = -1;
 
     /**
