@@ -71,7 +71,7 @@ public class VoiceRecorderManagerEXT {
             return;
         }
         if (listener!=null){
-            listener.onRecordPrepare();
+            listener.recordPrepare();
         }
         Log.d(TAG,"保存目录:"+path+"\n保存名称"+name);
         ThreadManager.getNormal().execute(new Runnable() {
@@ -104,7 +104,7 @@ public class VoiceRecorderManagerEXT {
                     isRecording = true;
                     Log.d(TAG,"开始录音");
                     if (listener!=null){
-                        listener.onRecordStart(getSavePath(),getReversePath());
+                        listener.recordStart(getSavePath(),getReversePath());
                     }
                     while (isRecording) {
                         bufferReadResult = audioRecord.read(buffer, 0,
@@ -149,7 +149,7 @@ public class VoiceRecorderManagerEXT {
                         e.printStackTrace();
                     }
                     if (listener!=null){
-                        listener.onRecordStop(getSavePath(),getReversePath());
+                        listener.recordStop(getSavePath(),getReversePath());
                     }
                 }
             }

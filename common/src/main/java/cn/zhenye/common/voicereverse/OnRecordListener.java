@@ -1,9 +1,9 @@
 package cn.zhenye.common.voicereverse;
 
 public interface OnRecordListener {
-    void onRecordPrepare();
+    void recordPrepare();
 
-    void onRecordStart(String savePath, String reverseSavePath);
+    void recordStart(String savePath, String reverseSavePath);
 
-    void onRecordStop(String savePath, String reverseSavePath);
+    void recordStop(String savePath, String reverseSavePath);
 }

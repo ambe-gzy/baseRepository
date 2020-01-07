@@ -1,7 +1,6 @@
 package cn.zhenye.common.voicereverse;
 
 import android.app.Application;
-import android.content.Context;
 import android.media.AudioFormat;
 import android.util.Log;
 
@@ -9,7 +8,6 @@ import com.zlw.main.recorderlib.RecordManager;
 import com.zlw.main.recorderlib.recorder.RecordConfig;
 import com.zlw.main.recorderlib.recorder.RecordHelper;
 import com.zlw.main.recorderlib.recorder.listener.RecordResultListener;
-import com.zlw.main.recorderlib.recorder.listener.RecordSoundSizeListener;
 import com.zlw.main.recorderlib.recorder.listener.RecordStateListener;
 
 import java.io.File;
@@ -18,7 +16,6 @@ import java.io.IOException;
 import javax.annotation.Nullable;
 
 import VideoHandle.OnEditorListener;
-import cn.zhenye.common.R;
 
 public class AudioRecordManager {
     private String TAG = AudioRecordManager.class.getSimpleName();
@@ -87,7 +84,7 @@ public class AudioRecordManager {
                     }
                 });
                 if (mRecordListener!=null){
-                    mRecordListener.onRecordStop(getSavePath(),getReversePath());
+                    mRecordListener.recordStop(getSavePath(),getReversePath());
                 }
             }
         });
@@ -102,7 +99,7 @@ public class AudioRecordManager {
                     case RECORDING:
                         Log.d(TAG,"RECORDING");
                         if (mRecordListener!=null){
-                            mRecordListener.onRecordStart(getSavePath(),getReversePath());
+                            mRecordListener.recordStart(getSavePath(),getReversePath());
                         }
                         changeIsRecording(true);
                         break;
