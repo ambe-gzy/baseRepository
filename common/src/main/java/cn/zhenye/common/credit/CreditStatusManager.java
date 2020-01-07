@@ -1,5 +1,7 @@
 package cn.zhenye.common.credit;
 
+import android.content.Intent;
+
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -20,17 +22,28 @@ public class CreditStatusManager {
         }
     }
 
+    private CreditStatusManager(){
+        Intent intent = new Intent();
+    }
+
+    //是否允许获取积分
     private ArrayList<OnRefreshListener<Boolean>> mOneMinuteBtnStatusListener = new ArrayList<>();
     private ArrayList<OnRefreshListener<Boolean>> mFiveMinuteBtnStatusListener = new ArrayList<>();
-    private ArrayList<OnRefreshListener<Boolean>> mFifteenBtnStatusListener = new ArrayList<>();
+    private ArrayList<OnRefreshListener<Boolean>> mFifteenMinuteBtnStatusListener = new ArrayList<>();
+
+    //下次获取积分倒计时
     private ArrayList<OnRefreshListener<Integer>> mOneMinuteBtnCountTimerListener = new ArrayList<>();
-    private ArrayList<OnRefreshListener<Integer>> mOneFiveBtnCountTimerListener = new ArrayList<>();
-    private ArrayList<OnRefreshListener<Integer>> mOneFifteenBtnCountTimerListener = new ArrayList<>();
+    private ArrayList<OnRefreshListener<Integer>> mFiveMinuteBtnCountTimerListener = new ArrayList<>();
+    private ArrayList<OnRefreshListener<Integer>> mFifteenMinuteBtnCountTimerListener = new ArrayList<>();
 
 //    public void setOn
+
+
 
 
     public interface OnRefreshListener<TResult>{
         void onRefresh(@NonNull TResult task);
     }
+
+
 }
