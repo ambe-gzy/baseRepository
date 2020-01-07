@@ -37,7 +37,11 @@
     <string name="fragment_voice_author_play">录音</string>
     <string name="fragment_play_default_time">00:00</string>
     <string name="fragment_voice_author_prepare">点击屏幕开始游戏</string>
+    <string name="fragment_voice_challenger_question">听题</string>
+    <string name="fragment_voice_challenge_answer">答案</string>
+    <string name="fragment_voice_challenge_save">保存</string>
 
     <string name="toast_please_stop_recording">当前正在录音，请录音结束再进行其他操作</string>
+    <string name="toast_please_stop_play">正在播放，请稍后</string>
 
 </resources>

@@ -43,9 +43,9 @@ public class VoicePlayFragment extends BaseFragment {
         List<Fragment> fragments = new ArrayList<>();
         List<String> titles = new ArrayList<>();
         fragments.add(new VoiceAuthorFragment());
-        fragments.add(new VoiceChallengerFragment());
+//        fragments.add(new VoiceChallengerFragment());
         titles.add(getResources().getString(R.string.fragment_voice_author));
-        titles.add(getResources().getString(R.string.fragment_voice_challenger));
+//        titles.add(getResources().getString(R.string.fragment_voice_challenger));
 
         VoicePagerAdapter adapter = new VoicePagerAdapter(getParentFragmentManager(),fragments,titles);
 

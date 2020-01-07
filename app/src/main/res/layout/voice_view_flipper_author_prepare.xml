@@ -54,30 +54,34 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:orientation="horizontal">
-            <Chronometer
-                android:id="@+id/tv_voice_current_time"
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/tv_voice_total_time_author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="30dp"
                 android:text="@string/fragment_play_default_time"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="30dp"
-                android:text="/"/>
-            <TextView
-                android:id="@+id/tv_voice_total_time"
+                android:id="@+id/tv_voice_total_time_challenger"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="30dp"
                 android:text="@string/fragment_play_default_time"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
         </LinearLayout>
-
         
         <View
             android:layout_width="0dp"
@@ -86,22 +90,101 @@
             android:layout_gravity="center"/>
 
         <LinearLayout
+            android:id="@+id/ll_voice_challenger"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="100dp"
+            android:paddingTop="35dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:orientation="horizontal">
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"/>
 
+            <TextView
+                android:id="@+id/tv_voice_record_author"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:background="@drawable/ripple_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/fragment_voice_author_play"
+                android:textSize="18dp"
+                android:layout_weight="1"/>
             <View
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"/>
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/tv_voice_record_challenger"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:background="@drawable/ripple_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/fragment_voice_author_play"
+                android:textSize="18dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_voice_author"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingTop="15dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_voice_play_author"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:background="@drawable/ripple_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/fragment_voice_author_record_play"
+                android:textSize="18dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/tv_voice_save"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:background="@drawable/ripple_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/fragment_voice_challenge_save"
+                android:textSize="18dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/tv_voice_play_challenger"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:background="@drawable/ripple_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/fragment_voice_author_record_play"
+                android:textSize="18dp"
+                android:layout_weight="1"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -114,7 +197,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_voice_play_reverse"
+                android:id="@+id/tv_voice_play_reverse_author"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="5dp"
@@ -126,21 +209,14 @@
                 android:text="@string/fragment_voice_author_reverse"
                 android:textSize="18dp"
                 android:layout_weight="1"/>
-            <TextView
-                android:id="@+id/tv_voice_record"
+            <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:background="@drawable/ripple_btn"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="@string/fragment_voice_author_play"
-                android:textSize="18dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"/>
             <TextView
-                android:id="@+id/tv_voice_play"
+                android:id="@+id/tv_voice_play_reverse_challenger"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="5dp"
@@ -149,7 +225,7 @@
                 android:background="@drawable/ripple_btn"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="@string/fragment_voice_author_record_play"
+                android:text="@string/fragment_voice_author_reverse"
                 android:textSize="18dp"
                 android:layout_weight="1"/>
 

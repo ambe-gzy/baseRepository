@@ -13,6 +13,7 @@
         android:background="@color/color_F1C3C3"
         android:elevation="10dp"
         app:tabIndicatorFullWidth="false"
+        android:visibility="gone"
         app:tabIndicatorColor="@color/color_3C3885"
         app:tabTextColor="@color/color_3C3885" />
 

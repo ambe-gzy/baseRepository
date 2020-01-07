@@ -12,15 +12,21 @@ import com.zlw.main.recorderlib.recorder.listener.RecordStateListener;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Nullable;
 
 import VideoHandle.OnEditorListener;
 
 public class AudioRecordManager {
+    public static int AUTHOR = 0;
+    public static int CHALLENGER = 1;
+    private int mSource = -1;
+
     private String TAG = AudioRecordManager.class.getSimpleName();
     private static AudioRecordManager INSTANCE;
-    private OnRecordListener mRecordListener;
+    private List<OnRecordListener> mRecordListener = new ArrayList<>();
     private String mSavePath;
     private String mReversePath;
     private boolean mRecording = false;
@@ -42,9 +48,10 @@ public class AudioRecordManager {
         initListener();
     }
 
-    public void start(String savePath){
+    public void start(String savePath,int source){
         RecordManager.getInstance().changeRecordDir(savePath);
         RecordManager.getInstance().start();
+        mSource = source;
     }
 
     public void pause(){
@@ -84,7 +91,7 @@ public class AudioRecordManager {
                     }
                 });
                 if (mRecordListener!=null){
-                    mRecordListener.recordStop(getSavePath(),getReversePath());
+                    notifyListenerStop(getSavePath(),getReversePath());
                 }
             }
         });
@@ -99,7 +106,7 @@ public class AudioRecordManager {
                     case RECORDING:
                         Log.d(TAG,"RECORDING");
                         if (mRecordListener!=null){
-                            mRecordListener.recordStart(getSavePath(),getReversePath());
+                            notifyListenerStart(getSavePath(),getReversePath());
                         }
                         changeIsRecording(true);
                         break;
@@ -125,8 +132,24 @@ public class AudioRecordManager {
         });
     }
 
-    public void setListener(OnRecordListener listener){
-        mRecordListener = listener;
+    private void notifyListenerStart(String savePath, String reverseSavePath){
+        for (int i = 0;i< mRecordListener.size();i++){
+            mRecordListener.get(i).recordStart(savePath, reverseSavePath);
+        }
+    }
+
+    private void notifyListenerStop(String savePath, String reverseSavePath){
+        for (int i = 0;i< mRecordListener.size();i++){
+            mRecordListener.get(i).recordStop(savePath, reverseSavePath);
+        }
+    }
+
+    public void registerListener(OnRecordListener listener){
+        mRecordListener.add(listener);
+    }
+
+    public void removeListener(){
+        mRecordListener.clear();
     }
 
     public void changeIsRecording(boolean isRecording){
@@ -161,5 +184,9 @@ public class AudioRecordManager {
 
     public String getReversePath(){
         return mReversePath;
+    }
+
+    public int getSource(){
+        return mSource;
     }
 }

@@ -1,30 +1,30 @@
 package cn.zhenye.common.voicereverse;
 
-import android.content.Context;
-import android.content.res.AssetFileDescriptor;
-import android.media.AudioRouting;
 import android.media.MediaPlayer;
-import android.media.TimedMetaData;
 import android.media.TimedText;
-import android.net.Uri;
+import android.text.TextUtils;
 import android.widget.TextView;
 
 import java.io.IOException;
 
-public class AudioPlayer {
-    private static AudioPlayer INSTANCE;
+public class AudioPlayManager {
+    private static AudioPlayManager INSTANCE;
     private MediaPlayer mMediaPlayer;
-    public static AudioPlayer getInstance(){
+    public static AudioPlayManager getInstance(){
         if (INSTANCE == null){
-            INSTANCE = new AudioPlayer();
+            INSTANCE = new AudioPlayManager();
         }
         return INSTANCE;
     }
 
-    private AudioPlayer(){
+    private AudioPlayManager(){
     }
 
     public void play( String path, final TextView btn, final OnAudioPlayListener listener){
+        if (TextUtils.isEmpty(path)){
+            return;
+        }
+
         if (mMediaPlayer != null){
             mMediaPlayer = null;
         }
@@ -61,6 +61,7 @@ public class AudioPlayer {
                 //播放完毕
                 mMediaPlayer.release();
                 if (listener != null) {
+                    mMediaPlayer = null;
                     listener.audioStop(btn);
                 }
             }
@@ -70,12 +71,24 @@ public class AudioPlayer {
             public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
                 mMediaPlayer.release();
                 if (listener != null) {
+                    mMediaPlayer = null;
                     listener.audioStop(btn);
                 }
                 return false;
             }
         });
 
+    }
+
+    public boolean isPlaying(){
+        if (mMediaPlayer != null){
+            try {
+                return mMediaPlayer.isPlaying();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 
 }
