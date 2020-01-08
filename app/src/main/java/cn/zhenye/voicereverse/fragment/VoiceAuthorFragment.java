@@ -10,6 +10,7 @@ import cn.zhenye.common.voicereverse.AudioRecordManager;
 import cn.zhenye.home.R;
 import cn.zhenye.voicereverse.dialog.VoicePlayConfirmDialog;
 import cn.zhenye.voicereverse.fragment.adapter.VoiceAuthorAdapter;
+import cn.zhenye.voicereverse.fragment.adapter.VoiceChallengerAdapter;
 import cn.zhenye.voicereverse.vm.VoiceGameViewModel;
 import cn.zhenye.voicereverse.vm.VoiceViewModel;
 
@@ -86,6 +87,8 @@ public class VoiceAuthorFragment extends BaseFragment
                 Log.d(TAG,"save path is: "+s);
                 mSavePath = s+"/";
                 new VoiceAuthorAdapter(VoiceAuthorFragment.this.getContext(),mAdapterContainer,mTimer,mSavePath);
+                new VoiceChallengerAdapter(VoiceAuthorFragment.this.getContext(),mAdapterContainer,mTimer,mSavePath);
+
             }
         });
         //是否开始游戏
