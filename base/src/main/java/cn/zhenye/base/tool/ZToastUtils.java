@@ -22,4 +22,8 @@ public class ZToastUtils {
     public static void showShort(int resId){
         ToastUtils.showShort(resId);
     }
+
+    public static void showShort(String message){
+        ToastUtils.showShort(message);
+    }
 }

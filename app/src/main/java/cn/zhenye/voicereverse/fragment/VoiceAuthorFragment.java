@@ -75,6 +75,7 @@ public class VoiceAuthorFragment extends BaseFragment
         view.findViewById(R.id.ll_voice_author).setVisibility(View.VISIBLE);
 
         mGameStartBtn.setOnClickListener(this);
+        view.findViewById(R.id.tv_voice_save).setOnClickListener(this);
     }
 
     private void initVM() {
@@ -86,8 +87,8 @@ public class VoiceAuthorFragment extends BaseFragment
             public void onChanged(String s) {
                 Log.d(TAG,"save path is: "+s);
                 mSavePath = s+"/";
-                new VoiceAuthorAdapter(VoiceAuthorFragment.this.getContext(),mAdapterContainer,mTimer,mSavePath);
-                new VoiceChallengerAdapter(VoiceAuthorFragment.this.getContext(),mAdapterContainer,mTimer,mSavePath);
+                new VoiceAuthorAdapter(VoiceAuthorFragment.this.getContext(),mAdapterContainer,mTimer,mSavePath,mVoiceGameViewModel);
+                new VoiceChallengerAdapter(VoiceAuthorFragment.this.getContext(),mAdapterContainer,mTimer,mSavePath,mVoiceGameViewModel);
 
             }
         });
@@ -117,6 +118,9 @@ public class VoiceAuthorFragment extends BaseFragment
                         mVoiceGameViewModel.setIsAuthorStart(true);
                     }
                 });
+                break;
+            case R.id.tv_voice_save:
+
                 break;
         }
     }

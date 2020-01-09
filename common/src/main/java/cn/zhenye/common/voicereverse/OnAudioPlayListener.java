@@ -7,4 +7,5 @@ public interface OnAudioPlayListener {
     void audioStart(TextView btn);
     void audioPlaying(TimedText timedText);
     void audioStop(TextView btn);
+    void audioPlayError(String message);
 }

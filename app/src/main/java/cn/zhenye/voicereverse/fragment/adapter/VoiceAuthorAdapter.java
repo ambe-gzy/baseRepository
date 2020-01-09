@@ -15,10 +15,11 @@ import cn.zhenye.common.voicereverse.AudioRecordManager;
 import cn.zhenye.common.voicereverse.OnAudioPlayListener;
 import cn.zhenye.common.voicereverse.OnRecordListener;
 import cn.zhenye.home.R;
+import cn.zhenye.voicereverse.vm.VoiceGameViewModel;
 import cn.zhenye.voicereverse.vm.VoiceViewModel;
 
 public class VoiceAuthorAdapter implements View.OnClickListener , OnRecordListener, OnAudioPlayListener {
-    private VoiceViewModel mVoiceViewModel;
+    private VoiceGameViewModel mVoiceGameViewModel;
     private TextView mRecordBtn;
     private TextView mReverseBtn;
     private TextView mPlayBtn;
@@ -29,12 +30,13 @@ public class VoiceAuthorAdapter implements View.OnClickListener , OnRecordListen
 
     private VoiceAuthorAdapter(){}
 
-    public VoiceAuthorAdapter(Context context,View view,Chronometer currentTime,String savePath){
+    public VoiceAuthorAdapter(Context context,View view,Chronometer currentTime,String savePath,VoiceGameViewModel voiceGameViewModel){
         initView(view);
         AudioRecordManager.getInstance().registerListener(this);
         mContext = context;
         mCurrentTime = currentTime;
         mSavePath = savePath;
+        mVoiceGameViewModel = voiceGameViewModel;
     }
 
     private void initView(View view){
@@ -58,7 +60,7 @@ public class VoiceAuthorAdapter implements View.OnClickListener , OnRecordListen
                     return;
                 }
                 if (!AudioPlayManager.getInstance().isPlaying()){
-                    AudioPlayManager.getInstance().play(AudioRecordManager.getInstance().getSavePath(),mPlayBtn,this);
+                    AudioPlayManager.getInstance().play(getPlayPath(),mPlayBtn,this);
                 }
                 break;
             case R.id.tv_voice_record_author:
@@ -86,7 +88,7 @@ public class VoiceAuthorAdapter implements View.OnClickListener , OnRecordListen
                     return;
                 }
                 if (!AudioPlayManager.getInstance().isPlaying()){
-                    AudioPlayManager.getInstance().play(AudioRecordManager.getInstance().getReversePath(),mReverseBtn,this);
+                    AudioPlayManager.getInstance().play(getReversePath(),mReverseBtn,this);
                 }
                 break;
         }
@@ -125,6 +127,14 @@ public class VoiceAuthorAdapter implements View.OnClickListener , OnRecordListen
         mCurrentTime.setText(mContext.getResources().getString(R.string.fragment_play_default_time));
         long currentTime = SystemClock.elapsedRealtime() - mCurrentTime.getBase();
         mTotalTime.setText(ZTimeUtils.secToTime(currentTime/1000));
+
+        VoiceEntity entity = mVoiceGameViewModel.getCurrentRecordPath().getValue();
+        if (entity == null){
+            entity = new VoiceEntity();
+        }
+        entity.normalVoicePath = savePath;
+        entity.normalReverseVoicePath = reverseSavePath;
+        mVoiceGameViewModel.getCurrentRecordPath().setValue(entity);
     }
 
     @Override
@@ -146,6 +156,27 @@ public class VoiceAuthorAdapter implements View.OnClickListener , OnRecordListen
         btn.setClickable(true);
         mCurrentTime.stop();
         mCurrentTime.setText(mContext.getResources().getString(R.string.fragment_play_default_time));
+    }
+
+    @Override
+    public void audioPlayError(String message) {
+        ZToastUtils.showShort(message);
+    }
+
+    private String getPlayPath(){
+        VoiceEntity entity = mVoiceGameViewModel.getCurrentRecordPath().getValue();
+        if (entity == null){
+            return null;
+        }
+        return entity.normalVoicePath;
+    }
+
+    private String getReversePath(){
+        VoiceEntity entity = mVoiceGameViewModel.getCurrentRecordPath().getValue();
+        if (entity == null){
+            return null;
+        }
+        return entity.normalReverseVoicePath;
     }
 
 }

@@ -178,11 +178,11 @@ public class AudioRecordManager {
     }
 
     @Nullable
-    public String getSavePath(){
+    private String getSavePath(){
         return mSavePath;
     }
 
-    public String getReversePath(){
+    private String getReversePath(){
         return mReversePath;
     }
 

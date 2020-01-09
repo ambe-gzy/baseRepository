@@ -22,6 +22,7 @@ public class AudioPlayManager {
 
     public void play( String path, final TextView btn, final OnAudioPlayListener listener){
         if (TextUtils.isEmpty(path)){
+            listener.audioPlayError("播放路径为空");
             return;
         }
 

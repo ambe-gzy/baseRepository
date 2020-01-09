@@ -15,10 +15,11 @@ import cn.zhenye.common.voicereverse.AudioRecordManager;
 import cn.zhenye.common.voicereverse.OnAudioPlayListener;
 import cn.zhenye.common.voicereverse.OnRecordListener;
 import cn.zhenye.home.R;
+import cn.zhenye.voicereverse.vm.VoiceGameViewModel;
 import cn.zhenye.voicereverse.vm.VoiceViewModel;
 
 public class VoiceChallengerAdapter implements View.OnClickListener , OnRecordListener, OnAudioPlayListener {
-    private VoiceViewModel mVoiceViewModel;
+    private VoiceGameViewModel mVoiceGameViewModel;
     private TextView mRecordBtn;
     private TextView mReverseBtn;
     private TextView mPlayBtn;
@@ -29,13 +30,15 @@ public class VoiceChallengerAdapter implements View.OnClickListener , OnRecordLi
     
     private VoiceChallengerAdapter(){}
 
-    public VoiceChallengerAdapter(Context context,View view,Chronometer currentTime,String savePath){
+    public VoiceChallengerAdapter(Context context, View view, Chronometer currentTime, String savePath, VoiceGameViewModel voiceGameViewModel){
         initView(view);
         AudioRecordManager.getInstance().registerListener(this);
         mContext = context;
         mCurrentTime = currentTime;
         mSavePath = savePath;
+        mVoiceGameViewModel = voiceGameViewModel;
     }
+
 
     private void initView(View view){
         mRecordBtn = view.findViewById(R.id.tv_voice_record_challenger);
@@ -57,7 +60,7 @@ public class VoiceChallengerAdapter implements View.OnClickListener , OnRecordLi
                     return;
                 }
                 if (!AudioPlayManager.getInstance().isPlaying()){
-                    AudioPlayManager.getInstance().play(AudioRecordManager.getInstance().getSavePath(),mPlayBtn,this);
+                    AudioPlayManager.getInstance().play(getPlayPath(),mPlayBtn,this);
                 }
                 break;
             case R.id.tv_voice_record_challenger:
@@ -85,7 +88,7 @@ public class VoiceChallengerAdapter implements View.OnClickListener , OnRecordLi
                     return;
                 }
                 if (!AudioPlayManager.getInstance().isPlaying()){
-                    AudioPlayManager.getInstance().play(AudioRecordManager.getInstance().getReversePath(),mReverseBtn,this);
+                    AudioPlayManager.getInstance().play(getReversePath(),mReverseBtn,this);
                 }
                 break;
         }
@@ -123,6 +126,15 @@ public class VoiceChallengerAdapter implements View.OnClickListener , OnRecordLi
         mCurrentTime.setText(mContext.getResources().getString(R.string.fragment_play_default_time));
         long currentTime = SystemClock.elapsedRealtime() - mCurrentTime.getBase();
         mTotalTime.setText(ZTimeUtils.secToTime(currentTime/1000));
+        //todo 录音保存到ViewModel中。
+
+        VoiceEntity entity = mVoiceGameViewModel.getCurrentRecordPath().getValue();
+        if (entity == null){
+            entity = new VoiceEntity();
+        }
+        entity.answerVoicePath = savePath;
+        entity.answerReverseVoicePath = reverseSavePath;
+        mVoiceGameViewModel.getCurrentRecordPath().setValue(entity);
 
     }
 
@@ -145,4 +157,26 @@ public class VoiceChallengerAdapter implements View.OnClickListener , OnRecordLi
         mCurrentTime.stop();
         mCurrentTime.setText(mContext.getResources().getString(R.string.fragment_play_default_time));
     }
+
+    @Override
+    public void audioPlayError(String message) {
+        ZToastUtils.showShort(message);
+    }
+
+    private String getPlayPath(){
+        VoiceEntity entity = mVoiceGameViewModel.getCurrentRecordPath().getValue();
+        if (entity == null){
+            return null;
+        }
+        return entity.answerVoicePath;
+    }
+
+    private String getReversePath(){
+        VoiceEntity entity = mVoiceGameViewModel.getCurrentRecordPath().getValue();
+        if (entity == null){
+            return null;
+        }
+        return entity.answerReverseVoicePath;
+    }
+
 }
