@@ -18,14 +18,12 @@ import java.util.ArrayList;
  * 判断获取积分按钮下次点击剩余时间
  */
 public class CreditStatusManager {
-    private static CreditStatusManager INSTANCE;
-    public class Holder {
-        CreditStatusManager getInstance() {
-            if (INSTANCE == null) {
-                INSTANCE = new CreditStatusManager();
-            }
-            return INSTANCE;
-        }
+
+    public static CreditStatusManager getInstance() {
+        return Holder.INSTANCE;
+    }
+    private static class Holder {
+        private static final CreditStatusManager INSTANCE = new CreditStatusManager();
     }
 
     private CreditStatusManager(){
@@ -81,6 +79,12 @@ public class CreditStatusManager {
                 notifyFifteenMinuteStatusCallBack(true);
             }
         });
+    }
+
+    public void notifyStatus(){
+        getOneMinuteCacheRemain();
+        getFiveMinuteCacheRemain();
+        getFifteenMinuteCacheRemain();
     }
 
     //读取本地保存的数据
