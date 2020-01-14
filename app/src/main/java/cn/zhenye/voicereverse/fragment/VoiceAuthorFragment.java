@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import cn.zhenye.common.db.entity.VoiceEntity;
 import cn.zhenye.common.voicereverse.AudioRecordManager;
 import cn.zhenye.home.R;
 import cn.zhenye.voicereverse.dialog.VoicePlayConfirmDialog;
@@ -120,8 +121,15 @@ public class VoiceAuthorFragment extends BaseFragment
                 });
                 break;
             case R.id.tv_voice_save:
-
+                save();
                 break;
+        }
+    }
+
+    private void save(){
+        VoiceEntity entity = mVoiceGameViewModel.getCurrentRecordPath().getValue();
+        if (entity != null){
+            mVoiceViewModel.setVoiceEntityLiveData(entity);
         }
     }
 }

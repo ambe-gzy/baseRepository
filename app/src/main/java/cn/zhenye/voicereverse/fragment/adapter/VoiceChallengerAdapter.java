@@ -126,7 +126,7 @@ public class VoiceChallengerAdapter implements View.OnClickListener , OnRecordLi
         mCurrentTime.setText(mContext.getResources().getString(R.string.fragment_play_default_time));
         long currentTime = SystemClock.elapsedRealtime() - mCurrentTime.getBase();
         mTotalTime.setText(ZTimeUtils.secToTime(currentTime/1000));
-        //todo 录音保存到ViewModel中。
+        // 录音保存到ViewModel中。
 
         VoiceEntity entity = mVoiceGameViewModel.getCurrentRecordPath().getValue();
         if (entity == null){

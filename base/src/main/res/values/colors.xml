@@ -42,6 +42,8 @@
     <color name="color_FF8A3A">#FF8A3A</color>
     <color name="color_F1C3C3">#F1C3C3</color>
     <color name="color_DBDBDB">#DBDBDB</color>
+    <color name="color_B22222">#B22222</color>
+    <color name="color_4169E1">#4169E1</color>
 
     <color name="color_ripple">@color/color_DBDBDB</color>
 </resources>

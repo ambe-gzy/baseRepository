@@ -13,15 +13,24 @@ import android.view.ViewGroup;
 
 import com.mintegral.msdk.base.fragment.BaseFragment;
 
+import java.util.List;
+
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import cn.zhenye.common.db.entity.VoiceEntity;
+import cn.zhenye.common.db.entity.VoiceFileEntity;
 import cn.zhenye.home.R;
+import cn.zhenye.voicereverse.adapter.VoiceFileAdapter;
+import cn.zhenye.voicereverse.fragment.adapter.VoiceRecordAdapter;
 import cn.zhenye.voicereverse.vm.VoiceViewModel;
 
 
 public class VoiceRecordFragment extends BaseFragment {
     private VoiceViewModel mVoiceViewModel;
     private static String TAG = VoiceRecordFragment.class.getName();
+    private VoiceRecordAdapter mVoiceRecordAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,11 +38,19 @@ public class VoiceRecordFragment extends BaseFragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_voice_reverse_record, container, false);
     }
-
+;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initVM();
+        initRecyclerView();
+    }
+
+    private void initRecyclerView() {
+        RecyclerView recyclerView = getView().findViewById(R.id.rv_voice_record);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mVoiceRecordAdapter = new VoiceRecordAdapter();
+        recyclerView.setAdapter(mVoiceRecordAdapter);
     }
 
     private void initVM() {
@@ -42,6 +59,12 @@ public class VoiceRecordFragment extends BaseFragment {
             @Override
             public void onChanged(String s) {
                 Log.d(TAG,"save path is: "+s);
+            }
+        });
+        mVoiceViewModel.getVoiceEntityLiveData().observe(getActivity(), new Observer<List<VoiceEntity>>() {
+            @Override
+            public void onChanged(List<VoiceEntity> voiceEntities) {
+                mVoiceRecordAdapter.setList(voiceEntities);
             }
         });
     }
