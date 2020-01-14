@@ -11,6 +11,7 @@ import cn.zhenye.base.tool.ZTimeUtils;
 import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.credit.CreditStatusManager;
 import cn.zhenye.common.credit.CreditStatusViewModel;
+import cn.zhenye.home.R;
 
 public class CreditAdapter {
     private static String TAG = CreditAdapter.class.getSimpleName();
@@ -66,10 +67,11 @@ public class CreditAdapter {
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean){
                     mOneMinuteBtn.setClickable(true);
-                    ZToastUtils.showShort("click");
-
+                    mOneMinuteBtn.setBackgroundResource(R.drawable.ripple_voice_reverse);
+                    mOneMinuteBtn.setText("按钮1");
                 }else {
                     mOneMinuteBtn.setClickable(false);
+                    mOneMinuteBtn.setBackgroundResource(R.drawable.ripple_btn);
                 }
             }
         });
@@ -78,9 +80,11 @@ public class CreditAdapter {
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
                     mFiveMinuteBtn.setClickable(true);
-                    ZToastUtils.showShort("click");
+                    mFiveMinuteBtn.setBackgroundResource(R.drawable.ripple_voice_reverse);
+                    mFiveMinuteBtn.setText("按钮2");
                 } else {
                     mFiveMinuteBtn.setClickable(false);
+                    mFiveMinuteBtn.setBackgroundResource(R.drawable.ripple_btn);
                 }
 
             }
@@ -90,9 +94,11 @@ public class CreditAdapter {
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
                     mFifteenMinuteBtn.setClickable(true);
-                    ZToastUtils.showShort("click");
+                    mFifteenMinuteBtn.setBackgroundResource(R.drawable.ripple_voice_reverse);
+                    mFiveMinuteBtn.setText("按钮3");
                 } else {
                     mFifteenMinuteBtn.setClickable(false);
+                    mFifteenMinuteBtn.setBackgroundResource(R.drawable.ripple_btn);
                 }
             }
         });
