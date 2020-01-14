@@ -5,7 +5,10 @@ import android.media.TimedText;
 import android.text.TextUtils;
 import android.widget.TextView;
 
+import java.io.File;
 import java.io.IOException;
+
+import cn.zhenye.base.tool.ZToastUtils;
 
 public class AudioPlayManager {
     private static AudioPlayManager INSTANCE;
@@ -22,8 +25,12 @@ public class AudioPlayManager {
 
     public void play( String path, final TextView btn, final OnAudioPlayListener listener){
         if (TextUtils.isEmpty(path)){
-            listener.audioPlayError("播放路径为空");
+            ZToastUtils.showShort("播放路径为空");
             return;
+        }
+        File file = new File(path);
+        if (!file.exists()){
+            ZToastUtils.showShort("找不到该文件");
         }
 
         if (mMediaPlayer != null){
