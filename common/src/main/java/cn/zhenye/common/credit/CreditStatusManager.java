@@ -36,8 +36,52 @@ public class CreditStatusManager {
     private ArrayList<OnRefreshListener<Integer>> mFiveMinuteBtnCountTimerListener = new ArrayList<>();
     private ArrayList<OnRefreshListener<Integer>> mFifteenMinuteBtnCountTimerListener = new ArrayList<>();
 
-//    public void setOn
+    public void init(){
+//        long timeStamp =
+    }
 
+
+//积分点击状态
+    private void registerOneMunuteBtnStatusListener(OnRefreshListener<Boolean> listener){
+        mOneMinuteBtnStatusListener.add(listener);
+    }
+    private void registerFiveMunuteBtnStatusListener(OnRefreshListener<Boolean> listener){
+        mFiveMinuteBtnStatusListener.add(listener);
+    }
+    private void registerFifteemMunuteBtnStatusListener(OnRefreshListener<Boolean> listener){
+        mFifteenMinuteBtnStatusListener.add(listener);
+    }
+
+    private void removeOneMunuteBtnStatusListener(OnRefreshListener<Boolean> listener) {
+        mOneMinuteBtnStatusListener.remove(listener);
+    }
+    private void removeFiveMunuteBtnStatusListener(OnRefreshListener<Boolean> listener) {
+        mOneMinuteBtnStatusListener.remove(listener);
+    }
+    private void removeFifteenMunuteBtnStatusListener(OnRefreshListener<Boolean> listener) {
+        mOneMinuteBtnStatusListener.remove(listener);
+    }
+
+//积分下次点击剩余时间
+    private void registerOneMinuteBtnCountTimerListener(OnRefreshListener<Integer> listener){
+        mOneMinuteBtnCountTimerListener.add(listener);
+    }
+    private void registerFiveMinuteBtnCountTimerListener(OnRefreshListener<Integer> listener){
+        mFiveMinuteBtnCountTimerListener.add(listener);
+    }
+    private void registerFifteenMinuteBtnCountTimerListener(OnRefreshListener<Integer> listener){
+        mFifteenMinuteBtnCountTimerListener.add(listener);
+    }
+
+    private void removeOneMinuteBtnCountTimerListener(OnRefreshListener<Integer> listener){
+        mOneMinuteBtnCountTimerListener.remove(listener);
+    }
+    private void removeFiveMinuteBtnCountTimerListener(OnRefreshListener<Integer> listener){
+        mFiveMinuteBtnCountTimerListener.remove(listener);
+    }
+    private void removeFifteenMinuteBtnCountTimerListener(OnRefreshListener<Integer> listener){
+        mFifteenMinuteBtnCountTimerListener.remove(listener);
+    }
 
 
 
