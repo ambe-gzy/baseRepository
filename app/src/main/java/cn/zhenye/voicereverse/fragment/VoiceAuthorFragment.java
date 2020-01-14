@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.db.entity.VoiceEntity;
 import cn.zhenye.common.voicereverse.AudioRecordManager;
 import cn.zhenye.home.R;
@@ -130,6 +131,8 @@ public class VoiceAuthorFragment extends BaseFragment
         VoiceEntity entity = mVoiceGameViewModel.getCurrentRecordPath().getValue();
         if (entity != null){
             mVoiceViewModel.setVoiceEntityLiveData(entity);
+        }else {
+            ZToastUtils.showShort("请先录音！");
         }
     }
 }
