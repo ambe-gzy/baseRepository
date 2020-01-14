@@ -6,8 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -22,8 +25,10 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
     private ViewGroup mContentWrapperView;
     //布局完成的容器
     private View mContentView = null;
-    //toolbar
-    private Toolbar mToolbar;
+
+    private TextView mToolbarTittle;
+    private TextView mToolbarCredit;
+    private View mToolbarReturn;
 
     private View mStatusbarBg;
 
@@ -51,8 +56,10 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
     private void initView() {
         mWindowBackground = super.findViewById(R.id.fl_window_background);
         mContentWrapperView = super.findViewById(R.id.fl_content_wrapper_view);
-        mToolbar = super.findViewById(R.id.tl_toolbar);
         mStatusbarBg = super.findViewById(R.id.view_statusbar_bg);
+        mToolbarReturn = super.findViewById(R.id.v_toolbar_left);
+        mToolbarTittle = super.findViewById(R.id.v_toolbar_middle);
+        mToolbarCredit = super.findViewById(R.id.v_toolbar_right);
     }
 
     private void initWindow() {
@@ -63,7 +70,6 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
             fitStatusBar(mWindowView);
         }
     }
-
 
     private void fitStatusBar(View view) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) view.getLayoutParams();
@@ -80,21 +86,24 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
         return mWindowBackground;
     }
 
-    /**
-     * 用于设置toolbar相关的属性
-     * 可隐藏toolbar
-     * @return
-     */
-    public Toolbar getToolbar() {
-        return mToolbar;
+    public void setToolbarTittle(CharSequence tittle){
+        mToolbarTittle.setText(tittle);
     }
 
-    public void setStatusBg(int color){
-        if (mToolbar.getVisibility() != View.VISIBLE){
-            return;
-        }
-        mToolbar.setBackgroundColor(color);
-        mStatusbarBg.setBackgroundColor(color);
+    public void initToolbar(String tittle){
+        mToolbarTittle.setText(tittle);
+        mToolbarReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        mToolbarCredit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
 }

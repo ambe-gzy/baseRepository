@@ -31,7 +31,6 @@ public class VoiceFileActivity extends BaseFullScreenActivity implements View.On
     private RecyclerView mFileRecyclerView;
     private VoiceViewModel mVoiceFileViewModel;
     private VoiceFileAdapter mVoiceFileAdapter;
-    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,21 +65,7 @@ public class VoiceFileActivity extends BaseFullScreenActivity implements View.On
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
     private void initToolbar(){
-        mToolbar = getToolbar();
-        mToolbar.setVisibility(View.VISIBLE);
-        mToolbar.setTitleTextColor(getResources().getColor(R.color.color_3C3885));
-        mToolbar.setTitle(getResources().getString(R.string.activity_voice_create_file));
-        setStatusBg(getResources().getColor(R.color.color_A6A0C6));
-
-        Drawable back = getResources().getDrawable(R.mipmap.ic_back);
-        back.setColorFilter(getResources().getColor(R.color.color_3C3885), PorterDuff.Mode.SRC_IN);
-        mToolbar.setNavigationIcon(back);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        initToolbar(getResources().getString(R.string.activity_voice_create_file));
     }
 
     private void initViewModel() {

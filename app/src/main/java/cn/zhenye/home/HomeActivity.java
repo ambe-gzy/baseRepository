@@ -20,7 +20,6 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
     private BottomNavigationBar mNavigationBar;
     private volatile Fragment mCurrentFragment;
     private static final String STATE_CURRENT_FRAGMENT_TAG = "state_current_fragment_tag"; // HomeActivity被回收重启后，用于恢复当前Fragment的标志
-    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +31,7 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
     }
 
     private void initToolbar() {
-        mToolbar = getToolbar();
-        mToolbar.setVisibility(View.VISIBLE);
+        initToolbar(null);
 
     }
 

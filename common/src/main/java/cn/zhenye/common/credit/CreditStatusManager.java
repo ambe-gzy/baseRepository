@@ -81,6 +81,46 @@ public class CreditStatusManager {
         });
     }
 
+    public void startOneMinuteCountTimer(View view) {
+        CountDownTask.create().until(view, getOneMinuteCacheRemain(), 1000, new CountDownTimers.OnCountDownListener() {
+            @Override
+            public void onTick(View view, long millisUntilFinished) {
+                notifyOneMinuteCountTimerCallback(millisUntilFinished);
+            }
+
+            @Override
+            public void onFinish(View view) {
+                notifyOneMinuteStatusCallBack(true);
+            }
+        });
+    }
+    public void startFiveMinuteCountTimer(View view) {
+        CountDownTask.create().until(view, getFiveMinuteCacheRemain(), 1000, new CountDownTimers.OnCountDownListener() {
+            @Override
+            public void onTick(View view, long millisUntilFinished) {
+                notifyFiveMinuteCountTimerCallback(millisUntilFinished);
+            }
+
+            @Override
+            public void onFinish(View view) {
+                notifyFiveMinuteStatusCallBack(true);
+            }
+        });
+    }
+    public void startFifteenMinuteCountTimer(View view) {
+        CountDownTask.create().until(view, getFifteenMinuteCacheRemain(), 1000, new CountDownTimers.OnCountDownListener() {
+            @Override
+            public void onTick(View view, long millisUntilFinished) {
+                notifyFifteenMinuteCountTimerCallback(millisUntilFinished);
+            }
+
+            @Override
+            public void onFinish(View view) {
+                notifyFifteenMinuteStatusCallBack(true);
+            }
+        });
+    }
+
     public void notifyStatus(){
         getOneMinuteCacheRemain();
         getFiveMinuteCacheRemain();
@@ -192,6 +232,36 @@ public class CreditStatusManager {
     public void notifyFifteenMinuteStatusCallBack(Boolean status){
         for (int i = 0;i<mFifteenMinuteBtnStatusListener.size();i++){
             mFifteenMinuteBtnStatusListener.get(i).onRefresh(status);
+        }
+    }
+
+    //尝试获取积分
+    public boolean getOneMinuteCredit(){
+        if (getOneMinuteCacheRemain() == 0){
+            long nextTime = SystemClock.elapsedRealtime() + CreditConstants.ONE_MINUTE_TIME;
+            ZyCacheStorage.put(CreditConstants.ONE_MINUTE_REMAIN,nextTime);
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public boolean getFiveMinuteCredit(){
+        if (getFiveMinuteCacheRemain() == 0){
+            long nextTime = SystemClock.elapsedRealtime() + CreditConstants.FIVE_MINUTE_TIME;
+            ZyCacheStorage.put(CreditConstants.FIVE_MINUTE_REMAIN,nextTime);
+            return true;
+        }else {
+            return false;
+        }
+
+    }
+    public boolean getFifteenMinuteCredit(){
+        if (getFifteenMinuteCacheRemain() == 0) {
+            long nextTime = SystemClock.elapsedRealtime() + CreditConstants.FIFTEEN_MINUTE_TIME;
+            ZyCacheStorage.put(CreditConstants.FIFTEEN_MINUTE_REMAIN,nextTime);
+            return true;
+        } else {
+            return false;
         }
     }
     
