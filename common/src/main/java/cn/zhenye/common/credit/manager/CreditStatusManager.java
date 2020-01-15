@@ -1,4 +1,4 @@
-package cn.zhenye.common.credit;
+package cn.zhenye.common.credit.manager;
 
 import android.content.Intent;
 import android.os.SystemClock;

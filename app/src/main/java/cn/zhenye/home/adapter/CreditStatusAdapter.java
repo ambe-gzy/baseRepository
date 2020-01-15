@@ -1,48 +1,74 @@
 package cn.zhenye.home.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import cn.zhenye.base.tool.ZTimeUtils;
-import cn.zhenye.base.tool.ZToastUtils;
-import cn.zhenye.common.credit.CreditStatusManager;
-import cn.zhenye.common.credit.CreditStatusViewModel;
+import cn.zhenye.common.credit.CreditOperationManager;
+import cn.zhenye.common.credit.manager.CreditManager;
+import cn.zhenye.common.credit.manager.CreditStatusManager;
+import cn.zhenye.common.credit.VM.CreditStatusViewModel;
 import cn.zhenye.home.R;
 
-public class CreditAdapter {
-    private static String TAG = CreditAdapter.class.getSimpleName();
+public class CreditStatusAdapter {
+    private static String TAG = CreditStatusAdapter.class.getSimpleName();
     private TextView mOneMinuteBtn;
     private TextView mFiveMinuteBtn;
     private TextView mFifteenMinuteBtn;
     private Context mContext;
     private CreditStatusViewModel mCreditStatusViewModel;
+    private View mContainer;
+    private TextView mOneMinuteBtnMessage;
+    private TextView mFiveMinuteBtnMessage;
+    private TextView mFifteenMinuteBtnMessage;
 
-    public CreditAdapter setContext(Context context){
+    public CreditStatusAdapter setContext(Context context){
         mContext = context;
         return this;
     }
 
-    public CreditAdapter setVM(CreditStatusViewModel creditStatusViewModel){
+    public CreditStatusAdapter setVM(CreditStatusViewModel creditStatusViewModel){
         mCreditStatusViewModel = creditStatusViewModel;
         return this;
     }
 
-    public CreditAdapter setBtn(TextView oneMinuteBtn,TextView fiveMinuteBtn,TextView fifteenMinuteBtn){
+    public CreditStatusAdapter setBtn(TextView oneMinuteBtn, TextView fiveMinuteBtn, TextView fifteenMinuteBtn){
         mOneMinuteBtn = oneMinuteBtn;
         mFiveMinuteBtn = fiveMinuteBtn;
         mFifteenMinuteBtn = fifteenMinuteBtn;
+        initOnClickListener();
         return this;
     }
 
-    public CreditAdapter init(AppCompatActivity appCompatActivity){
+    public CreditStatusAdapter init(AppCompatActivity appCompatActivity){
         initVM(appCompatActivity);
-        initOnClickListener();
         initCountTimer();
         return this;
+    }
+
+    public CreditStatusAdapter setContainer(View container){
+        mContainer = container;
+        initView();
+        return this;
+    }
+
+    public void initView(){
+        if (mContainer == null){
+            return;
+        }
+        mOneMinuteBtnMessage = mContainer.findViewById(R.id.tv_get_credit_message_one);
+        mFiveMinuteBtnMessage = mContainer.findViewById(R.id.tv_get_credit_message_five);
+        mFifteenMinuteBtnMessage = mContainer.findViewById(R.id.tv_get_credit_messgae_fifteen);
+
+        mOneMinuteBtnMessage.setText(mContext.getResources().getString(R.string.credit_get,
+                CreditOperationManager.MIN_CREDIT_1*10,CreditOperationManager.MIN_CREDIT_2*10));
+        mFiveMinuteBtnMessage.setText(mContext.getResources().getString(R.string.credit_get,
+                CreditOperationManager.MIN_CREDIT_1*10,CreditOperationManager.MIN_CREDIT_3*10));
+        mFifteenMinuteBtnMessage.setText(mContext.getResources().getString(R.string.credit_get,
+                CreditOperationManager.MIN_CREDIT_1*10,CreditOperationManager.MAX_CREDIT_5*10));
     }
 
     private void initCountTimer(){
@@ -128,30 +154,40 @@ public class CreditAdapter {
         mOneMinuteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.setClickable(false);
                 if (CreditStatusManager.getInstance().getOneMinuteCredit()){
                     CreditStatusManager.getInstance().startOneMinuteCountTimer(mOneMinuteBtn);
-                    //todo 获取积分
-                } else {
-                    ZToastUtils.showShort("请稍后");
+                    getCredit(CreditOperationManager.MIN_CREDIT_1,CreditOperationManager.MIN_CREDIT_2);
                 }
             }
         });
         mFiveMinuteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.setClickable(false);
                 if (CreditStatusManager.getInstance().getFiveMinuteCredit()) {
                     CreditStatusManager.getInstance().startFiveMinuteCountTimer(mFiveMinuteBtn);
+                    getCredit(CreditOperationManager.MIN_CREDIT_1,CreditOperationManager.MIN_CREDIT_3);
                 }
             }
         });
         mFifteenMinuteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.setClickable(false);
                 if (CreditStatusManager.getInstance().getFifteenMinuteCredit()) {
                     CreditStatusManager.getInstance().startFifteenMinuteCountTimer(mFifteenMinuteBtn);
+                    getCredit(CreditOperationManager.MIN_CREDIT_1,CreditOperationManager.MAX_CREDIT_5);
                 }
             }
         });
+    }
+
+
+    public void getCredit(long min , long max){
+        long getCredit = CreditOperationManager.getInstance().getCredit(min,max);
+        //todo 看完弹窗，再拿积分
+        CreditManager.getInstance().increaseCredit(getCredit);
     }
 
 }

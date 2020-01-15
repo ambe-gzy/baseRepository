@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.base.base.BaseFullScreenActivity;
 import cn.zhenye.base.tool.ZActivityUtils;
 import cn.zhenye.base.tool.ZPermissionUtils;
@@ -26,7 +27,7 @@ import android.widget.LinearLayout;
 
 import java.util.List;
 
-public class VoiceFileActivity extends BaseFullScreenActivity implements View.OnClickListener {
+public class VoiceFileActivity extends ZyCommonActivity implements View.OnClickListener {
     private LinearLayout mLlAddFile;
     private RecyclerView mFileRecyclerView;
     private VoiceViewModel mVoiceFileViewModel;

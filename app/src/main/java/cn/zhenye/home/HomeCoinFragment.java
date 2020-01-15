@@ -4,10 +4,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
-import cn.zhenye.common.credit.CreditStatusViewModel;
-import cn.zhenye.home.adapter.CreditAdapter;
+import cn.zhenye.common.credit.VM.CreditStatusViewModel;
+import cn.zhenye.home.adapter.CreditStatusAdapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,9 +31,10 @@ public class HomeCoinFragment extends BaseFragment {
         TextView oneMinuteBtn = getView().findViewById(R.id.tv_credit_get_one_minute_btn);
         TextView fiveMinuteBtn = getView().findViewById(R.id.tv_credit_get_five_minute_btn);
         TextView fifteenMinuteBtn = getView().findViewById(R.id.tv_credit_get_fifteen_minute_btn);
-        new CreditAdapter().setBtn(oneMinuteBtn,fiveMinuteBtn,fifteenMinuteBtn)
+        new CreditStatusAdapter().setBtn(oneMinuteBtn,fiveMinuteBtn,fifteenMinuteBtn)
                 .setContext(getContext().getApplicationContext())
                 .setVM(ViewModelProviders.of(getActivity()).get(CreditStatusViewModel.class))
+                .setContainer(view)
                 .init((AppCompatActivity) getActivity());
     }
 

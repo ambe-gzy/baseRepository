@@ -1,10 +1,11 @@
-package cn.zhenye.common.credit;
+package cn.zhenye.common.credit.VM;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
+import cn.zhenye.common.credit.manager.CreditStatusManager;
 
 public class CreditStatusViewModel extends AndroidViewModel {
     private CreditStatusManager.OnRefreshListener<Boolean> mOneMinuteStatusListener = new CreditStatusManager.OnRefreshListener<Boolean>() {

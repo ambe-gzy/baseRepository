@@ -6,6 +6,41 @@
     tools:context="cn.zhenye.home.HomeCoinFragment">
 
     <TextView
+        android:id="@+id/tv_get_credit_message_one"
+        app:layout_constraintTop_toTopOf="@id/tv_credit_get_one_minute_btn"
+        app:layout_constraintBottom_toBottomOf="@id/tv_credit_get_one_minute_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_credit_get_one_minute_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        tools:text="1111~2222"/>
+
+    <TextView
+        android:id="@+id/tv_get_credit_message_five"
+        app:layout_constraintTop_toTopOf="@id/tv_credit_get_five_minute_btn"
+        app:layout_constraintBottom_toBottomOf="@id/tv_credit_get_five_minute_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_credit_get_five_minute_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        tools:text="1111~2222"/>
+
+    <TextView
+        android:id="@+id/tv_get_credit_messgae_fifteen"
+        app:layout_constraintTop_toTopOf="@id/tv_credit_get_fifteen_minute_btn"
+        app:layout_constraintBottom_toBottomOf="@id/tv_credit_get_fifteen_minute_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_credit_get_fifteen_minute_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        tools:text="1111~2222"/>
+
+
+
+    <TextView
         android:id="@+id/tv_credit_get_one_minute_btn"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
