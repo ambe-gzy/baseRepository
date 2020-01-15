@@ -49,14 +49,17 @@
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/v_toolbar_right"
-                android:background="@color/color_B22222"
+                android:src="@mipmap/ic_tab_coin"
+                android:scaleType="fitCenter"
+                android:padding="5dp"
+                android:tint="@color/colorPrimaryDark"
                 android:layout_marginEnd="5dp"/>
 
             <TextView
                 android:id="@+id/v_toolbar_right"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textSize="15dp"
+                android:textSize="18dp"
                 android:gravity="center"
                 android:layout_marginEnd="20dp"
                 android:textColor="@color/colorPrimaryDark"
