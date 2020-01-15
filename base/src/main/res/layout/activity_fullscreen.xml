@@ -20,10 +20,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/tool_bar_height"
-            android:visibility="gone"
             android:background="@color/colorPrimary"
-            android:elevation="2dp"
-            tools:visibility="visible">
+            android:elevation="2dp">
 
             <ImageView
                 android:id="@+id/v_toolbar_left"

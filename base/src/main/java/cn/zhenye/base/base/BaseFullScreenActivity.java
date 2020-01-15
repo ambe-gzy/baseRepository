@@ -60,6 +60,7 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
         mToolbarReturn = super.findViewById(R.id.v_toolbar_left);
         mToolbarTittle = super.findViewById(R.id.v_toolbar_middle);
         mToolbarCredit = super.findViewById(R.id.v_toolbar_right);
+        mStatusbarBg.setBackgroundResource(R.color.colorPrimary);
     }
 
     private void initWindow() {
@@ -88,6 +89,10 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
 
     public void setToolbarTittle(CharSequence tittle){
         mToolbarTittle.setText(tittle);
+    }
+
+    public View getToolbarReturn(){
+        return mToolbarReturn;
     }
 
     public void initToolbar(String tittle){

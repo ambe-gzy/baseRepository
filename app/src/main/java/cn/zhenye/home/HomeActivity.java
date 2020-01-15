@@ -32,7 +32,7 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
 
     private void initToolbar() {
         initToolbar(null);
-
+        getToolbarReturn().setVisibility(View.GONE);
     }
 
     @Override
