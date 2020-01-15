@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey;
 public class VoiceEntity {
     public static final String TABLE_NAME = "voice_reverse_entity";
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
 
     //出题者正常播放的语音保存地址

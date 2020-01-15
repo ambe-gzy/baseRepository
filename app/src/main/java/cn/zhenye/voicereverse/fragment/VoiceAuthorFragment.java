@@ -129,13 +129,13 @@ public class VoiceAuthorFragment extends BaseFragment
     }
 
     private void save(){
-        if (!CreditManager.getInstance().decreaseCredit(VoiceConstants.SAVE_PER_CREDIT)){
-            ZToastUtils.showShort(getResources().getString(R.string.credit_limit));
-            return;
-        }
-
         VoiceEntity entity = mVoiceGameViewModel.getCurrentRecordPath().getValue();
         if (entity != null){
+            if (!CreditManager.getInstance().decreaseCredit(VoiceConstants.SAVE_PER_CREDIT)){
+                ZToastUtils.showShort(getResources().getString(R.string.credit_limit));
+                return;
+            }
+
             mVoiceViewModel.setVoiceEntityLiveData(entity);
         }else {
             ZToastUtils.showShort("请先录音！");
