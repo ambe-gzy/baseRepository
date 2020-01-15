@@ -111,4 +111,8 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
         });
     }
 
+    public void setCurrentCredit(String credit){
+        mToolbarCredit.setText(credit);
+    }
+
 }
