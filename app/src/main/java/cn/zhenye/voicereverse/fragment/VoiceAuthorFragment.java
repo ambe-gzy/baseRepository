@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import cn.zhenye.base.tool.ZToastUtils;
+import cn.zhenye.common.credit.manager.CreditManager;
 import cn.zhenye.common.db.entity.VoiceEntity;
 import cn.zhenye.common.voicereverse.AudioRecordManager;
 import cn.zhenye.home.R;
@@ -128,6 +129,11 @@ public class VoiceAuthorFragment extends BaseFragment
     }
 
     private void save(){
+        if (!CreditManager.getInstance().decreaseCredit(VoiceConstants.SAVE_PER_CREDIT)){
+            ZToastUtils.showShort(getResources().getString(R.string.credit_limit));
+            return;
+        }
+
         VoiceEntity entity = mVoiceGameViewModel.getCurrentRecordPath().getValue();
         if (entity != null){
             mVoiceViewModel.setVoiceEntityLiveData(entity);

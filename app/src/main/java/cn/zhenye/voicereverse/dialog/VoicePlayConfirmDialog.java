@@ -5,16 +5,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 import cn.zhenye.base.base.BaseDialogFragment;
 import cn.zhenye.home.R;
+import cn.zhenye.voicereverse.fragment.VoiceConstants;
 
 public class VoicePlayConfirmDialog extends BaseDialogFragment implements View.OnClickListener {
     private static boolean isShow = false;
-
+    private TextView mTvMessage;
     private ClickListener mListener;
     @Nullable
     @Override
@@ -27,6 +29,8 @@ public class VoicePlayConfirmDialog extends BaseDialogFragment implements View.O
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.tv_voice_cancel).setOnClickListener(this);
         view.findViewById(R.id.tv_voice_ok).setOnClickListener(this);
+        mTvMessage = view.findViewById(R.id.tv_voice_file_create_time);
+        mTvMessage.setText(getResources().getString(R.string.dialog_voice_user_guide_message, VoiceConstants.RECORD_PER_CREDIT,VoiceConstants.SAVE_PER_CREDIT));
     }
 
     @Override

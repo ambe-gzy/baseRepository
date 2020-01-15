@@ -9,12 +9,14 @@ import android.widget.TextView;
 
 import cn.zhenye.base.tool.ZTimeUtils;
 import cn.zhenye.base.tool.ZToastUtils;
+import cn.zhenye.common.credit.manager.CreditManager;
 import cn.zhenye.common.db.entity.VoiceEntity;
 import cn.zhenye.common.voicereverse.AudioPlayManager;
 import cn.zhenye.common.voicereverse.AudioRecordManager;
 import cn.zhenye.common.voicereverse.OnAudioPlayListener;
 import cn.zhenye.common.voicereverse.OnRecordListener;
 import cn.zhenye.home.R;
+import cn.zhenye.voicereverse.fragment.VoiceConstants;
 import cn.zhenye.voicereverse.vm.VoiceGameViewModel;
 import cn.zhenye.voicereverse.vm.VoiceViewModel;
 
@@ -71,6 +73,11 @@ public class VoiceChallengerAdapter implements View.OnClickListener , OnRecordLi
 
                 mRecordBtn.setClickable(false);
                 if (!AudioRecordManager.getInstance().isRecording()){
+                    if (!CreditManager.getInstance().decreaseCredit(VoiceConstants.RECORD_PER_CREDIT)){
+                        ZToastUtils.showShort(mContext.getResources().getString(R.string.credit_limit));
+                        return;
+                    }
+
                     mRecordBtn.setText(mContext.getResources().getString(R.string.fragment_voice_author_stop));
                     String savePath = mSavePath;
                     AudioRecordManager.getInstance().start(savePath,AudioRecordManager.CHALLENGER);

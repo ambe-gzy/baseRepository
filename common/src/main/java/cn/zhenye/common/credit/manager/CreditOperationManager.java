@@ -1,4 +1,4 @@
-package cn.zhenye.common.credit;
+package cn.zhenye.common.credit.manager;
 
 public class CreditOperationManager {
     public static long MIN_CREDIT_1 = 1;
