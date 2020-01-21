@@ -1,18 +1,20 @@
 package cn.zhenye.home;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import cn.zhenye.appcommon.ZyCommonActivity;
-import cn.zhenye.base.tool.ZStatusbarUtils;
-
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.mintegral.msdk.base.fragment.BaseFragment;
+
+import cn.zhenye.appcommon.ZyCommonActivity;
+import cn.zhenye.base.tool.ZStatusbarUtils;
+import cn.zhenye.drawer.DrawerFragment;
 
 public class HomeActivity extends ZyCommonActivity implements View.OnClickListener {
     public static String TAG = HomeActivity.class.getName();
@@ -26,6 +28,7 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initUI();
+        initDrawer();
         initNavigationBarAndFragment(savedInstanceState);
     }
 
@@ -140,6 +143,17 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
     public void onClick(View view) {
         int id = view.getId();
 
+    }
+
+    private void initDrawer() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        DrawerFragment fragment = new DrawerFragment();
+        transaction.add(R.id.ll_drawer, fragment);
+        try {
+            transaction.commitNow();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
     }
 
 }

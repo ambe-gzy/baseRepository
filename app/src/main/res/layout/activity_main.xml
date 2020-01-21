@@ -34,7 +34,7 @@
         android:layout_marginEnd="30dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@android:color/white"
+        android:background="@color/color_FFEFE4"
         android:orientation="vertical"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

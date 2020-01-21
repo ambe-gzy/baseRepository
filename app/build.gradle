@@ -101,7 +101,8 @@ dependencies {
     implementation project(path: ':base')
 
     //RecyclerView
-    implementation 'com.android.support:recyclerview-v7:29.0.0'//这里面的28，要与上面ompileSdkVersion 28 的后面数字相同
+    implementation 'com.android.support:recyclerview-v7:29.0.0'
+//这里面的28，要与上面ompileSdkVersion 28 的后面数字相同
 
     // ViewModel and LiveData
     implementation 'androidx.lifecycle:lifecycle-extensions:' + project.VIEW_MODEL_LIVE_DATA_VERSION
