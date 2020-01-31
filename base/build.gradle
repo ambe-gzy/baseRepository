@@ -49,5 +49,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
     //多种工具类 #https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/README-CN.md
-    implementation 'com.blankj:utilcodex:1.26.0'
+    api 'com.blankj:utilcodex:1.26.0'
+
 }

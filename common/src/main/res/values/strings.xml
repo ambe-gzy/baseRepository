@@ -51,4 +51,6 @@
 
     <string name="app_version">%1$s %2$s %3$s</string>
     <string name="app_right">Copyright @ 2020 VoiceReverse2020 All right Reserved</string>
+
+    <string name="fragment_drawer_five_star">给我们打分</string>
 </resources>

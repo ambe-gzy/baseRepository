@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.meituan.android.walle.WalleChannelReader;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import cn.zhenye.home.BuildConfig;
 import cn.zhenye.home.R;
 
@@ -35,10 +37,19 @@ public class DrawerFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initAppVersion(view);
+        initRecyclerView(view);
     }
 
     private void initAppVersion(View view){
         TextView appVersion = view.findViewById(R.id.tv_app_version);
         appVersion.setText(getResources().getString(R.string.app_version, WalleChannelReader.getChannel(getContext()), BuildConfig.BUILD_TYPE,BuildConfig.VERSION_NAME));
     }
+
+    private void initRecyclerView(View view){
+        RecyclerView recyclerView = view.findViewById(R.id.rv_drawer);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(new DrawerAdapter());
+    }
+
+
 }
