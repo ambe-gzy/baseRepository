@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
 import cn.zhenye.base.tool.ZTimeUtils;
 import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.credit.manager.CreditManager;
@@ -32,15 +35,26 @@ public class VoiceChallengerAdapter implements View.OnClickListener , OnRecordLi
     
     private VoiceChallengerAdapter(){}
 
-    public VoiceChallengerAdapter(Context context, View view, Chronometer currentTime, String savePath, VoiceGameViewModel voiceGameViewModel){
+    public VoiceChallengerAdapter(FragmentActivity activity, View view, Chronometer currentTime, String savePath, VoiceGameViewModel voiceGameViewModel){
         initView(view);
         AudioRecordManager.getInstance().registerListener(this);
-        mContext = context;
+        mContext = activity.getApplicationContext();
         mCurrentTime = currentTime;
         mSavePath = savePath;
         mVoiceGameViewModel = voiceGameViewModel;
+        initVM(activity);
     }
 
+    private void initVM(FragmentActivity activity) {
+        mVoiceGameViewModel.getCurrentRecordPath().observe(activity, new Observer<VoiceEntity>() {
+            @Override
+            public void onChanged(VoiceEntity entity) {
+                if (entity == null){
+                    mTotalTime.setText(mContext.getResources().getString(R.string.fragment_play_default_time));
+                }
+            }
+        });
+    }
 
     private void initView(View view){
         mRecordBtn = view.findViewById(R.id.tv_voice_record_challenger);

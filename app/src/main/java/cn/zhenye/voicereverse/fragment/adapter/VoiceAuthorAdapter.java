@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
 import cn.zhenye.base.tool.ZTimeUtils;
 import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.credit.manager.CreditManager;
@@ -33,13 +36,14 @@ public class VoiceAuthorAdapter implements View.OnClickListener , OnRecordListen
 
     private VoiceAuthorAdapter(){}
 
-    public VoiceAuthorAdapter(Context context,View view,Chronometer currentTime,String savePath,VoiceGameViewModel voiceGameViewModel){
+    public VoiceAuthorAdapter(FragmentActivity appCompatActivity, View view, Chronometer currentTime, String savePath, VoiceGameViewModel voiceGameViewModel){
         initView(view);
         AudioRecordManager.getInstance().registerListener(this);
-        mContext = context;
+        mContext = appCompatActivity.getApplicationContext();
         mCurrentTime = currentTime;
         mSavePath = savePath;
         mVoiceGameViewModel = voiceGameViewModel;
+        initVM(appCompatActivity);
     }
 
     private void initView(View view){
@@ -51,6 +55,17 @@ public class VoiceAuthorAdapter implements View.OnClickListener , OnRecordListen
         mRecordBtn.setOnClickListener(this);
         mReverseBtn.setOnClickListener(this);
         mPlayBtn.setOnClickListener(this);
+    }
+
+    private void initVM(FragmentActivity activity) {
+        mVoiceGameViewModel.getCurrentRecordPath().observe(activity, new Observer<VoiceEntity>() {
+            @Override
+            public void onChanged(VoiceEntity entity) {
+                if (entity == null){
+                    mTotalTime.setText(mContext.getResources().getString(R.string.fragment_play_default_time));
+                }
+            }
+        });
     }
 
 

@@ -92,8 +92,8 @@ public class VoiceAuthorFragment extends BaseFragment
             public void onChanged(String s) {
                 Log.d(TAG,"save path is: "+s);
                 mSavePath = s+"/";
-                new VoiceAuthorAdapter(VoiceAuthorFragment.this.getContext(),mAdapterContainer,mTimer,mSavePath,mVoiceGameViewModel);
-                new VoiceChallengerAdapter(VoiceAuthorFragment.this.getContext(),mAdapterContainer,mTimer,mSavePath,mVoiceGameViewModel);
+                new VoiceAuthorAdapter(VoiceAuthorFragment.this.getActivity(),mAdapterContainer,mTimer,mSavePath,mVoiceGameViewModel);
+                new VoiceChallengerAdapter(VoiceAuthorFragment.this.getActivity(),mAdapterContainer,mTimer,mSavePath,mVoiceGameViewModel);
 
             }
         });
@@ -128,6 +128,7 @@ public class VoiceAuthorFragment extends BaseFragment
                 save();
                 break;
             case R.id.iv_delete:
+                reverse();
                 break;
             case R.id.iv_question:
                 VoicePlayConfirmDialog.showDialog(getParentFragmentManager(),null);
@@ -147,5 +148,10 @@ public class VoiceAuthorFragment extends BaseFragment
         }else {
             ZToastUtils.showShort("请先录音！");
         }
+    }
+
+    private void reverse(){
+        mVoiceGameViewModel.setCurrentRecordPath(null);
+        ZToastUtils.showShort(R.string.credit_delete_record_success);
     }
 }

@@ -47,4 +47,5 @@
     <string name="credit_get">+ %1$d~%2$d</string>
 
     <string name="credit_limit">积分不足，请先获取积分</string>
+    <string name="credit_delete_record_success">删除录音成功！</string>
 </resources>
