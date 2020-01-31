@@ -48,4 +48,7 @@
 
     <string name="credit_limit">积分不足，请先获取积分</string>
     <string name="credit_delete_record_success">删除录音成功！</string>
+
+    <string name="app_version">%1$s %2$s %3$s</string>
+    <string name="app_right">Copyright @ 2020 VoiceReverse2020 All right Reserved</string>
 </resources>

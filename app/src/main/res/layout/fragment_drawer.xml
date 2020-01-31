@@ -29,4 +29,35 @@
         android:layout_height="0dp"
         android:layout_weight="3"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="7dp"
+            android:src="@mipmap/ic_gantan"
+            android:scaleType="fitCenter"
+            android:tint="@color/colorPrimaryDark"/>
+        <TextView
+            android:id="@+id/tv_app_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="8dp"
+            tools:text="123123"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:textSize="7dp"
+        android:textColor="@color/colorPrimary"
+        android:text="@string/app_right"/>
+
+
+
 </LinearLayout>

@@ -43,8 +43,7 @@ public class HomeGameFragment extends BaseFragment implements View.OnClickListen
         mVoiceReverseBtn.setOnClickListener(this);
         mIvGuide.setOnClickListener(this);
 
-        channel = getView().findViewById(R.id.channel);
-        channel.setText(WalleChannelReader.getChannel(getActivity().getApplicationContext()));
+//        channel.setText(WalleChannelReader.getChannel(getActivity().getApplicationContext()));
     }
 
     @Override
