@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:layout_marginBottom="5dp"
-    android:paddingStart="5dp"
-    android:paddingEnd="5dp"
-    android:gravity="center_vertical"
     android:background="@drawable/ripple_add_voice_file"
-    android:orientation="horizontal"
     android:clickable="true"
-    android:focusable="true"
-    tools:visibility="visible">
+    android:focusable="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        tools:visibility="visible">
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -48,7 +50,6 @@
                 android:textSize="12dp"
                 tools:text="创建时间"/>
         </LinearLayout>
-
         <TextView
             android:id="@+id/tv_voice_file_contain_num"
             android:layout_width="wrap_content"
@@ -67,3 +68,12 @@
             android:src="@mipmap/ic_page_in"
             android:tint="@color/colorPrimaryDark"/>
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:layout_marginStart="15dp"/>
+</RelativeLayout>
+
