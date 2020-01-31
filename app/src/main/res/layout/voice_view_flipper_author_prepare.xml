@@ -44,9 +44,37 @@
         android:visibility="gone"
         tools:visibility="visible">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="end">
+
+            <ImageView
+                android:id="@+id/iv_question"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_question"
+                android:scaleType="fitXY"
+                android:padding="4dp"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:focusable="true"
+                android:clickable="true"
+                android:tint="@color/colorPrimaryDark"/>
+            <ImageView
+                android:id="@+id/iv_delete"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_delete"
+                android:scaleType="fitXY"
+                android:padding="13dp"
+                android:tint="@color/colorPrimaryDark"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:focusable="true"
+                android:clickable="true"/>
+        </LinearLayout>
+
         <Chronometer
             android:id="@+id/timer_voice_author_play"
-            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

@@ -79,6 +79,8 @@ public class VoiceAuthorFragment extends BaseFragment
 
         mGameStartBtn.setOnClickListener(this);
         view.findViewById(R.id.tv_voice_save).setOnClickListener(this);
+        view.findViewById(R.id.iv_delete).setOnClickListener(this);
+        view.findViewById(R.id.iv_question).setOnClickListener(this);
     }
 
     private void initVM() {
@@ -124,6 +126,11 @@ public class VoiceAuthorFragment extends BaseFragment
                 break;
             case R.id.tv_voice_save:
                 save();
+                break;
+            case R.id.iv_delete:
+                break;
+            case R.id.iv_question:
+                VoicePlayConfirmDialog.showDialog(getParentFragmentManager(),null);
                 break;
         }
     }

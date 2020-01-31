@@ -4,9 +4,6 @@
     <include
         android:id="@+id/ll_voice_play_prepare"
         layout="@layout/voice_view_flipper_author_prepare"/>
-    <include
-        android:id="@+id/ll_voice_play_start"
-        layout="@layout/voice_view_flipper_author_play"/>
 </FrameLayout>
 
 
