@@ -29,7 +29,7 @@ public class CreditResultDialog extends BaseDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mBtnGetCredit = view.findViewById(R.id.btn_get_credit);
-        mBtnGetCredit.setText(String.format("+%d", mCredit));
+        mBtnGetCredit.setText(String.format("+%d 积分", mCredit));
         mBtnGetCredit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
