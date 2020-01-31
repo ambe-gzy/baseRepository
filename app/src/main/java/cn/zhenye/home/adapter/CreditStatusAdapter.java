@@ -96,7 +96,7 @@ public class CreditStatusAdapter {
                 if (aBoolean){
                     mOneMinuteBtn.setClickable(true);
                     mOneMinuteBtn.setBackgroundResource(R.drawable.ripple_voice_reverse);
-                    mOneMinuteBtn.setText("按钮1");
+                    mOneMinuteBtn.setText("获取");
                 }else {
                     mOneMinuteBtn.setClickable(false);
                     mOneMinuteBtn.setBackgroundResource(R.drawable.ripple_btn);
@@ -109,7 +109,7 @@ public class CreditStatusAdapter {
                 if (aBoolean) {
                     mFiveMinuteBtn.setClickable(true);
                     mFiveMinuteBtn.setBackgroundResource(R.drawable.ripple_voice_reverse);
-                    mFiveMinuteBtn.setText("按钮2");
+                    mFiveMinuteBtn.setText("获取");
                 } else {
                     mFiveMinuteBtn.setClickable(false);
                     mFiveMinuteBtn.setBackgroundResource(R.drawable.ripple_btn);
@@ -123,7 +123,7 @@ public class CreditStatusAdapter {
                 if (aBoolean) {
                     mFifteenMinuteBtn.setClickable(true);
                     mFifteenMinuteBtn.setBackgroundResource(R.drawable.ripple_voice_reverse);
-                    mFiveMinuteBtn.setText("按钮3");
+                    mFifteenMinuteBtn.setText("获取");
                 } else {
                     mFifteenMinuteBtn.setClickable(false);
                     mFifteenMinuteBtn.setBackgroundResource(R.drawable.ripple_btn);

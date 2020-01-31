@@ -5,92 +5,148 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="cn.zhenye.home.HomeCoinFragment">
 
-    <TextView
-        android:id="@+id/tv_get_credit_message_one"
-        app:layout_constraintTop_toTopOf="@id/tv_credit_get_one_minute_btn"
-        app:layout_constraintBottom_toBottomOf="@id/tv_credit_get_one_minute_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_credit_get_one_minute_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        tools:text="1111~2222"/>
-
-    <TextView
-        android:id="@+id/tv_get_credit_message_five"
-        app:layout_constraintTop_toTopOf="@id/tv_credit_get_five_minute_btn"
-        app:layout_constraintBottom_toBottomOf="@id/tv_credit_get_five_minute_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_credit_get_five_minute_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        tools:text="1111~2222"/>
-
-    <TextView
-        android:id="@+id/tv_get_credit_messgae_fifteen"
-        app:layout_constraintTop_toTopOf="@id/tv_credit_get_fifteen_minute_btn"
-        app:layout_constraintBottom_toBottomOf="@id/tv_credit_get_fifteen_minute_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_credit_get_fifteen_minute_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        tools:text="1111~2222"/>
-
-
-
-    <TextView
-        android:id="@+id/tv_credit_get_one_minute_btn"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="按钮1"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:padding="10dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/ripple_voice_reverse"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:contentPadding="5dp"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintWidth_percent="0.9"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.25"/>
+        app:layout_constraintVertical_bias="0.2"
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/color_FFD85C"
+        app:cardElevation="10dp">
 
-    <TextView
-        android:id="@+id/tv_credit_get_five_minute_btn"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="按钮2"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:padding="10dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/ripple_voice_reverse"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:src="@mipmap/ic_coin_list"
+                    android:scaleType="fitCenter"
+                    android:tint="@color/color_FEA715"/>
+                <TextView
+                    android:id="@+id/tv_get_credit_message_one"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:textSize="20dp"
+                    tools:text="1111~2222"/>
+                <TextView
+                    android:id="@+id/tv_credit_get_one_minute_btn"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:padding="7dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="@drawable/ripple_voice_reverse"/>
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_credit_get_fifteen_minute_btn"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="按钮3"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/ripple_voice_reverse"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.75"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:src="@mipmap/ic_coin_list"
+                    android:scaleType="fitCenter"
+                    android:tint="@color/color_FEA715"/>
+                <TextView
+                    android:id="@+id/tv_get_credit_message_five"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    tools:text="1111~2222"/>
+                <TextView
+                    android:id="@+id/tv_credit_get_five_minute_btn"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:padding="7dp"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="@drawable/ripple_voice_reverse"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:src="@mipmap/ic_coin_list"
+                    android:scaleType="fitCenter"
+                    android:tint="@color/color_FEA715"/>
+                <TextView
+                    android:id="@+id/tv_get_credit_messgae_fifteen"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textSize="20dp"
+                    tools:text="1111~2222"/>
+                <TextView
+                    android:id="@+id/tv_credit_get_fifteen_minute_btn"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:padding="7dp"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="@drawable/ripple_voice_reverse"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
