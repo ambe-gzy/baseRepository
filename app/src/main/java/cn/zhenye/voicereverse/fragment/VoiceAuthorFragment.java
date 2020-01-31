@@ -94,7 +94,7 @@ public class VoiceAuthorFragment extends BaseFragment
                 mSavePath = s+"/";
                 new VoiceAuthorAdapter(VoiceAuthorFragment.this.getActivity(),mAdapterContainer,mTimer,mSavePath,mVoiceGameViewModel);
                 new VoiceChallengerAdapter(VoiceAuthorFragment.this.getActivity(),mAdapterContainer,mTimer,mSavePath,mVoiceGameViewModel);
-
+                mVoiceGameViewModel.setCurrentRecordPath(null);
             }
         });
         //是否开始游戏
@@ -128,7 +128,7 @@ public class VoiceAuthorFragment extends BaseFragment
                 save();
                 break;
             case R.id.iv_delete:
-                reverse();
+                deleteVoice();
                 break;
             case R.id.iv_question:
                 VoicePlayConfirmDialog.showDialog(getParentFragmentManager(),null);
@@ -150,7 +150,7 @@ public class VoiceAuthorFragment extends BaseFragment
         }
     }
 
-    private void reverse(){
+    private void deleteVoice(){
         mVoiceGameViewModel.setCurrentRecordPath(null);
         ZToastUtils.showShort(R.string.credit_delete_record_success);
     }

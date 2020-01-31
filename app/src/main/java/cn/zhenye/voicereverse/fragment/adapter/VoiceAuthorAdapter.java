@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.TimedText;
 import android.os.SystemClock;
 import android.speech.tts.Voice;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.TextView;
@@ -63,6 +64,16 @@ public class VoiceAuthorAdapter implements View.OnClickListener , OnRecordListen
             public void onChanged(VoiceEntity entity) {
                 if (entity == null){
                     mTotalTime.setText(mContext.getResources().getString(R.string.fragment_play_default_time));
+                    mPlayBtn.setBackground(mContext.getResources().getDrawable(R.drawable.bg_btn_unable));
+                    mReverseBtn.setBackground(mContext.getResources().getDrawable(R.drawable.bg_btn_unable));
+                    return;
+                }
+                if  (!TextUtils.isEmpty(entity.normalVoicePath)) {
+                    mPlayBtn.setBackground(mContext.getResources().getDrawable(R.drawable.ripple_btn));
+                    mReverseBtn.setBackground(mContext.getResources().getDrawable(R.drawable.ripple_btn));
+                } else {
+                    mPlayBtn.setBackground(mContext.getResources().getDrawable(R.drawable.bg_btn_unable));
+                    mReverseBtn.setBackground(mContext.getResources().getDrawable(R.drawable.bg_btn_unable));
                 }
             }
         });
