@@ -83,7 +83,6 @@ public class CreditStatusAdapter {
         if (CreditStatusManager.getInstance().getFifteenMinuteCacheRemain()!= 0) {
             CreditStatusManager.getInstance().startFifteenMinuteCountTimer(mFifteenMinuteBtn);
         }
-
     }
 
     private void initVM(AppCompatActivity appCompatActivity){
@@ -149,7 +148,6 @@ public class CreditStatusAdapter {
                 mFifteenMinuteBtn.setText(ZTimeUtils.secToTime(aLong/1000));
             }
         });
-
     }
 
     private void initOnClickListener(final AppCompatActivity activity){
@@ -185,11 +183,9 @@ public class CreditStatusAdapter {
         });
     }
 
-
     public void getCredit(AppCompatActivity activity,long min , long max){
         long getCredit = CreditOperationManager.getInstance().getCredit(min,max);
         //todo 看完弹窗，再拿积分
         CreditResultDialog.showDialogNow(activity.getSupportFragmentManager(),getCredit);
     }
-
 }
