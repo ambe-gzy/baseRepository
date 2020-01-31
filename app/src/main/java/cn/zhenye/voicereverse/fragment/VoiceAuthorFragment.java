@@ -31,6 +31,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.mintegral.msdk.base.fragment.BaseFragment;
 
+import java.util.List;
+
 
 public class VoiceAuthorFragment extends BaseFragment
         implements View.OnClickListener{
@@ -108,6 +110,14 @@ public class VoiceAuthorFragment extends BaseFragment
                 }else {
                     mRlPrepareBg.setVisibility(View.VISIBLE);
                     mLlPlayBg.setVisibility(View.GONE);
+                }
+            }
+        });
+        mVoiceViewModel.getVoiceEntityLiveData().observe(getActivity(), new Observer<List<VoiceEntity>>() {
+            @Override
+            public void onChanged(List<VoiceEntity> voiceEntities) {
+                if (voiceEntities != null) {
+                    mVoiceGameViewModel.setCurrentRecordPath(null);
                 }
             }
         });

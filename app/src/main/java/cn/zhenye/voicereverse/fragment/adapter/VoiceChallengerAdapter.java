@@ -95,8 +95,6 @@ public class VoiceChallengerAdapter implements View.OnClickListener , OnRecordLi
                     ZToastUtils.showShort(R.string.toast_please_stop_play);
                     return;
                 }
-
-                mRecordBtn.setClickable(false);
                 if (!AudioRecordManager.getInstance().isRecording()){
                     if (!CreditManager.getInstance().decreaseCredit(VoiceConstants.RECORD_PER_CREDIT)){
                         ZToastUtils.showShort(mContext.getResources().getString(R.string.credit_limit));
@@ -108,9 +106,11 @@ public class VoiceChallengerAdapter implements View.OnClickListener , OnRecordLi
                     AudioRecordManager.getInstance().start(savePath,AudioRecordManager.CHALLENGER);
                 }else {
                     if (AudioRecordManager.getInstance().getSource() != AudioRecordManager.CHALLENGER){
+                        ZToastUtils.showShort(R.string.toast_please_stop_recording);
                         return;
                     }
                     mRecordBtn.setText(mContext.getResources().getString(R.string.fragment_voice_author_play));
+                    mRecordBtn.setClickable(false);
                     AudioRecordManager.getInstance().stop();
                 }
                 break;

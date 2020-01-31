@@ -98,7 +98,6 @@ public class VoiceAuthorAdapter implements View.OnClickListener , OnRecordListen
                     return;
                 }
 
-                mRecordBtn.setClickable(false);
                 if (!AudioRecordManager.getInstance().isRecording()){
                     if (!CreditManager.getInstance().decreaseCredit(VoiceConstants.RECORD_PER_CREDIT)){
                         ZToastUtils.showShort(mContext.getResources().getString(R.string.credit_limit));
@@ -109,9 +108,11 @@ public class VoiceAuthorAdapter implements View.OnClickListener , OnRecordListen
                     AudioRecordManager.getInstance().start(savePath,AudioRecordManager.AUTHOR);
                 }else {
                     if (AudioRecordManager.getInstance().getSource() != AudioRecordManager.AUTHOR){
+                        ZToastUtils.showShort(R.string.toast_please_stop_recording);
                         return;
                     }
                     mRecordBtn.setText(mContext.getResources().getString(R.string.fragment_voice_author_play));
+                    mRecordBtn.setClickable(false);
                     AudioRecordManager.getInstance().stop();
                 }
                 break;
