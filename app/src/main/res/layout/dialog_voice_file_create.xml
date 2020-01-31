@@ -17,7 +17,7 @@
             android:gravity="center"
             android:layout_marginTop="20dp"
             android:textSize="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimaryDark"
             android:text="@string/voice_file_create_tittle"/>
 
         <EditText
@@ -30,7 +30,7 @@
             android:hint="@string/voice_file_create_input_name"
             android:gravity="center"
             android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/color_8B8B8B"/>
+            android:textColorHint="@color/colorPrimary"/>
 
         <TextView
             android:id="@+id/tv_voice_file_create_time"
@@ -38,7 +38,7 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:layout_marginTop="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="15dp"
             android:text="创建时间"/>
 
@@ -69,7 +69,7 @@
                 android:focusable="true"
                 android:text="@string/dialog_negative_btn"
                 android:textSize="17dp"
-                android:textColor="@color/black"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:background="@drawable/ripple_btn"/>
             <TextView
@@ -81,7 +81,7 @@
                 android:layout_weight="1"
                 android:text="@string/dialog_positive_btn"
                 android:textSize="17dp"
-                android:textColor="@color/black"
+                android:textColor="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:clickable="true"
                 android:focusable="true"
