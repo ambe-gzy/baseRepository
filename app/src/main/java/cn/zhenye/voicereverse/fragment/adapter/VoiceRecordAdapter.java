@@ -1,7 +1,9 @@
 package cn.zhenye.voicereverse.fragment.adapter;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.media.TimedText;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +38,18 @@ public class VoiceRecordAdapter extends RecyclerView.Adapter<VoiceRecordAdapter.
         VoiceEntity entity = mList.get(position);
         holder.name.setText(entity.saveName);
         setItemListener(holder,entity);
+        setBtnStatus(holder,entity);
+    }
+
+    private void setBtnStatus(VoiceHolder holder,VoiceEntity entity) {
+        if (TextUtils.isEmpty(entity.normalVoicePath)) {
+            holder.btnNormalPlay.setBackgroundResource(R.drawable.bg_circle_grey);
+            holder.btnNormalReverse.setBackgroundResource(R.drawable.bg_circle_grey);
+        }
+        if (TextUtils.isEmpty(entity.answerVoicePath)) {
+            holder.btnChallangePlay.setBackgroundResource(R.drawable.bg_circle_grey);
+            holder.btnChallengeReverse.setBackgroundResource(R.drawable.bg_circle_grey);
+        }
     }
 
     @Override
@@ -49,7 +63,6 @@ public class VoiceRecordAdapter extends RecyclerView.Adapter<VoiceRecordAdapter.
         View btnChallangePlay;
         View btnChallengeReverse;
         TextView name;
-
 
         public VoiceHolder(@NonNull View itemView) {
             super(itemView);

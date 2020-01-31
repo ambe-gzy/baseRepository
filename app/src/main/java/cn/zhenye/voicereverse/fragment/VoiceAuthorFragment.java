@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import cn.zhenye.base.cache.ZyCacheStorage;
 import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.credit.manager.CreditManager;
 import cn.zhenye.common.db.entity.VoiceEntity;
@@ -116,13 +117,19 @@ public class VoiceAuthorFragment extends BaseFragment
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_voice_author_prepare_btn:
-                VoicePlayConfirmDialog.showDialog(getParentFragmentManager(), new VoicePlayConfirmDialog.ClickListener() {
-                    @Override
-                    public void onPositiveClick() {
-                        Log.d(TAG,"CLICK POSITIVE");
-                        mVoiceGameViewModel.setIsAuthorStart(true);
-                    }
-                });
+                if (!ZyCacheStorage.getBoolean(VoiceConstants.KEY_SHOW_VOICE_GUIDE,false)){
+                    ZyCacheStorage.put(VoiceConstants.KEY_SHOW_VOICE_GUIDE,true);
+                    VoicePlayConfirmDialog.showDialog(getParentFragmentManager(), new VoicePlayConfirmDialog.ClickListener() {
+                        @Override
+                        public void onPositiveClick() {
+                            Log.d(TAG,"CLICK POSITIVE");
+                            mVoiceGameViewModel.setIsAuthorStart(true);
+                        }
+                    });
+                } else {
+                    mVoiceGameViewModel.setIsAuthorStart(true);
+                }
+
                 break;
             case R.id.tv_voice_save:
                 save();
