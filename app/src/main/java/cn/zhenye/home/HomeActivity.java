@@ -3,8 +3,12 @@ package cn.zhenye.home;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -21,7 +25,7 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
     private BottomNavigationBar mNavigationBar;
     private volatile Fragment mCurrentFragment;
     private static final String STATE_CURRENT_FRAGMENT_TAG = "state_current_fragment_tag"; // HomeActivity被回收重启后，用于恢复当前Fragment的标志
-
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,7 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
         setContentView(R.layout.activity_main);
         initUI();
         initDrawer();
+        initToolbar();
         initNavigationBarAndFragment(savedInstanceState);
     }
 
@@ -42,6 +47,24 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
     private void initUI(){
         ZStatusbarUtils.setStatusBarTextColor(getWindow(),true);
         mNavigationBar = findViewById(R.id.nvb_main_navigation_bar);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+    }
+
+    private void initToolbar(){
+        ImageView menu =  (ImageView)getToolbarReturn();
+        menu.setImageResource(R.mipmap.ic_menu);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view.getTag() != null && view.getTag().equals("open")){
+                    mDrawerLayout.closeDrawer(GravityCompat.START | Gravity.LEFT);
+                    view.setTag("");
+                    return;
+                }
+                view.setTag("open");
+                mDrawerLayout.openDrawer(GravityCompat.START | Gravity.LEFT);
+            }
+        });
     }
 
     private void initNavigationBarAndFragment(Bundle savedInstanceState) {
