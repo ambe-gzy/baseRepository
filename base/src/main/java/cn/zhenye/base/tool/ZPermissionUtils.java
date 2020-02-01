@@ -16,4 +16,8 @@ public class ZPermissionUtils {
         //请求权限
         ActivityCompat.requestPermissions(activity, permissionsRecord, REQUEST_STORAGE_PERMISSION_AND_AUDIO);
     }
+
+    public static void requestIntentPermission(Activity activity){
+        
+    }
 }

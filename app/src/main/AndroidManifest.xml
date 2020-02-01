@@ -15,8 +15,6 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
 
-
-
     <application
         android:name="cn.zhenye.ZyApplication"
         android:allowBackup="true"
@@ -26,24 +24,27 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="cn.zhenye.drawer.PrivacyActivity"></activity>
         <activity android:name="cn.zhenye.voicereverse.VoiceFileActivity" />
         <activity android:name="cn.zhenye.voicereverse.VoiceReverseActivity" />
         <activity android:name="cn.zhenye.appcommon.SplashActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name="cn.zhenye.auth.LoginActivity" />
         <activity android:name="cn.zhenye.auth.RegisterActivity" />
         <activity android:name="cn.zhenye.auth.ForgetPasswordActivity" />
-        <activity android:name="cn.zhenye.home.HomeActivity">
+        <activity android:name=".HomeActivity">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <provider
@@ -54,9 +55,7 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/gdt_file_path" />
-        </provider>
-
-        <!--MTG激励视频所需的Activity，此处配置作用于流量分配功能，关于流量分配功能，详情请咨询商务-->
+        </provider> <!-- MTG激励视频所需的Activity，此处配置作用于流量分配功能，关于流量分配功能，详情请咨询商务 -->
         <activity
             android:name="com.mintegral.msdk.reward.player.MTGRewardVideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -66,21 +65,19 @@
             android:configChanges="keyboard|orientation"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
-        <!--国内流量版本必需，海外版本可以不添加-->
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 国内流量版本必需，海外版本可以不添加 -->
         <receiver android:name="com.mintegral.msdk.click.AppReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
+
                 <data android:scheme="package" />
             </intent-filter>
-        </receiver>
-        <!--国内流量必需，海外版本可以不添加-->
+        </receiver> <!-- 国内流量必需，海外版本可以不添加 -->
         <service android:name="com.mintegral.msdk.shell.MTGService">
             <intent-filter>
                 <action android:name="com.mintegral.msdk.download.action" />
             </intent-filter>
-        </service>
-        <!--国内流量版本必需，海外版本可以不添加。-->
+        </service> <!-- 国内流量版本必需，海外版本可以不添加。 -->
         <provider
             android:name="com.mintegral.msdk.base.utils.MTGFileProvider"
             android:authorities="${applicationId}.mtgFileProvider"
@@ -89,18 +86,13 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/mtg_provider_paths" />
-        </provider>
-        <!--MTG所需的组件结束-->
-
+        </provider> <!-- MTG所需的组件结束 -->
         <uses-library
             android:name="org.apache.http.legacy"
-            android:required="false" />
-
-        <!-- 声明SDK所需要的组件 -->
+            android:required="false" /> <!-- 声明SDK所需要的组件 -->
         <service
             android:name="com.qq.e.comm.DownloadService"
-            android:exported="false" />
-        <!-- 请开发者注意字母的大小写，ADActivity，而不是AdActivity -->
+            android:exported="false" /> <!-- 请开发者注意字母的大小写，ADActivity，而不是AdActivity -->
         <activity
             android:name="com.qq.e.ads.ADActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
@@ -112,7 +104,6 @@
             android:name="com.qq.e.ads.LandscapeADActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="landscape" />
-
     </application>
 
 </manifest>

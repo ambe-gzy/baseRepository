@@ -12,12 +12,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
+import cn.zhenye.base.tool.ZActivityUtils;
 import cn.zhenye.base.tool.ZAppStoreUtils;
 import cn.zhenye.home.R;
 
 public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.DrawerHolder> {
     //列表数量
-    private static final int ITEM_COUNT = 1;
+    private static final int ITEM_COUNT = 2;
     private Context mContext;
     @NonNull
     @Override
@@ -71,7 +72,15 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.DrawerHold
                 });
                 break;
             case 1:
+                holder.message.setText(mContext.getResources().getString(R.string.activity_tittle_privacy));
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ZActivityUtils.safeStartActivityWithIntentClass(mContext,PrivacyActivity.class);
+                    }
+                });
                 break;
+            case 2:
                 default:
 
         }
