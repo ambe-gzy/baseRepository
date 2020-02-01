@@ -46,6 +46,7 @@
     <color name="color_DBDBDB">#DBDBDB</color>
     <color name="color_B22222">#B22222</color>
     <color name="color_4169E1">#4169E1</color>
+    <color name="color_2E2E2E">#2E2E2E</color>
 
     <color name="color_ripple">@color/color_DBDBDB</color>
 </resources>

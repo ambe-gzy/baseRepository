@@ -99,7 +99,7 @@ public class CreditStatusAdapter {
                     mOneMinuteBtn.setText("获取");
                 }else {
                     mOneMinuteBtn.setClickable(false);
-                    mOneMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.black));
+                    mOneMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.color_2E2E2E));
                     mOneMinuteBtn.setBackgroundResource(R.drawable.bg_btn_unable);
                 }
             }
@@ -114,7 +114,7 @@ public class CreditStatusAdapter {
                     mFiveMinuteBtn.setText("获取");
                 } else {
                     mFiveMinuteBtn.setClickable(false);
-                    mFiveMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.black));
+                    mFiveMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.color_2E2E2E));
                     mFiveMinuteBtn.setBackgroundResource(R.drawable.bg_btn_unable);
                 }
 
@@ -130,7 +130,7 @@ public class CreditStatusAdapter {
                     mFifteenMinuteBtn.setText("获取");
                 } else {
                     mFifteenMinuteBtn.setClickable(false);
-                    mFifteenMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.black));
+                    mFifteenMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.color_2E2E2E));
                     mFifteenMinuteBtn.setBackgroundResource(R.drawable.bg_btn_unable);
                 }
             }
