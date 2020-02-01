@@ -95,10 +95,12 @@ public class CreditStatusAdapter {
                 if (aBoolean){
                     mOneMinuteBtn.setClickable(true);
                     mOneMinuteBtn.setBackgroundResource(R.drawable.ripple_voice_reverse);
+                    mOneMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.colorPrimaryDark));
                     mOneMinuteBtn.setText("获取");
                 }else {
                     mOneMinuteBtn.setClickable(false);
-                    mOneMinuteBtn.setBackgroundResource(R.drawable.ripple_btn);
+                    mOneMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.black));
+                    mOneMinuteBtn.setBackgroundResource(R.drawable.bg_btn_unable);
                 }
             }
         });
@@ -108,10 +110,12 @@ public class CreditStatusAdapter {
                 if (aBoolean) {
                     mFiveMinuteBtn.setClickable(true);
                     mFiveMinuteBtn.setBackgroundResource(R.drawable.ripple_voice_reverse);
+                    mFiveMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.colorPrimaryDark));
                     mFiveMinuteBtn.setText("获取");
                 } else {
                     mFiveMinuteBtn.setClickable(false);
-                    mFiveMinuteBtn.setBackgroundResource(R.drawable.ripple_btn);
+                    mFiveMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.black));
+                    mFiveMinuteBtn.setBackgroundResource(R.drawable.bg_btn_unable);
                 }
 
             }
@@ -122,10 +126,12 @@ public class CreditStatusAdapter {
                 if (aBoolean) {
                     mFifteenMinuteBtn.setClickable(true);
                     mFifteenMinuteBtn.setBackgroundResource(R.drawable.ripple_voice_reverse);
+                    mFifteenMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.colorPrimaryDark));
                     mFifteenMinuteBtn.setText("获取");
                 } else {
                     mFifteenMinuteBtn.setClickable(false);
-                    mFifteenMinuteBtn.setBackgroundResource(R.drawable.ripple_btn);
+                    mFifteenMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.black));
+                    mFifteenMinuteBtn.setBackgroundResource(R.drawable.bg_btn_unable);
                 }
             }
         });
