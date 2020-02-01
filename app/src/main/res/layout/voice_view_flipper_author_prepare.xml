@@ -120,7 +120,7 @@
         <LinearLayout
             android:id="@+id/ll_voice_challenger"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:paddingTop="35dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
@@ -164,7 +164,7 @@
         <LinearLayout
             android:id="@+id/ll_voice_author"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:paddingTop="15dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
@@ -217,7 +217,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:paddingTop="25dp"
             android:paddingBottom="15dp"
             android:paddingStart="10dp"
