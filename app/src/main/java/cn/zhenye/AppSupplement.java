@@ -38,7 +38,8 @@ public class AppSupplement {
      */
     private static void initUM(Context context){
         //初始化sdk
-        UMConfigure.init(context, UMConstants.UM_APP_KEY, WalleChannelReader.getChannel(context.getApplicationContext()), UMConfigure.DEVICE_TYPE_PHONE, null);
+        String channel = BuildConfig.DEBUG?UMConstants.TEST_CHANNEL:WalleChannelReader.getChannel(context.getApplicationContext());
+        UMConfigure.init(context, UMConstants.UM_APP_KEY, channel, UMConfigure.DEVICE_TYPE_PHONE, null);
         // 选用AUTO页面采集模式
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
         // 支持在子进程中统计自定义事件
