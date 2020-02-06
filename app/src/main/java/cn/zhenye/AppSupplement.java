@@ -2,6 +2,7 @@ package cn.zhenye;
 
 import android.content.Context;
 
+import com.meituan.android.walle.WalleChannelReader;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 
@@ -37,7 +38,7 @@ public class AppSupplement {
      */
     private static void initUM(Context context){
         //初始化sdk
-        UMConfigure.init(context, UMConstants.UM_APP_KEY, UMConstants.TEST_CHANNEL, UMConfigure.DEVICE_TYPE_PHONE, null);
+        UMConfigure.init(context, UMConstants.UM_APP_KEY, WalleChannelReader.getChannel(context.getApplicationContext()), UMConfigure.DEVICE_TYPE_PHONE, null);
         // 选用AUTO页面采集模式
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
         // 支持在子进程中统计自定义事件
