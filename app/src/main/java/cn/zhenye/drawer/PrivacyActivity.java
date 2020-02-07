@@ -10,6 +10,7 @@ import cn.zhenye.home.R;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
@@ -38,7 +39,9 @@ public class PrivacyActivity extends ZyCommonActivity {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-                Log.d("aa",newProgress+"");
+                if (newProgress == 100) {
+                    findViewById(R.id.pb_privacy_loading).setVisibility(View.GONE);
+                }
             }
         });
 
