@@ -51,6 +51,5 @@ dependencies {
     //多种工具类 #https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/README-CN.md
     api 'com.blankj:utilcodex:1.26.0'
 
-    api 'com.android.support:support-v4:29.0.0'
-    api 'com.android.support:design:29.0.0'
+
 }
