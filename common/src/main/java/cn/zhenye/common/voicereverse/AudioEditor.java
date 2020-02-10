@@ -6,6 +6,8 @@ import android.util.Log;
 import Jni.FFmpegCmd;
 import VideoHandle.CmdList;
 import VideoHandle.OnEditorListener;
+import cn.zhenye.base.tool.ZToastUtils;
+import cn.zhenye.common.R;
 
 /**
  * @author zhenye on 20200106
@@ -54,7 +56,13 @@ public class AudioEditor {
                 .append("-af").append("areverse")
                 .append(audioOutput);
         String[] cmds = cmd.toArray(new String[cmd.size()]);
-        FFmpegCmd.exec(cmds, 0, listener);
+        try {
+            FFmpegCmd.exec(cmds, 0, listener);
+        } catch (Exception e) {
+            ZToastUtils.showShort(R.string.toast_record_error);
+            e.printStackTrace();
+        }
+
     }
 
     /**

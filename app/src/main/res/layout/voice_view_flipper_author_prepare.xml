@@ -120,10 +120,10 @@
         <LinearLayout
             android:id="@+id/ll_voice_challenger"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:paddingTop="35dp"
+            android:layout_height="45dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -134,17 +134,20 @@
                 android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:background="@drawable/ripple_btn"
+                android:textColor="@color/white"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/fragment_voice_author_play"
                 android:textSize="18dp"
                 android:layout_weight="1"/>
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_weight="1"/>
+
             <TextView
                 android:id="@+id/tv_voice_record_challenger"
                 android:layout_width="0dp"
@@ -157,6 +160,7 @@
                 android:focusable="true"
                 android:text="@string/fragment_voice_author_play"
                 android:textSize="18dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"/>
 
         </LinearLayout>
@@ -164,10 +168,10 @@
         <LinearLayout
             android:id="@+id/ll_voice_author"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:paddingTop="15dp"
+            android:layout_height="45dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:layout_marginBottom="15dp"
             android:visibility="gone"
             tools:visibility="visible"
             android:orientation="horizontal">
@@ -176,91 +180,90 @@
                 android:id="@+id/tv_voice_play_author"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:background="@drawable/ripple_btn"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/fragment_voice_author_record_play"
                 android:textSize="18dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"/>
             <TextView
                 android:id="@+id/tv_voice_save"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:background="@drawable/ripple_btn"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/fragment_voice_challenge_save"
                 android:textSize="18dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/tv_voice_play_challenger"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:background="@drawable/ripple_btn"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/fragment_voice_author_record_play"
                 android:textSize="18dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"/>
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:paddingTop="25dp"
-            android:paddingBottom="15dp"
+            android:layout_height="45dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_voice_play_reverse_author"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:background="@drawable/ripple_btn"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/fragment_voice_author_reverse"
                 android:textSize="18dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"/>
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_weight="1"/>
             <TextView
                 android:id="@+id/tv_voice_play_reverse_challenger"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:background="@drawable/ripple_btn"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/fragment_voice_author_reverse"
                 android:textSize="18dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"/>
-
         </LinearLayout>
-        
     </LinearLayout>
-
-
 </RelativeLayout>
 

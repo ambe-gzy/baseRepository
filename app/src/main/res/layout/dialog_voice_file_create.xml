@@ -6,7 +6,7 @@
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="250dp"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_dialog"
         android:layout_centerInParent="true"
         android:orientation="vertical">
@@ -35,57 +35,58 @@
         <TextView
             android:id="@+id/tv_voice_file_create_time"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="15dp"
             android:text="创建时间"/>
 
         <TextView
             android:id="@+id/tv_voice_file_error_message"
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
             tools:text="输入名称不能为空！"
             android:textColor="@color/color_D92524"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
-            <TextView
+            <Button
                 android:id="@+id/tv_voice_file_cancel"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="15dp"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/dialog_negative_btn"
                 android:textSize="17dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/white"
                 android:gravity="center"
-                android:background="@drawable/ripple_btn"/>
-            <TextView
+                android:backgroundTint="@color/colorPrimaryDark"/>
+            <Button
                 android:id="@+id/tv_voice_file_ok"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="20dp"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/dialog_positive_btn"
                 android:textSize="17dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:clickable="true"
                 android:focusable="true"
-                android:background="@drawable/ripple_btn"/>
+                android:backgroundTint="@color/colorPrimaryDark"/>
         </LinearLayout>
     </LinearLayout>
 
