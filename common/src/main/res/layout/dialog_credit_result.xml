@@ -37,7 +37,7 @@
                 android:layout_height="50dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:background="@color/colorPrimaryDark" />
+                android:backgroundTint="@color/colorPrimaryDark"/>
 
             <View
                 android:layout_width="0dp"
