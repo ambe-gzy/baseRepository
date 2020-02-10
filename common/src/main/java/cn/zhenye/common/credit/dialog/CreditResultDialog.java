@@ -10,11 +10,11 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
-import cn.zhenye.base.base.BaseDialogFragment;
+import cn.zhenye.base.base.BaseFullScreenDialogFragment;
 import cn.zhenye.common.R;
 import cn.zhenye.common.credit.manager.CreditManager;
 
-public class CreditResultDialog extends BaseDialogFragment {
+public class CreditResultDialog extends BaseFullScreenDialogFragment {
     private long mCredit;
     private Button mBtnGetCredit;
 
