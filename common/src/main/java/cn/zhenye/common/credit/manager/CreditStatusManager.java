@@ -51,6 +51,7 @@ public class CreditStatusManager {
             @Override
             public void onFinish(View view) {
                 notifyOneMinuteStatusCallBack(true);
+                notifyOneMinuteCountTimerCallback((long) 0);
             }
         });
     }
@@ -64,6 +65,7 @@ public class CreditStatusManager {
             @Override
             public void onFinish(View view) {
                 notifyFiveMinuteStatusCallBack(true);
+                notifyFiveMinuteCountTimerCallback((long) 0);
             }
         });
     }
@@ -77,6 +79,7 @@ public class CreditStatusManager {
             @Override
             public void onFinish(View view) {
                 notifyFifteenMinuteStatusCallBack(true);
+                notifyFifteenMinuteCountTimerCallback((long) 0);
             }
         });
     }
@@ -91,6 +94,7 @@ public class CreditStatusManager {
             @Override
             public void onFinish(View view) {
                 notifyOneMinuteStatusCallBack(true);
+                notifyOneMinuteCountTimerCallback((long) 0);
             }
         });
     }
@@ -104,6 +108,7 @@ public class CreditStatusManager {
             @Override
             public void onFinish(View view) {
                 notifyFiveMinuteStatusCallBack(true);
+                notifyFiveMinuteCountTimerCallback((long) 0);
             }
         });
     }
@@ -117,6 +122,7 @@ public class CreditStatusManager {
             @Override
             public void onFinish(View view) {
                 notifyFifteenMinuteStatusCallBack(true);
+                notifyFifteenMinuteCountTimerCallback((long) 0);
             }
         });
     }

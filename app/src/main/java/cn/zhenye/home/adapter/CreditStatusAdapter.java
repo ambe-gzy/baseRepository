@@ -139,18 +139,27 @@ public class CreditStatusAdapter {
         mCreditStatusViewModel.getOneMinuteCountTimer().observe(appCompatActivity, new Observer<Long>() {
             @Override
             public void onChanged(Long aLong) {
+                if (aLong == 0){
+                    return;
+                }
                 mOneMinuteBtn.setText(ZTimeUtils.secToTime(aLong/1000));
             }
         });
         mCreditStatusViewModel.getFiveMinuteCountTimer().observe(appCompatActivity, new Observer<Long>() {
             @Override
             public void onChanged(Long aLong) {
+                if (aLong == 0){
+                    return;
+                }
                 mFiveMinuteBtn.setText(ZTimeUtils.secToTime(aLong/1000));
             }
         });
         mCreditStatusViewModel.getFifteenMinuteCountTimer().observe(appCompatActivity, new Observer<Long>() {
             @Override
             public void onChanged(Long aLong) {
+                if (aLong == 0){
+                    return;
+                }
                 mFifteenMinuteBtn.setText(ZTimeUtils.secToTime(aLong/1000));
             }
         });
