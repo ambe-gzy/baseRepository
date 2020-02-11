@@ -26,15 +26,13 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:src="@mipmap/ic_coin_list"
-                android:scaleType="fitCenter"
-                android:tint="@color/color_FEA715"/>
+                android:scaleType="fitCenter"/>
             <TextView
                 android:id="@+id/tv_get_credit_message_one"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="30dp"
                 android:textSize="20dp"
                 tools:text="1111~2222"/>
             <TextView
@@ -45,7 +43,7 @@
                 android:textSize="20dp"
                 android:textColor="@color/white"
                 android:gravity="center"
-                android:padding="7dp"
+                android:padding="5dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:background="@drawable/ripple_btn"/>
@@ -62,15 +60,13 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:src="@mipmap/ic_coin_list"
-                android:scaleType="fitCenter"
-                android:tint="@color/color_FEA715"/>
+                android:scaleType="fitCenter"/>
             <TextView
                 android:id="@+id/tv_get_credit_message_five"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:gravity="center"
+                android:layout_marginStart="30dp"
                 android:textSize="20dp"
                 tools:text="1111~2222"/>
             <TextView
@@ -78,7 +74,7 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
-                android:padding="7dp"
+                android:padding="5dp"
                 android:textSize="20dp"
                 android:textColor="@color/white"
                 android:gravity="center"
@@ -98,15 +94,13 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:src="@mipmap/ic_coin_list"
-                android:scaleType="fitCenter"
-                android:tint="@color/color_FEA715"/>
+                android:scaleType="fitCenter"/>
             <TextView
                 android:id="@+id/tv_get_credit_messgae_fifteen"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="30dp"
                 android:textSize="20dp"
                 tools:text="1111~2222"/>
             <TextView
@@ -114,7 +108,7 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
-                android:padding="7dp"
+                android:padding="5dp"
                 android:textSize="20dp"
                 android:textColor="@color/white"
                 android:gravity="center"
