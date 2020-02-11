@@ -55,4 +55,6 @@
     <string name="fragment_drawer_five_star">给我们打分</string>
 
     <string name="activity_tittle_privacy">隐私政策</string>
+
+    <string name="toast_record_error">很抱歉，录音出错了，请联系我们反馈！</string>
 </resources>

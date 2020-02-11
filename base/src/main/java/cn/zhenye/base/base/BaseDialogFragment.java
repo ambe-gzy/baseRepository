@@ -1,12 +1,6 @@
 package cn.zhenye.base.base;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.Window;
-import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -26,7 +20,6 @@ public class BaseDialogFragment extends DialogFragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        initLayoutParams();
         try {
             super.onActivityCreated(savedInstanceState);
         } catch (Throwable throwable) {
@@ -80,18 +73,6 @@ public class BaseDialogFragment extends DialogFragment {
             super.showNow(manager, tag);
         } catch (Throwable throwable) {
             throwable.printStackTrace();
-        }
-    }
-
-    private void initLayoutParams(){
-        Window window = getDialog().getWindow();
-        if (window != null) {
-            WindowManager.LayoutParams lp = window.getAttributes();
-            lp.gravity = Gravity.CENTER;
-            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-            lp.height = WindowManager.LayoutParams.MATCH_PARENT;
-            window.setAttributes(lp);
-            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
     }
 }

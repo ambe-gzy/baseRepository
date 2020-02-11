@@ -10,11 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
-import cn.zhenye.base.base.BaseDialogFragment;
+import cn.zhenye.base.base.BaseFullScreenDialogFragment;
 import cn.zhenye.home.R;
 import cn.zhenye.voicereverse.fragment.VoiceConstants;
 
-public class VoicePlayConfirmDialog extends BaseDialogFragment implements View.OnClickListener {
+public class VoicePlayConfirmDialog extends BaseFullScreenDialogFragment implements View.OnClickListener {
     private static boolean isShow = false;
     private TextView mTvMessage;
     private ClickListener mListener;

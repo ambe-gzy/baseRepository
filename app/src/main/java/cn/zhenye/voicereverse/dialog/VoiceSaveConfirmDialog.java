@@ -1,6 +1,6 @@
 package cn.zhenye.voicereverse.dialog;
 
-import cn.zhenye.base.base.BaseDialogFragment;
+import cn.zhenye.base.base.BaseFullScreenDialogFragment;
 
-public class VoiceSaveConfirmDialog extends BaseDialogFragment {
+public class VoiceSaveConfirmDialog extends BaseFullScreenDialogFragment {
 }

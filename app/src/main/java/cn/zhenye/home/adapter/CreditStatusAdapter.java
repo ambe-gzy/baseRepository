@@ -94,8 +94,8 @@ public class CreditStatusAdapter {
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean){
                     mOneMinuteBtn.setClickable(true);
-                    mOneMinuteBtn.setBackgroundResource(R.drawable.ripple_voice_reverse);
-                    mOneMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.colorPrimaryDark));
+                    mOneMinuteBtn.setBackgroundResource(R.drawable.ripple_btn);
+                    mOneMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.white));
                     mOneMinuteBtn.setText("获取");
                 }else {
                     mOneMinuteBtn.setClickable(false);
@@ -109,8 +109,8 @@ public class CreditStatusAdapter {
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
                     mFiveMinuteBtn.setClickable(true);
-                    mFiveMinuteBtn.setBackgroundResource(R.drawable.ripple_voice_reverse);
-                    mFiveMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.colorPrimaryDark));
+                    mFiveMinuteBtn.setBackgroundResource(R.drawable.ripple_btn);
+                    mFiveMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.white));
                     mFiveMinuteBtn.setText("获取");
                 } else {
                     mFiveMinuteBtn.setClickable(false);
@@ -125,8 +125,8 @@ public class CreditStatusAdapter {
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
                     mFifteenMinuteBtn.setClickable(true);
-                    mFifteenMinuteBtn.setBackgroundResource(R.drawable.ripple_voice_reverse);
-                    mFifteenMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.colorPrimaryDark));
+                    mFifteenMinuteBtn.setBackgroundResource(R.drawable.ripple_btn);
+                    mFifteenMinuteBtn.setTextColor(mContext.getResources().getColor(R.color.white));
                     mFifteenMinuteBtn.setText("获取");
                 } else {
                     mFifteenMinuteBtn.setClickable(false);
