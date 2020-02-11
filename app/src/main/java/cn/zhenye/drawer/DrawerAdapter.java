@@ -72,6 +72,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.DrawerHold
                 });
                 break;
             case 1:
+                holder.icon.setImageResource(R.mipmap.ic_privacy_policy);
                 holder.message.setText(mContext.getResources().getString(R.string.activity_tittle_privacy));
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
