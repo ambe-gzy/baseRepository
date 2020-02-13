@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import cn.zhenye.base.base.BaseFragment;
 import cn.zhenye.base.tool.ZActivityUtils;
 import cn.zhenye.voicereverse.VoiceFileActivity;
 
@@ -15,10 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.meituan.android.walle.WalleChannelReader;
-import com.mintegral.msdk.base.fragment.BaseFragment;
-
-public class HomeGameFragment extends BaseFragment implements View.OnClickListener {
+public class HomeGameFragment extends Fragment implements View.OnClickListener {
     private LinearLayout mVoiceReverseBtn;
     private ImageView mIvGuide;
     private TextView channel;

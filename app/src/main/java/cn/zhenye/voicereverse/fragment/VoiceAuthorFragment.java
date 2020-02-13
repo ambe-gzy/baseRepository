@@ -4,8 +4,11 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+
+import cn.zhenye.base.base.BaseFragment;
 import cn.zhenye.base.cache.ZyCacheStorage;
 import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.credit.manager.CreditManager;
@@ -29,12 +32,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.mintegral.msdk.base.fragment.BaseFragment;
+
 
 import java.util.List;
 
 
-public class VoiceAuthorFragment extends BaseFragment
+public class VoiceAuthorFragment extends Fragment
         implements View.OnClickListener{
     private static String TAG = VoiceAuthorFragment.class.getName();
     private VoiceViewModel mVoiceViewModel;

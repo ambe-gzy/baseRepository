@@ -4,7 +4,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+
+import cn.zhenye.base.base.BaseFragment;
 import cn.zhenye.common.credit.VM.CreditStatusViewModel;
 import cn.zhenye.home.adapter.CreditStatusAdapter;
 
@@ -13,10 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.mintegral.msdk.base.fragment.BaseFragment;
 
-
-public class HomeCoinFragment extends BaseFragment {
+public class HomeCoinFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

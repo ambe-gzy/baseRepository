@@ -14,7 +14,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.mintegral.msdk.base.fragment.BaseFragment;
 
 import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.base.tool.ZStatusbarUtils;
@@ -122,7 +121,7 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
             // HomeActivity被回收重启，需要恢复当前显示的Fragment
             String currentFragmentTab = savedInstanceState.getString(STATE_CURRENT_FRAGMENT_TAG);
             if (!TextUtils.isEmpty(currentFragmentTab)) {
-                BaseFragment targetFragment = (BaseFragment) getSupportFragmentManager().findFragmentByTag(currentFragmentTab);
+                Fragment targetFragment = getSupportFragmentManager().findFragmentByTag(currentFragmentTab);
                 if (targetFragment != null) {
                     mCurrentFragment = targetFragment;
                 }
@@ -131,7 +130,7 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
     }
 
     private void switchFragment(String toFragmentTag) {
-        BaseFragment toFragment = (BaseFragment) getSupportFragmentManager().findFragmentByTag(toFragmentTag);
+        Fragment toFragment =  getSupportFragmentManager().findFragmentByTag(toFragmentTag);
         switchFragment(mCurrentFragment, toFragment);
 
         mNavigationBar.selectTab((HomeSupplement.getTabPositionByFragmentTag(toFragmentTag)));

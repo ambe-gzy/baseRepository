@@ -4,33 +4,30 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
-import android.speech.tts.Voice;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mintegral.msdk.base.fragment.BaseFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import cn.zhenye.base.base.BaseFragment;
 import cn.zhenye.common.db.entity.VoiceEntity;
-import cn.zhenye.common.db.entity.VoiceFileEntity;
 import cn.zhenye.home.R;
-import cn.zhenye.voicereverse.adapter.VoiceFileAdapter;
 import cn.zhenye.voicereverse.fragment.adapter.VoiceRecordAdapter;
 import cn.zhenye.voicereverse.vm.VoiceViewModel;
 
 
-public class VoiceRecordFragment extends BaseFragment {
+public class VoiceRecordFragment extends Fragment {
     private VoiceViewModel mVoiceViewModel;
     private static String TAG = VoiceRecordFragment.class.getName();
     private VoiceRecordAdapter mVoiceRecordAdapter;

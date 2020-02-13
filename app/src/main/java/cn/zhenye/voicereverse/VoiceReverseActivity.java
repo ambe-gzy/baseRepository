@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import cn.zhenye.appcommon.ZyCommonActivity;
+import cn.zhenye.base.base.BaseFragment;
 import cn.zhenye.base.tool.ZStatusbarUtils;
 import cn.zhenye.home.R;
 import cn.zhenye.voicereverse.fragment.VoicePlayFragment;
@@ -12,16 +13,13 @@ import cn.zhenye.voicereverse.fragment.VoiceRecordFragment;
 import cn.zhenye.voicereverse.vm.VoiceViewModel;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.mintegral.msdk.base.fragment.BaseFragment;
 
 public class VoiceReverseActivity extends ZyCommonActivity {
     private static String TAG = VoiceReverseActivity.class.getName();
