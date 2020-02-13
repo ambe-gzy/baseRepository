@@ -23,6 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name="cn.zhenye.drawer.PrivacyActivity"></activity>
         <activity android:name="cn.zhenye.voicereverse.VoiceFileActivity" />
