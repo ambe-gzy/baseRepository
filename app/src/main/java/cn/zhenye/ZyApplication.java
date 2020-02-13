@@ -7,5 +7,6 @@ public class ZyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         AppSupplement.init(getApplicationContext());
+        AppSupplement.initTbAd(this);
     }
 }

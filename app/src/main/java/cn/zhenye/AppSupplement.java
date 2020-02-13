@@ -1,5 +1,6 @@
 package cn.zhenye;
 
+import android.app.Application;
 import android.content.Context;
 
 import com.meituan.android.walle.WalleChannelReader;
@@ -9,6 +10,7 @@ import com.umeng.commonsdk.UMConfigure;
 import cn.zhenye.base.cache.ZyCacheStorage;
 import cn.zhenye.common.constants.UMConstants;
 import cn.zhenye.common.db.DatabaseManager;
+import cn.zhenye.common.taobaoad.TbAdManager;
 import cn.zhenye.home.BuildConfig;
 
 public class AppSupplement {
@@ -46,5 +48,13 @@ public class AppSupplement {
         UMConfigure.setProcessEvent(true);
         //打开友盟log输出日志
         UMConfigure.setLogEnabled(BuildConfig.DEBUG);
+    }
+
+    /**
+     * 初始化淘宝广告
+     * @param application
+     */
+    public static void initTbAd(Application application){
+        TbAdManager.getInstance().init(application);
     }
 }
