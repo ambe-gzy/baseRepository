@@ -25,6 +25,7 @@ import androidx.fragment.app.FragmentManager;
 import cn.zhenye.base.tool.ZTimeUtils;
 import cn.zhenye.base.tool.ZFileUtils;
 import cn.zhenye.base.tool.ZThreadManager;
+import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.db.DatabaseManager;
 import cn.zhenye.common.db.dao.VoiceFileDao;
 import cn.zhenye.common.db.entity.VoiceFileEntity;
@@ -114,6 +115,10 @@ public class CreateVoiceFileDialog extends DialogFragment implements View.OnClic
             //创建
             File filePath = null;
             try {
+                String appPath = ZFileUtils.getExternalAppDir();
+                if (TextUtils.isEmpty(appPath)){
+                    throw new NullPointerException();
+                }
                 filePath = new File(ZFileUtils.getExternalAppDir(),fileName);
             } catch (Exception e) {
                 mTvErrorMessage.setText(getResources().getText(R.string.voice_file_error_sdcard_null));

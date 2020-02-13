@@ -20,7 +20,12 @@ public class ZFileUtils {
         //读取软件的文件保存目录
         File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).getAbsolutePath(),EXTERNAL_FILE_NAME);
         if (!file.exists()){
-            file.mkdirs();
+            if (file.mkdirs()){
+                return file.getAbsolutePath();
+            } else {
+                ZToastUtils.showShort("创建根文件夹失败");
+                return null;
+            }
         }
         return file.getAbsolutePath();
     }

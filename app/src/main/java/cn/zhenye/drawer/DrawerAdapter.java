@@ -10,10 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import cn.zhenye.base.tool.ZActivityUtils;
 import cn.zhenye.base.tool.ZAppStoreUtils;
+import cn.zhenye.common.test.TestActivity;
 import cn.zhenye.home.R;
 
 public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.DrawerHolder> {
@@ -83,7 +83,13 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.DrawerHold
                 break;
             case 2:
                 default:
-
+                holder.message.setText("进入测试页面");
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ZActivityUtils.safeStartActivityWithIntentClass(mContext, TestActivity.class);
+                    }
+                });
         }
     }
 }
