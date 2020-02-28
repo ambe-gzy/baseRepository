@@ -10,7 +10,7 @@ import com.umeng.commonsdk.UMConfigure;
 import cn.zhenye.base.cache.ZyCacheStorage;
 import cn.zhenye.common.constants.UMConstants;
 import cn.zhenye.common.db.DatabaseManager;
-import cn.zhenye.common.taobaoad.TbAdManager;
+import cn.zhenye.common.tbad.TbAdManager;
 import cn.zhenye.home.BuildConfig;
 
 public class AppSupplement {
