@@ -13,11 +13,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
@@ -26,51 +22,20 @@ import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
-public class TbApiUtils {
-    private static final String TAG = TbApiUtils.class.getSimpleName();
-
-    private static final String SIGN_METHOD_MD5 = "md5";
-    private static final String SIGN_METHOD_HMAC = "hmac";
-    private static final String CHARSET_UTF8 = "utf-8";
-    private static final String CONTENT_ENCODING_GZIP = "gzip";
-
-    // TOP服务地址，正式环境需要设置为http://gw.api.taobao.com/router/rest
-    private static final String serverUrl = "http://gw.api.taobao.com/router/rest";
-    private static final String appKey = "28304735"; // 可替换为您的沙箱环境应用的appKey
-    private static final String appSecret = "98b1075fa4cdee98a8646803e1f2b246"; // 可替换为您的沙箱环境应用的appSecret
-    private static final String sessionKey = "test"; // 必须替换为沙箱账号授权得到的真实有效sessionKey
-
-    public static String getSellerItem() throws IOException {
-        Map<String, String> params = new HashMap<String, String>();
-        // 公共参数
-        params.put("method", "taobao.tbk.content.get");
-        params.put("app_key", appKey);
-//        params.put("session", sessionKey);
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        params.put("timestamp", df.format(new Date()));
-        params.put("format", "json");
-        params.put("v", "2.0");
-        params.put("sign_method", "hmac");
-        // 业务参数
-        params.put("adzone_id", "109997750080");
-
-        // 签名参数
-        params.put("sign", signTopRequest(params, appSecret, SIGN_METHOD_HMAC));
-        // 请用API
-        return callApi(new URL(serverUrl), params);
-    }
+public class TbUtils {
+    private static final String TAG = TbUtils.class.getSimpleName();
 
     /**
      * 对TOP请求进行签名。
      */
-    private static String signTopRequest(Map<String, String> params, String secret, String signMethod) throws IOException {
+    public static String signTopRequest(Map<String, String> params, String secret, String signMethod) throws IOException {
         // 第一步：检查参数是否已经排序
         String[] keys = params.keySet().toArray(new String[0]);
         Arrays.sort(keys);
 
         // 第二步：把所有参数名和参数值串在一起
         StringBuilder query = new StringBuilder();
-        if (SIGN_METHOD_MD5.equals(signMethod)) {
+        if (TbConstants.SIGN_METHOD_MD5.equals(signMethod)) {
             query.append(secret);
         }
         for (String key : keys) {
@@ -82,7 +47,7 @@ public class TbApiUtils {
 
         // 第三步：使用MD5/HMAC加密
         byte[] bytes;
-        if (SIGN_METHOD_HMAC.equals(signMethod)) {
+        if (TbConstants.SIGN_METHOD_HMAC.equals(signMethod)) {
             bytes = encryptHMAC(query.toString(), secret);
         } else {
             query.append(secret);
@@ -99,10 +64,10 @@ public class TbApiUtils {
     private static byte[] encryptHMAC(String data, String secret) throws IOException {
         byte[] bytes = null;
         try {
-            SecretKey secretKey = new SecretKeySpec(secret.getBytes(CHARSET_UTF8), "HmacMD5");
+            SecretKey secretKey = new SecretKeySpec(secret.getBytes(TbConstants.CHARSET_UTF8), "HmacMD5");
             Mac mac = Mac.getInstance(secretKey.getAlgorithm());
             mac.init(secretKey);
-            bytes = mac.doFinal(data.getBytes(CHARSET_UTF8));
+            bytes = mac.doFinal(data.getBytes(TbConstants.CHARSET_UTF8));
         } catch (GeneralSecurityException gse) {
             throw new IOException(gse.toString());
         }
@@ -113,7 +78,7 @@ public class TbApiUtils {
      * 对字符串采用UTF-8编码后，用MD5进行摘要。
      */
     private static byte[] encryptMD5(String data) throws IOException {
-        return encryptMD5(data.getBytes(CHARSET_UTF8));
+        return encryptMD5(data.getBytes(TbConstants.CHARSET_UTF8));
     }
 
     /**
@@ -145,11 +110,11 @@ public class TbApiUtils {
         return sign.toString();
     }
 
-    private static String callApi(URL url, Map<String, String> params) throws IOException {
-        String query = buildQuery(params, CHARSET_UTF8);
+    public static String callApi(URL url, Map<String, String> params) throws IOException {
+        String query = buildQuery(params, TbConstants.CHARSET_UTF8);
         byte[] content = {};
         if (query != null) {
-            content = query.getBytes(CHARSET_UTF8);
+            content = query.getBytes(TbConstants.CHARSET_UTF8);
         }
 
         HttpURLConnection conn = null;
@@ -163,7 +128,7 @@ public class TbApiUtils {
             conn.setRequestProperty("Host", url.getHost());
             conn.setRequestProperty("Accept", "text/xml,text/javascript");
             conn.setRequestProperty("User-Agent", "top-sdk-java");
-            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + CHARSET_UTF8);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + TbConstants.CHARSET_UTF8);
             out = conn.getOutputStream();
             out.write(content);
             rsp = getResponseAsString(conn);
@@ -215,7 +180,7 @@ public class TbApiUtils {
             if (!TextUtils.isEmpty(contentEncoding)){
                 Log.d(TAG,contentEncoding);
             }
-            if (CONTENT_ENCODING_GZIP.equalsIgnoreCase(contentEncoding)) {
+            if (TbConstants.CONTENT_ENCODING_GZIP.equalsIgnoreCase(contentEncoding)) {
                 return getStreamAsString(new GZIPInputStream(conn.getInputStream()), charset);
             } else {
                 return getStreamAsString(conn.getInputStream(), charset);
@@ -245,7 +210,7 @@ public class TbApiUtils {
     }
 
     private static String getResponseCharset(String ctype) {
-        String charset = CHARSET_UTF8;
+        String charset = TbConstants.CHARSET_UTF8;
 
         if (isNotEmpty(ctype)) {
             String[] params = ctype.split(";");
