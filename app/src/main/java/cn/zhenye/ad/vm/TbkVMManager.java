@@ -8,6 +8,7 @@ import cn.zhenye.base.tool.ZGsonUtils;
 import cn.zhenye.base.tool.ZThreadManager;
 import cn.zhenye.common.tbad.TbkAdManager;
 import cn.zhenye.common.tbad.response.TbkBaseResponse;
+import cn.zhenye.common.tbad.response.TbkFavoriteItemResponse;
 import cn.zhenye.common.tbad.response.TbkFavoritesResponse;
 
 public class TbkVMManager {
@@ -36,11 +37,18 @@ public class TbkVMManager {
         });
     }
 
-    public void loadFavoriteItems(int adzoneId){
+    public void loadFavoriteItems(final int favouriesId){
         ZThreadManager.getAds().execute(new Runnable() {
             @Override
             public void run() {
+                try {
+                    String jsonStr = TbkAdManager.getInstance().getTbkFavoriteItems(favouriesId);
+                    TbkFavoriteItemResponse response = ZGsonUtils.formJson(jsonStr,TbkFavoriteItemResponse.class);
 
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

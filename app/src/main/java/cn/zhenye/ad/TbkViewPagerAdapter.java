@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import cn.zhenye.ad.vm.TbkVMManager;
 import cn.zhenye.common.tbad.response.TbkFavoritesResponse;
 import cn.zhenye.home.R;
 
@@ -29,6 +30,7 @@ public class TbkViewPagerAdapter extends RecyclerView.Adapter<TbkViewPagerAdapte
         holder.tittle.setText(title);
         holder.id.setText(String.valueOf(favourId));
         Log.d("tbk","position" + position);
+        TbkVMManager.getInstance().loadFavoriteItems(favourId);
     }
 
     @Override
