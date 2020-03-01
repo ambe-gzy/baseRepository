@@ -1,18 +1,14 @@
 package cn.zhenye.ad.vm;
 
-import android.util.Log;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.zhenye.base.tool.ZDaemons;
 import cn.zhenye.base.tool.ZGsonUtils;
 import cn.zhenye.base.tool.ZThreadManager;
-import cn.zhenye.common.tbad.TbAdManager;
-import cn.zhenye.common.tbad.response.TbkBaseResult;
+import cn.zhenye.common.tbad.TbkAdManager;
+import cn.zhenye.common.tbad.response.TbkBaseResponse;
 import cn.zhenye.common.tbad.response.TbkFavoritesResponse;
-import cn.zhenye.home.HomeCoinFragment;
 
 public class TbkVMManager {
     private static TbkVMManager INSTANCE = new TbkVMManager();
@@ -27,7 +23,7 @@ public class TbkVMManager {
             @Override
             public void run() {
                 try {
-                    String jsonStr =  TbAdManager.getInstance().getTbFavourites(pageNo);
+                    String jsonStr =  TbkAdManager.getInstance().getTbFavorites(pageNo);
                     if (jsonStr != null) {
                         notifyFavouritesCallBack(ZGsonUtils.formJson(jsonStr,TbkFavoritesResponse.class));
                     } else {
@@ -40,8 +36,13 @@ public class TbkVMManager {
         });
     }
 
-    public void loadFavoriteItems(){
+    public void loadFavoriteItems(int adzoneId){
+        ZThreadManager.getAds().execute(new Runnable() {
+            @Override
+            public void run() {
 
+            }
+        });
     }
 
     public void addFavouritesListener(TbkListener listener) {
@@ -69,6 +70,6 @@ public class TbkVMManager {
 
 
     public interface TbkListener<T> {
-        void onFinish(TbkBaseResult<T> tTbkBaseResult);
+        void onFinish(TbkBaseResponse<T> tTbkBaseResponse);
     }
 }

@@ -9,15 +9,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class TbAdManager {
-    private static String TAG = TbAdManager.class.getSimpleName();
-    private static final TbAdManager INSTANCE = new TbAdManager();
+public class TbkAdManager {
+    private static String TAG = TbkAdManager.class.getSimpleName();
+    private static final TbkAdManager INSTANCE = new TbkAdManager();
     private boolean isInit = false;
 
 
-    private TbAdManager(){ }
+    private TbkAdManager(){ }
 
-    public static TbAdManager getInstance(){
+    public static TbkAdManager getInstance(){
         return INSTANCE;
     }
 
@@ -79,7 +79,7 @@ public class TbAdManager {
      * @return
      * @throws IOException
      */
-    public String getTbFavourites(int pageNo) throws IOException{
+    public String getTbFavorites(int pageNo) throws IOException{
         Map<String, String> params = getCommonParams();
         //请求的接口
         params.put("method", TbConstants.Favourites.API);
@@ -93,5 +93,19 @@ public class TbAdManager {
         return TbUtils.callApi(new URL(TbConstants.SERVER_URL), params);
     }
 
+    public String getTbkFavoriteItems (int favoritesId) throws IOException {
+        Map<String, String> params = getCommonParams();
+        //请求的接口
+        params.put("method", TbConstants.FavouritesItem.API);
+        // 业务参数
+        params.put(TbConstants.FavouritesItem.REQUEST_AD_ZONE_ID,TbConstants.ADZONE_ID);
+        params.put(TbConstants.FavouritesItem.REQUEST_FAVORITES_ID,String.valueOf(favoritesId));
+        params.put(TbConstants.FavouritesItem.REQUEST_FIELDS,"num_iid,title,pict_url,small_images,reserve_price," +
+                "zk_final_price,coupon_click_url,coupon_info,coupon_start_time,coupon_end_time");
+        // 签名参数
+        params.put("sign", TbUtils.signTopRequest(params, TbConstants.APP_SECURE, TbConstants.SIGN_METHOD_HMAC));
+        // 请用API
+        return TbUtils.callApi(new URL(TbConstants.SERVER_URL), params);
+    }
 
 }

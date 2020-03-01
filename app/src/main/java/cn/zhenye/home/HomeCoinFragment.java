@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProviders;
 import cn.zhenye.base.tool.ZGsonUtils;
 import cn.zhenye.base.tool.ZThreadManager;
 import cn.zhenye.common.credit.VM.CreditStatusViewModel;
-import cn.zhenye.common.tbad.TbAdManager;
-import cn.zhenye.common.tbad.response.TbFavoritesResponse;
+import cn.zhenye.common.tbad.TbkAdManager;
+import cn.zhenye.common.tbad.response.TbkFavoritesResponse;
 import cn.zhenye.home.adapter.CreditStatusAdapter;
 
 import android.util.Log;
@@ -20,10 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.umeng.commonsdk.debug.E;
-
 import java.io.IOException;
-import java.util.List;
 
 
 public class HomeCoinFragment extends Fragment {
@@ -59,10 +56,10 @@ public class HomeCoinFragment extends Fragment {
                     @Override
                     public void run() {
                         try {
-                            String jsonStr =  TbAdManager.getInstance().getTbFavourites(1);
+                            String jsonStr =  TbkAdManager.getInstance().getTbFavorites(1);
                             if (jsonStr != null) {
                                 Log.d(HomeCoinFragment.class.getSimpleName(),jsonStr);
-                                TbFavoritesResponse response = ZGsonUtils.formJson(jsonStr,TbFavoritesResponse.class);
+                                TbkFavoritesResponse response = ZGsonUtils.formJson(jsonStr, TbkFavoritesResponse.class);
                             }
                         } catch (IOException e) {
                             e.printStackTrace();

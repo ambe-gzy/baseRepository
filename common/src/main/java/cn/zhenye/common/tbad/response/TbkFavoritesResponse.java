@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class TbkFavoritesResponse implements TbkBaseResult<TbkFavoritesResponse> {
+public class TbkFavoritesResponse implements TbkBaseResponse<TbkFavoritesResponse> {
 
     public ChildTbResult getResponse() {
          return response;

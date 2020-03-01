@@ -1,5 +1,5 @@
 package cn.zhenye.common.tbad.response;
 
-public interface TbkBaseResult<T> {
+public interface TbkBaseResponse<T> {
     T getResult();
 }
