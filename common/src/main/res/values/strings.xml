@@ -58,4 +58,6 @@
 
     <string name="toast_record_error">很抱歉，录音出错了，请联系我们反馈！</string>
     <string name="toast_create_parent_file_error">创建软件根文件夹失败！</string>
+
+    <string name="fragment_drawer_ad">每日福利</string>
 </resources>

@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import cn.zhenye.ad.AdActivity;
 import cn.zhenye.base.tool.ZActivityUtils;
 import cn.zhenye.base.tool.ZAppStoreUtils;
 import cn.zhenye.common.test.TestActivity;
@@ -18,7 +20,7 @@ import cn.zhenye.home.R;
 
 public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.DrawerHolder> {
     //列表数量
-    private static final int ITEM_COUNT = 2;
+    private static final int ITEM_COUNT = 3;
     private Context mContext;
     @NonNull
     @Override
@@ -82,7 +84,16 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.DrawerHold
                 });
                 break;
             case 2:
-                default:
+                holder.message.setText(mContext.getResources().getText(R.string.fragment_drawer_ad));
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ZActivityUtils.safeStartActivityWithIntentClass(mContext, AdActivity.class);
+
+                    }
+                });
+                break;
+            case 3:
                 holder.message.setText("进入测试页面");
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

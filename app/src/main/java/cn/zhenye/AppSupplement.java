@@ -55,6 +55,5 @@ public class AppSupplement {
      * @param application
      */
     public static void initTbAd(Application application){
-        TbAdManager.getInstance().init(application);
     }
 }
