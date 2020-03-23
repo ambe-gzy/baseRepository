@@ -106,3 +106,15 @@ public static final int *;
 -keep class com.alibaba.wireless.security.**{*;}
 -keep interface mtopsdk.mtop.global.init.IMtopInitTask {*;}
 -keep class * implements mtopsdk.mtop.global.init.IMtopInitTask {*;}
+
+#保持 Parcelable 不被混淆
+-keep class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+
+-keep public class cn.zhenye.partytool.R$*{
+public static final int *;
+}
+-keep public class cn.zhenye.common.tbad.** {*;}
+-keep public class cn.zhenye.common.ad.** {*;}
+-keep public class cn.zhenye.common.server.** {*;}

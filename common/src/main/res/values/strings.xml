@@ -60,4 +60,13 @@
     <string name="toast_create_parent_file_error">创建软件根文件夹失败！</string>
 
     <string name="fragment_drawer_ad">每日福利</string>
+    <string name="tbk_ad_rest_coupon">剩余优惠券：%1$d/%2$d</string>
+    <string name="tbk_ad_btn_save">省￥%s</string>
+
+    <string name="tbk_ad_detail_title">宝贝详细信息</string>
+
+    <string name="tbk_ad_taokouling_message">限时福利！低价开抢！</string>
+    <string name="tbk_ad_taokouling_null">抱歉！暂无优惠券！</string>
+    <string name="tbk_ad_taokouling_data">淘口令：%s</string>
+    <string name="tbk_ad_taokouling_copy_success">复制淘口令成功！到手机淘宝即可查看！</string>
 </resources>

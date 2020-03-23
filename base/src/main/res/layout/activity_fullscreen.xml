@@ -18,6 +18,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/view_statusbar_bg2"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tool_bar_height"
             android:background="@color/colorPrimary"
@@ -44,27 +45,36 @@
                 android:layout_centerInParent="true"
                 tools:text="这是标题"/>
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/v_toolbar_right"
-                android:src="@mipmap/ic_tab_coin"
-                android:scaleType="fitCenter"
-                android:padding="5dp"
-                android:tint="@color/colorPrimaryDark"
-                android:layout_marginEnd="5dp"/>
-
-            <TextView
-                android:id="@+id/v_toolbar_right"
+            <LinearLayout
+                android:id="@+id/ll_credit"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textSize="18dp"
-                android:gravity="center"
-                android:layout_marginEnd="20dp"
-                android:textColor="@color/colorPrimaryDark"
-                tools:text="积分"
-                android:layout_alignParentEnd="true"/>
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/v_toolbar_right"
+                    android:src="@mipmap/ic_tab_coin"
+                    android:scaleType="fitCenter"
+                    android:padding="5dp"
+                    android:tint="@color/colorPrimaryDark"
+                    android:layout_marginEnd="5dp"/>
+
+                <TextView
+                    android:id="@+id/v_toolbar_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18dp"
+                    android:gravity="center"
+                    android:layout_marginEnd="20dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    tools:text="积分"/>
+            </LinearLayout>
+
 
         </RelativeLayout>
 

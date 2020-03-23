@@ -37,9 +37,11 @@ public class ZStatusbarUtils {
      */
     public static void setWindowFullScreenWithStatusBar(Window window, boolean fullscreen){
         if (fullscreen){
-            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN|WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN|WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }else {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN|WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN|WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
     }
 

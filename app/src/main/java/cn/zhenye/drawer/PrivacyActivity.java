@@ -1,22 +1,16 @@
 package cn.zhenye.drawer;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import cn.zhenye.appcommon.ZyCommonActivity;
-import cn.zhenye.base.tool.ZPermissionUtils;
-import cn.zhenye.common.constants.HttpUrlConstants;
-import cn.zhenye.home.R;
-
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.net.URL;
+import androidx.annotation.NonNull;
+
+import cn.zhenye.appcommon.ZyCommonActivity;
+import cn.zhenye.common.constants.HttpUrlConstants;
+import cn.zhenye.home.R;
 
 public class PrivacyActivity extends ZyCommonActivity {
     private WebView mWebView;
@@ -45,7 +39,7 @@ public class PrivacyActivity extends ZyCommonActivity {
             }
         });
 
-        mWebView.loadUrl("http://120.79.15.35/voicereverse/index.html");
+        mWebView.loadUrl(HttpUrlConstants.PRIVACY_POLICY_URL);
     }
 
     @Override

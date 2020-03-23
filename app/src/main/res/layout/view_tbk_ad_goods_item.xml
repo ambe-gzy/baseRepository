@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="160dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        app:cardBackgroundColor="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_tbk_ad_pic"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                tools:src="@mipmap/gif_rest_book" />
+
+            <TextView
+                android:id="@+id/tv_tbk_ad_goods_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_tbk_ad_goods_title"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@id/iv_tbk_ad_pic"
+                android:text="￥"
+                android:textColor="@color/color_B22222"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_tbk_ad_goods_now_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/tv_tbk_ad_goods_money"
+                android:layout_alignTop="@id/tv_tbk_ad_goods_money"
+                android:layout_marginTop="-5dp"
+                android:gravity="center"
+                android:textColor="@color/color_B22222"
+                android:textSize="20dp"
+                tools:text="129.5" />
+
+            <TextView
+                android:id="@+id/tv_tbk_ad_goods_preview_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_B4B4B4"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@id/tv_tbk_ad_goods_now_price"
+                android:layout_alignBottom="@id/tv_tbk_ad_goods_now_price"
+                android:textSize="12dp"
+                tools:text="￥150" />
+
+            <TextView
+                android:id="@+id/tv_tbk_ad_goods_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@id/iv_tbk_ad_pic"
+                android:alpha="0.7"
+                android:maxLines="2"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                tools:text="小学生天才插卡电话手表表带儿童电话防水定位学生4G视频手机" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@id/iv_tbk_ad_pic"
+                android:background="@color/color_B4B4B4" />
+
+            <TextView
+                android:id="@+id/btn_tbk_ad_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="7.5dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:maxLines="1"
+                android:text="去领券"
+                android:textColor="@color/color_B22222"
+                android:background="@drawable/bg_btn_ad"
+                android:gravity="center"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/tv_tbk_ad_goods_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignEnd="@id/iv_tbk_ad_pic"
+                android:visibility="gone"
+                tools:text="结束时间：20200303"
+                android:textSize="7dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_ad_tbk_pic_restime"/>
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

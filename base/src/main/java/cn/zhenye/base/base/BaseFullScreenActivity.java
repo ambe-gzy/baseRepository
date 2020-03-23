@@ -1,5 +1,6 @@
 package cn.zhenye.base.base;
 
+import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.IdRes;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import cn.zhenye.base.R;
 import cn.zhenye.base.tool.ZStatusbarUtils;
@@ -28,9 +29,12 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
 
     private TextView mToolbarTittle;
     private TextView mToolbarCredit;
-    private View mToolbarReturn;
+    private ImageView mToolbarReturn;
 
     private View mStatusbarBg;
+    private View mStatusbarBg2;
+
+    private View mCreditll;
 
 
     @Override
@@ -57,9 +61,11 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
         mWindowBackground = super.findViewById(R.id.fl_window_background);
         mContentWrapperView = super.findViewById(R.id.fl_content_wrapper_view);
         mStatusbarBg = super.findViewById(R.id.view_statusbar_bg);
+        mStatusbarBg2 = super.findViewById(R.id.view_statusbar_bg2);
         mToolbarReturn = super.findViewById(R.id.v_toolbar_left);
         mToolbarTittle = super.findViewById(R.id.v_toolbar_middle);
         mToolbarCredit = super.findViewById(R.id.v_toolbar_right);
+        mCreditll = super.findViewById(R.id.ll_credit);
         mStatusbarBg.setBackgroundResource(R.color.colorPrimary);
     }
 
@@ -115,4 +121,18 @@ public abstract class BaseFullScreenActivity extends AppCompatActivity {
         mToolbarCredit.setText(credit);
     }
 
+    public void setToolbarBg(@ColorRes int colorRes, boolean isShowCredit, @ColorRes int textColorRes, @DrawableRes int drawableRes){
+        mStatusbarBg.setBackgroundResource(colorRes);
+        mStatusbarBg2.setBackgroundResource(colorRes);
+
+        mToolbarTittle.setTextColor(getResources().getColor(textColorRes));
+        mToolbarReturn.setImageResource(drawableRes);
+        mToolbarReturn.setImageTintMode(PorterDuff.Mode.DST);
+
+        if (isShowCredit) {
+            mCreditll.setVisibility(View.VISIBLE);
+        } else {
+            mCreditll.setVisibility(View.GONE);
+        }
+    }
 }

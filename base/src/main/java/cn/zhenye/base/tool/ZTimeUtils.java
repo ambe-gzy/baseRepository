@@ -26,7 +26,7 @@ public class ZTimeUtils {
      */
     public static String getCurDate(String pattern){
         SimpleDateFormat sDateFormat = new SimpleDateFormat(pattern);
-        return sDateFormat.format(new java.util.Date());
+        return sDateFormat.format(new Date());
     }
 
     /**
@@ -75,8 +75,8 @@ public class ZTimeUtils {
             Long dataLong = Long.valueOf(lastTime);
             String data1 = df1.format(nowLong);
             String data2 = df2.format(dataLong);
-            java.util.Date now = df1.parse(data1);
-            java.util.Date date = df2.parse(data2);
+            Date now = df1.parse(data1);
+            Date date = df2.parse(data2);
             nowCal.setTime(now);
             dataCal.setTime(date);
             return isSameDay(nowCal, dataCal);
@@ -100,8 +100,8 @@ public class ZTimeUtils {
             SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
             String data1 = df1.format(currentTime);
             String data2 = df2.format(lastTime);
-            java.util.Date now = df1.parse(data1);
-            java.util.Date date = df2.parse(data2);
+            Date now = df1.parse(data1);
+            Date date = df2.parse(data2);
             nowCal.setTime(now);
             dataCal.setTime(date);
             return isSameDay(nowCal, dataCal);

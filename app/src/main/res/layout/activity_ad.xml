@@ -4,20 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cn.zhenye.ad.TbkAdActivity">
-    <ProgressBar
-        android:id="@+id/pb_tbk_ad_loading"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+    android:background="@color/color_F4F3F9"
+    tools:context="cn.zhenye.ad.AdActivity">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_tbk_ad_viewpager2"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_tbk_ad"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <cn.zhenye.widget.LoadingLayout
+        android:id="@+id/loading_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/empty_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="暂无数据"
+        android:textColor="@color/black"
+        android:alpha="0.6"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

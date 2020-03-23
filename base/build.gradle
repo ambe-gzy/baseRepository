@@ -51,5 +51,11 @@ dependencies {
     //多种工具类 #https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/README-CN.md
     api 'com.blankj:utilcodex:1.26.0'
 
+    //viewPager Tab https://github.com/jpardogo/PagerSlidingTabStrip
+    api 'com.jpardogo.materialtabstrip:library:1.1.1'
 
+    //网络请求库
+    api 'org.apache.commons:commons-lang3:3.9'
+    api 'com.squareup.okhttp3:okhttp:4.2.2'
+    api 'com.squareup.okhttp3:logging-interceptor:4.2.2'
 }

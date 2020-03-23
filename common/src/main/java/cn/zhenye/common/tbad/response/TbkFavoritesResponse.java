@@ -4,51 +4,29 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class TbkFavoritesResponse implements TbkBaseResponse<TbkFavoritesResponse> {
-
-    public ChildTbResult getResponse() {
-         return response;
-    }
-
-    public void setResponse(ChildTbResult response) {
-        this.response = response;
-    }
+public class TbkFavoritesResponse implements TbkBaseResponse<List<TbkFavoritesResponse.ChildTbkFavorites>> {
 
     @SerializedName("tbk_uatm_favorites_get_response")
-    private ChildTbResult response;
+    public ChildTbResult response;
 
     @Override
-    public TbkFavoritesResponse getResult() {
-        return this;
+    public List<ChildTbkFavorites> getResult() {
+        if (response == null || response.results == null) {
+            return null;
+        }
+
+        return response.results.favorites;
     }
 
     public class ChildTbResult {
-        public ChildFavoritesResult getResults() {
-            return results;
-        }
-
-        public void setResults(ChildFavoritesResult results) {
-            this.results = results;
-        }
 
         @SerializedName("results")
-        private ChildFavoritesResult results;
+        public ChildFavoritesResult results;
     }
 
     public class ChildFavoritesResult {
-
-        public List<ChildTbkFavorites> getFavorites() {
-            return favorites;
-        }
-
-        public void setFavorites(List<ChildTbkFavorites> favorites) {
-            this.favorites = favorites;
-        }
-
         @SerializedName("tbk_favorites")
-        private List<ChildTbkFavorites> favorites;
-
-
+        public List<ChildTbkFavorites> favorites;
     }
 
     public class ChildTbkFavorites {

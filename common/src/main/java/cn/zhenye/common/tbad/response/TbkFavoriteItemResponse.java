@@ -4,25 +4,20 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class TbkFavoriteItemResponse implements TbkBaseResponse<TbkFavoriteItemResponse> {
+public class TbkFavoriteItemResponse implements TbkBaseResponse<List<TbkFavoriteItemResponse.ChildItem>> {
     @Override
-    public TbkFavoriteItemResponse getResult() {
-        return tbkFavoriteItemResponse;
+    public List<ChildItem> getResult() {
+        if (tbkFavoriteItemResponse == null || tbkFavoriteItemResponse.childResult == null) {
+            return null;
+        }
+        return tbkFavoriteItemResponse.childResult.childItem;
     }
 
     @SerializedName("tbk_uatm_favorites_item_get_response")
     private TbkFavoriteItemResponse tbkFavoriteItemResponse;
 
     @SerializedName("results")
-    public ChildResult childResult;
-
-    public TbkFavoriteItemResponse getTbkFavoriteItemResponse() {
-        return tbkFavoriteItemResponse;
-    }
-
-    public void setTbkFavoriteItemResponse(TbkFavoriteItemResponse tbkFavoriteItemResponse) {
-        this.tbkFavoriteItemResponse = tbkFavoriteItemResponse;
-    }
+    private ChildResult childResult;
 
     public class ChildResult {
         @SerializedName("uatm_tbk_item")

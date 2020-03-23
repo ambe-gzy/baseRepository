@@ -13,7 +13,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="cn.zhenye.ad.TbkAdActivity"></activity>
+        <activity android:name="cn.zhenye.ad.AdDetailActivity"></activity>
+        <activity android:name="cn.zhenye.ad.AdActivity" />
+        <activity android:name="cn.zhenye.ad.TbkAdDetailActivity" />
+        <activity android:name="cn.zhenye.ad.TbkAdActivity" />
         <activity android:name="cn.zhenye.drawer.PrivacyActivity" />
         <activity android:name="cn.zhenye.voicereverse.VoiceFileActivity" />
         <activity android:name="cn.zhenye.voicereverse.VoiceReverseActivity" />

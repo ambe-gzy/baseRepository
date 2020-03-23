@@ -1,5 +1,10 @@
 package cn.zhenye.home;
+
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -7,20 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import cn.zhenye.base.tool.ZGsonUtils;
-import cn.zhenye.base.tool.ZThreadManager;
 import cn.zhenye.common.credit.VM.CreditStatusViewModel;
-import cn.zhenye.common.tbad.TbkAdManager;
-import cn.zhenye.common.tbad.response.TbkFavoritesResponse;
 import cn.zhenye.home.adapter.CreditStatusAdapter;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import java.io.IOException;
 
 
 public class HomeCoinFragment extends Fragment {
@@ -48,29 +41,6 @@ public class HomeCoinFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getView().findViewById(R.id.btn_test).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                ZThreadManager.getAds().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            String jsonStr =  TbkAdManager.getInstance().getTbFavorites(1);
-                            if (jsonStr != null) {
-                                Log.d(HomeCoinFragment.class.getSimpleName(),jsonStr);
-                                TbkFavoritesResponse response = ZGsonUtils.formJson(jsonStr, TbkFavoritesResponse.class);
-                            }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (Exception e1) {
-                            e1.printStackTrace();
-                        }
-                    }
-                });
-
-            }
-        });
     }
 
     @Override

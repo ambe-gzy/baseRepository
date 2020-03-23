@@ -6,6 +6,7 @@ public class TbConstants {
     public static final String APP_SECURE = "98b1075fa4cdee98a8646803e1f2b246"; // 可替换为您的沙箱环境应用的appSecret
     public static final String SERVER_URL = "http://gw.api.taobao.com/router/rest";// TOP服务地址，正式环境需要设置为http://gw.api.taobao.com/router/rest
 
+    //广告位id
     public static final String ADZONE_ID = "109997750080";
     public static final String PROMOTE_SCENE_ID = "20170841";
 
@@ -51,6 +52,30 @@ public class TbConstants {
         public static final String API = "taobao.tbk.dg.optimus.material";
         public static final String REQUEST_AD_ZONE_ID = "adzone_id";
         public static final String REQUEST_PAGE_SIZE = "page_size";
+    }
+
+    /**
+     * 搜索
+     */
+    public static class Search {
+        public static final String API = "taobao.tbk.dg.material.optional";
+        public static final String REQUEST_AD_ZONE_ID = "adzone_id";
+        public static final String REQUEST_Q = "q";
+
+    }
+
+    /**
+     * 淘口令
+     */
+    public static class Taokouling {
+        public static final String API = "taobao.tbk.tpwd.create";
+        public static final String TEXT = "text";
+        public static final String URL = "url";
+    }
+
+    public static class ItemDetail {
+        public static final String API = "taobao.tbk.item.info.get";
+        public static final String NUM_IID = "num_iids";
     }
 
 }

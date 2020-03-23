@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import cn.zhenye.ad.TbkAdActivity;
+import cn.zhenye.ad.AdActivity;
 import cn.zhenye.base.tool.ZActivityUtils;
 import cn.zhenye.base.tool.ZAppStoreUtils;
 import cn.zhenye.common.test.TestActivity;
@@ -79,16 +79,17 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.DrawerHold
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ZActivityUtils.safeStartActivityWithIntentClass(mContext,PrivacyActivity.class);
+                        ZActivityUtils.safeStartActivityWithIntentClass(mContext, PrivacyActivity.class);
                     }
                 });
                 break;
             case 2:
+                holder.icon.setImageResource(R.mipmap.ic_ad);
                 holder.message.setText(mContext.getResources().getText(R.string.fragment_drawer_ad));
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ZActivityUtils.safeStartActivityWithIntentClass(mContext, TbkAdActivity.class);
+                        ZActivityUtils.safeStartActivityWithIntentClass(mContext, AdActivity.class);
 
                     }
                 });
