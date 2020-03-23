@@ -1,9 +1,14 @@
 package cn.zhenye.ad;
 
+import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -100,6 +105,7 @@ public class AdDetailActivity extends ZyCommonActivity {
                         cm.setPrimaryClip(clipData);
                     }
                     ZToastUtils.showShort(R.string.tbk_ad_taokouling_copy_success);
+                    showDialog();
                 } else {
                     // 提示用户暂无淘口令
                     ZToastUtils.showShort(R.string.tbk_ad_taokouling_null);
@@ -157,6 +163,42 @@ public class AdDetailActivity extends ZyCommonActivity {
         } else {
             mTaokoulingTv.setText(getResources().getString(R.string.tbk_ad_taokouling_data, url));
         }
+    }
+
+    private void showDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("是否打开淘宝？");
+        builder.setPositiveButton("打开", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                if (isInstallTaobao()) {
+                    try {
+                        Intent intent = getPackageManager().getLaunchIntentForPackage(
+                                "com.taobao.taobao");
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        ZToastUtils.showShort("打开淘宝失败");
+                    }
+                } else {
+                    ZToastUtils.showShort("未安装淘宝");
+                }
+
+            }
+        });
+        builder.setCancelable(true);
+        builder.create().show();
+    }
+
+    private boolean isInstallTaobao(){
+        PackageInfo info;
+        try {
+            info = getApplicationContext().getPackageManager().getPackageInfo("com.taobao.taobao",0);
+        } catch (PackageManager.NameNotFoundException e) {
+            info = null;
+            e.printStackTrace();
+        }
+        return info != null;
     }
 
 }
