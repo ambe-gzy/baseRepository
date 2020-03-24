@@ -55,7 +55,7 @@
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp"/>
 
-                <cn.zhenye.widget.LoadingLayout
+                <cn.zhenye.common.ui.LoadingLayout
                     android:id="@+id/loading_bg"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"/>

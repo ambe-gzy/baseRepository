@@ -25,7 +25,7 @@ import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.tbad.response.TbkTaokoulingResponse;
 import cn.zhenye.home.R;
-import cn.zhenye.widget.LoadingLayout;
+import cn.zhenye.common.ui.LoadingLayout;
 
 public class TbkAdDetailActivity extends ZyCommonActivity {
     public static final String KEY_BUNDLE = "key_bundle";

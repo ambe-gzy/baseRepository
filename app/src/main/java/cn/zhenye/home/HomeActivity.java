@@ -18,6 +18,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.base.tool.ZStatusbarUtils;
 import cn.zhenye.drawer.DrawerFragment;
+import cn.zhenye.home.adapter.HomeAdapter;
 
 public class HomeActivity extends ZyCommonActivity implements View.OnClickListener {
     public static String TAG = HomeActivity.class.getName();
@@ -25,11 +26,13 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
     private volatile Fragment mCurrentFragment;
     private static final String STATE_CURRENT_FRAGMENT_TAG = "state_current_fragment_tag"; // HomeActivity被回收重启后，用于恢复当前Fragment的标志
     private DrawerLayout mDrawerLayout;
+    private HomeAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAdapter = new HomeAdapter(getApplicationContext());
         initUI();
         initDrawer();
         initToolbar();
@@ -50,20 +53,20 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
     }
 
     private void initToolbar(){
-        ImageView menu =  (ImageView)getToolbarReturn();
-        menu.setImageResource(R.mipmap.ic_menu);
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (view.getTag() != null && view.getTag().equals("open")){
-                    mDrawerLayout.closeDrawer(GravityCompat.START | Gravity.LEFT);
-                    view.setTag("");
-                    return;
-                }
-                view.setTag("open");
-                mDrawerLayout.openDrawer(GravityCompat.START | Gravity.LEFT);
-            }
-        });
+//        ImageView menu =  (ImageView)getToolbarReturn();
+//        menu.setImageResource(R.mipmap.ic_menu);
+//        menu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (view.getTag() != null && view.getTag().equals("open")){
+//                    mDrawerLayout.closeDrawer(GravityCompat.START | Gravity.LEFT);
+//                    view.setTag("");
+//                    return;
+//                }
+//                view.setTag("open");
+//                mDrawerLayout.openDrawer(GravityCompat.START | Gravity.LEFT);
+//            }
+//        });
     }
 
     private void initNavigationBarAndFragment(Bundle savedInstanceState) {
@@ -176,6 +179,9 @@ public class HomeActivity extends ZyCommonActivity implements View.OnClickListen
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
+
+        ImageView menu =  (ImageView)getToolbarReturn();
+        mAdapter.initDrawer(mDrawerLayout,menu);
     }
 
 }

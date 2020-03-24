@@ -1,4 +1,4 @@
-package cn.zhenye.widget;
+package cn.zhenye.common.ui;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
-import cn.zhenye.home.R;
+import cn.zhenye.common.R;
 
 /**
  * @author WilliamChik on 2019/3/12.

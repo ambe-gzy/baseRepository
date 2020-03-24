@@ -19,7 +19,7 @@ import cn.zhenye.ad.vm.TbkViewModel;
 import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.common.tbad.response.TbkFavoritesResponse;
 import cn.zhenye.home.R;
-import cn.zhenye.widget.LoadingLayout;
+import cn.zhenye.common.ui.LoadingLayout;
 
 public class TbkAdActivity extends ZyCommonActivity {
     private ViewPager mViewPager;

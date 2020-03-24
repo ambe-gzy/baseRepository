@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="cn.zhenye.ad.TbkAdActivity"
     android:background="@color/color_F4F3F9">
-    <cn.zhenye.widget.LoadingLayout
+    <cn.zhenye.common.ui.LoadingLayout
         android:id="@+id/loading_bg"
         android:layout_width="50dp"
         android:layout_height="50dp"

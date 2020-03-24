@@ -17,7 +17,7 @@ import cn.zhenye.ad.vm.TbkVMManager;
 import cn.zhenye.ad.vm.TbkViewModel;
 import cn.zhenye.base.base.BaseFragment;
 import cn.zhenye.home.R;
-import cn.zhenye.widget.LoadingLayout;
+import cn.zhenye.common.ui.LoadingLayout;
 
 public class TbkAdFragment extends BaseFragment {
     public static String KEY_BUNDLE = "key_bundle";

@@ -14,7 +14,7 @@ import cn.zhenye.ad.vm.ZAdViewModel;
 import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.common.ad.response.ZAdResponse;
 import cn.zhenye.home.R;
-import cn.zhenye.widget.LoadingLayout;
+import cn.zhenye.common.ui.LoadingLayout;
 
 public class AdActivity extends ZyCommonActivity {
     private ZAdViewModel mZAdViewModel;

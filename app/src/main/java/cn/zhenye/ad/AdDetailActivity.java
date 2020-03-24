@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -30,7 +29,7 @@ import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.tbad.response.TbkItemDetailResponse;
 import cn.zhenye.home.R;
-import cn.zhenye.widget.LoadingLayout;
+import cn.zhenye.common.ui.LoadingLayout;
 
 public class AdDetailActivity extends ZyCommonActivity {
     public static final String KEY_BUNDLE = "key_bundle";
