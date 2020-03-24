@@ -58,4 +58,7 @@ dependencies {
     api 'org.apache.commons:commons-lang3:3.9'
     api 'com.squareup.okhttp3:okhttp:4.2.2'
     api 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+
+    //viewpager指示器
+    api 'me.relex:circleindicator:2.1.4'
 }

@@ -30,6 +30,7 @@ import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.tbad.response.TbkItemDetailResponse;
 import cn.zhenye.home.R;
 import cn.zhenye.common.ui.LoadingLayout;
+import me.relex.circleindicator.CircleIndicator;
 
 public class AdDetailActivity extends ZyCommonActivity {
     public static final String KEY_BUNDLE = "key_bundle";
@@ -41,6 +42,7 @@ public class AdDetailActivity extends ZyCommonActivity {
     private LoadingLayout mLoadingLayout;
 
     private ViewPager mViewPager;
+    private CircleIndicator mCircleIndicator;
 
     private String mTaokouling;
 
@@ -81,6 +83,7 @@ public class AdDetailActivity extends ZyCommonActivity {
         mViewPager = findViewById(R.id.vp_tbk_ad_detail_viewpager);
         mCopyTv = findViewById(R.id.tv_tbk_ad_detail_copy_btn);
         mLoadingLayout = findViewById(R.id.loading_bg);
+        mCircleIndicator = findViewById(R.id.tbk_ad_detail_indicator);
 
         setToolbarBg(R.color.color_FEA715, false, R.color.white, R.mipmap.ic_toolbar_back);
 
@@ -127,27 +130,13 @@ public class AdDetailActivity extends ZyCommonActivity {
                 for (int i = 0; i < response.getPics().size(); i++) {
                     views.add(inflater.inflate(R.layout.item_ad_detail, null));
                 }
-
                 mAdDetailAdapter = new TbkAdDetailAdapter(views,getApplicationContext(),response);
                 mViewPager.setAdapter(mAdDetailAdapter);
                 mViewPager.setOffscreenPageLimit(views.size());
 
-                mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                    @Override
-                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                    }
-
-                    @Override
-                    public void onPageSelected(int position) {
-
-                    }
-
-                    @Override
-                    public void onPageScrollStateChanged(int state) {
-
-                    }
-                });
+                //指示器
+                mCircleIndicator.setViewPager(mViewPager);
+                mAdDetailAdapter.registerDataSetObserver(mCircleIndicator.getDataSetObserver());
             }
         });
         if (mBean == null) {
