@@ -3,45 +3,122 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10.5dp"
         app:cardElevation="0dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/iv_ad_goods_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:background="@color/color_73D390"/>
+                <ImageView
+                    android:id="@+id/iv_ad_goods_empty"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:padding="30dp"
+                    android:src="@mipmap/ic_coin_dialog"
+                    android:scaleType="fitCenter"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/iv_ad_goods_pic"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_ad_goods_pic"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_tbk_ad_goods_now_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-5dp"
+                    android:gravity="center"
+                    android:textColor="@color/color_B22222"
+                    android:textSize="20dp"
+                    tools:text="129.5" />
+
+                <TextView
+                    android:id="@+id/tv_tbk_ad_goods_preview_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/color_B4B4B4"
+                    android:layout_marginStart="5dp"
+                    android:textSize="12dp"
+                    tools:text="￥150" />
+            </LinearLayout>
+
             <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorPrimaryDark"/>
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:padding="30dp"
-                android:src="@mipmap/ic_coin_dialog"
-                android:scaleType="fitCenter"/>
+            <TextView
+                android:id="@+id/tv_credit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:gravity="center"
+                tools:text="+30积分"/>
 
-            <Button
-                android:id="@+id/btn_get_credit"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/colorPrimaryDark"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp">
+                <Button
+                    android:id="@+id/btn_goods_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/colorPrimaryDark"/>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/btn_get_credit"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="10dp"/>
+            </LinearLayout>
+
+
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>
