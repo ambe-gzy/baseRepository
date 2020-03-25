@@ -2,9 +2,9 @@ package cn.zhenye.common.credit.manager;
 
 public class CreditOperationManager {
     public static long MIN_CREDIT_1 = 1;
-    public static long MIN_CREDIT_2 = 2;
-    public static long MIN_CREDIT_3 = 3;
-    public static long MAX_CREDIT_5 = 5;
+    public static long MIN_CREDIT_2 = 3;
+    public static long MIN_CREDIT_3 = 10;
+    public static long MAX_CREDIT_5 = 10;
     public static long MAX_CREDIT_6 = 6;
     public static long MAX_CREDIT_10 = 10;
 
