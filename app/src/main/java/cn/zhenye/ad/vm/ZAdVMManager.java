@@ -10,10 +10,15 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.zhenye.base.cache.ZyCacheStorage;
 import cn.zhenye.base.task.OnCompleteListener;
 import cn.zhenye.base.task.Task;
+import cn.zhenye.base.tool.ZGsonUtils;
+import cn.zhenye.base.tool.ZTimeUtils;
+import cn.zhenye.common.ad.DefaultZAdResponse;
 import cn.zhenye.common.ad.response.ZAdResponse;
 import cn.zhenye.common.constants.HttpUrlConstants;
+import cn.zhenye.common.constants.ZAdConstants;
 import cn.zhenye.common.server.BaseRequest;
 import cn.zhenye.common.server.BaseResponse;
 import cn.zhenye.common.server.RequestManager;
@@ -47,6 +52,8 @@ public class ZAdVMManager {
                     ZAdResponse zAdResponse = gson.fromJson(baseResponse.goods, ZAdResponse.class);
 
                     if (zAdResponse!= null && zAdResponse.items != null) {
+                        ZyCacheStorage.put(ZAdConstants.AD_IS_SEC_DAY_TIMESTAMP, System.currentTimeMillis());
+                        ZyCacheStorage.put(ZAdConstants.AD_LOCAL_RESPONSE, zAdResponse);
                         notifyAdCallBack(zAdResponse);
                     } else {
                         notifyAdCallBack(null);
@@ -58,6 +65,25 @@ public class ZAdVMManager {
 
             }
         });
+    }
+
+    public ZAdResponse getAdResponse(Context context) {
+        long pastTimeStamp = ZyCacheStorage.getLong(ZAdConstants.AD_IS_SEC_DAY_TIMESTAMP, 0);
+        if (!ZTimeUtils.isSameData(System.currentTimeMillis(), pastTimeStamp)) {
+            loadAd(context);
+        }
+
+        ZAdResponse response = ZyCacheStorage.getData(ZAdConstants.AD_LOCAL_RESPONSE, null);
+        if (response == null) {
+            //读取默认广告
+            String defaultResponseStr = new DefaultZAdResponse().DefaultResponse;
+            try {
+                response = ZGsonUtils.formJson(defaultResponseStr,ZAdResponse.class);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return response;
     }
 
     public void addListener(OnAdListener listener){

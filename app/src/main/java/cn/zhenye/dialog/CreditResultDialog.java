@@ -1,7 +1,10 @@
-package cn.zhenye.common.credit.dialog;
+package cn.zhenye.dialog;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +17,12 @@ import androidx.fragment.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
 
+import cn.zhenye.ad.AdDetailActivity;
+import cn.zhenye.ad.bean.AdDetailBean;
+import cn.zhenye.ad.vm.ZAdVMManager;
 import cn.zhenye.base.base.BaseFullScreenDialogFragment;
+import cn.zhenye.base.tool.ZActivityUtils;
+import cn.zhenye.base.tool.ZMathUtils;
 import cn.zhenye.common.R;
 import cn.zhenye.common.ad.response.ZAdResponse;
 import cn.zhenye.common.credit.manager.CreditManager;
@@ -27,6 +35,8 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
     private ImageView mBlankIv;
     private TextView mGoodsDetailBtn;
     private TextView mCreditTv;
+    private TextView mCurrentPriceTv;
+    private TextView mPastPriceTv;
 
     @Nullable
     @Override
@@ -43,6 +53,9 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
         mBlankIv = view.findViewById(R.id.iv_ad_goods_empty);
         mCreditTv = view.findViewById(R.id.tv_credit);
         mGoodsDetailBtn = view.findViewById(R.id.btn_goods_detail);
+        mCurrentPriceTv = view.findViewById(R.id.tv_tbk_ad_goods_now_price);
+        mPastPriceTv = view.findViewById(R.id.tv_tbk_ad_goods_preview_price);
+
         mCreditTv.setText(String.format("恭喜你获得%d积分\n是否领取积分并查看商品详情？", mCredit));
         mBtnGetCredit.setText("不了，只领取积分");
         mGoodsDetailBtn.setText(String.format("查看详情", mCredit));
@@ -57,6 +70,16 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
             @Override
             public void onClick(View v) {
                 dismiss();
+                Intent intent = new Intent(getContext(), AdDetailActivity.class);
+                AdDetailBean bean = new AdDetailBean();
+                Bundle bundle = new Bundle();
+
+                bean.title = mItem.goodsName;
+                bean.num_iid = mItem.goodsId;
+                bean.tkl = mItem.goods_youhuiquan;
+                bundle.putParcelable(AdDetailActivity.KEY_BUNDLE, bean);
+                intent.putExtras(bundle);
+                ZActivityUtils.safeStartActivityWithIntent(getContext(), intent);
             }
         });
 
@@ -65,6 +88,7 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getItemData();
         initData();
     }
 
@@ -73,7 +97,16 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
             mBlankIv.setVisibility(View.VISIBLE);
             return;
         }
-        Glide.with(getContext()).load(mItem.goodsPic).into(mAdItemIv);
+        Glide.with(getContext()).load(mItem.goodsPic).placeholder(R.drawable.bg_goods).error(R.drawable.bg_btn_normal).into(mAdItemIv);
+        mPastPriceTv.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);
+        if (!TextUtils.isEmpty(mItem.goods_price) && !TextUtils.isEmpty(mItem.goods_discount)) {
+            float primaryPrice = Float.parseFloat(mItem.goods_price);
+            float discount = Float.parseFloat(mItem.goods_discount);
+            float nowPrice = primaryPrice - discount;
+            mCurrentPriceTv.setText(String.format("￥%.2f",nowPrice));
+            mPastPriceTv.setText(String.format("￥%.2f", primaryPrice));
+
+        }
     }
 
     public static CreditResultDialog showDialogNow(FragmentManager manager, long credit){
@@ -83,18 +116,19 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
         return dialog;
     }
 
-    public static CreditResultDialog showDialogNow(FragmentManager manager, long credit, ZAdResponse.Item item) {
-        CreditResultDialog dialog = new CreditResultDialog();
-        dialog.mCredit = credit;
-        dialog.mItem = item;
-        dialog.show(manager,"credit_result_dialog");
-        return dialog;
-    }
-
     @Override
     public void onDismiss(@NonNull DialogInterface dialog) {
         //todo 获取积分，弹广告
         CreditManager.getInstance().increaseCredit(mCredit);
         super.onDismiss(dialog);
+    }
+
+    private void getItemData(){
+        ZAdResponse response = ZAdVMManager.getInstance().getAdResponse(getContext());
+        if (response == null) {
+            return;
+        }
+        int position = ZMathUtils.getRandom(0,response.items.size());
+        mItem = response.items.get(position);
     }
 }
