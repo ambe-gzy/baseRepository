@@ -116,8 +116,11 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
             float nowPrice = primaryPrice - discount;
             mCurrentPriceTv.setText(String.format("￥%.2f",nowPrice));
             mPastPriceTv.setText(String.format("￥%.2f", primaryPrice));
-            mTaokouling = mItem.goods_taokouling;
-
+            if (!TextUtils.isEmpty(mItem.goods_youhuiquan )) {
+                mTaokouling = mItem.goods_youhuiquan;
+            } else {
+                mTaokouling = mItem.goods_taokouling;
+            }
         }
     }
 
