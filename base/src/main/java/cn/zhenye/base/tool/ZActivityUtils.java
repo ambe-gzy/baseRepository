@@ -3,6 +3,8 @@ package cn.zhenye.base.tool;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 import androidx.annotation.NonNull;
 
@@ -55,5 +57,31 @@ public class ZActivityUtils {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static void startTaobaoActivity(Context context){
+        if (isInstallTaobao(context)) {
+            try {
+                Intent intent = context.getPackageManager().getLaunchIntentForPackage(
+                        "com.taobao.taobao");
+                context.startActivity(intent);
+            } catch (Exception e) {
+                ZToastUtils.showShort("打开淘宝失败");
+            }
+        } else {
+            ZToastUtils.showShort("未安装淘宝");
+        }
+    }
+
+
+    private static boolean isInstallTaobao(Context context){
+        PackageInfo info;
+        try {
+            info = context.getApplicationContext().getPackageManager().getPackageInfo("com.taobao.taobao",0);
+        } catch (PackageManager.NameNotFoundException e) {
+            info = null;
+            e.printStackTrace();
+        }
+        return info != null;
     }
 }

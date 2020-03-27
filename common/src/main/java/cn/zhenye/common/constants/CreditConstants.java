@@ -10,8 +10,8 @@ public class CreditConstants {
 
     public static final String CURRENT_REMAIN_CREDIT = ZyConstants.KEY_SP_ZY_COMMON + "current_remain_credit";
 
-    public static final long ONE_MINUTE_TIME = 15000;
-    public static final long FIVE_MINUTE_TIME = 60000;
+    public static final long ONE_MINUTE_TIME = 20000;
+    public static final long FIVE_MINUTE_TIME = 300000;
     public static final long FIFTEEN_MINUTE_TIME = 900000;
 
 }

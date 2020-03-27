@@ -26,6 +26,7 @@ import cn.zhenye.ad.bean.AdDetailBean;
 import cn.zhenye.ad.vm.TbkVMManager;
 import cn.zhenye.ad.vm.TbkViewModel;
 import cn.zhenye.appcommon.ZyCommonActivity;
+import cn.zhenye.base.tool.ZActivityUtils;
 import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.tbad.response.TbkItemDetailResponse;
 import cn.zhenye.home.R;
@@ -160,33 +161,11 @@ public class AdDetailActivity extends ZyCommonActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                if (isInstallTaobao()) {
-                    try {
-                        Intent intent = getPackageManager().getLaunchIntentForPackage(
-                                "com.taobao.taobao");
-                        startActivity(intent);
-                    } catch (Exception e) {
-                        ZToastUtils.showShort("打开淘宝失败");
-                    }
-                } else {
-                    ZToastUtils.showShort("未安装淘宝");
-                }
-
+                ZActivityUtils.startTaobaoActivity(getApplicationContext());
             }
         });
         builder.setCancelable(true);
         builder.create().show();
-    }
-
-    private boolean isInstallTaobao(){
-        PackageInfo info;
-        try {
-            info = getApplicationContext().getPackageManager().getPackageInfo("com.taobao.taobao",0);
-        } catch (PackageManager.NameNotFoundException e) {
-            info = null;
-            e.printStackTrace();
-        }
-        return info != null;
     }
 
 }

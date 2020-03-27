@@ -1,5 +1,8 @@
 package cn.zhenye.dialog;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
@@ -23,6 +26,7 @@ import cn.zhenye.ad.vm.ZAdVMManager;
 import cn.zhenye.base.base.BaseFullScreenDialogFragment;
 import cn.zhenye.base.tool.ZActivityUtils;
 import cn.zhenye.base.tool.ZMathUtils;
+import cn.zhenye.base.tool.ZToastUtils;
 import cn.zhenye.common.R;
 import cn.zhenye.common.ad.response.ZAdResponse;
 import cn.zhenye.common.credit.manager.CreditManager;
@@ -37,6 +41,8 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
     private TextView mCreditTv;
     private TextView mCurrentPriceTv;
     private TextView mPastPriceTv;
+
+    private String mTaokouling;
 
     @Nullable
     @Override
@@ -56,9 +62,9 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
         mCurrentPriceTv = view.findViewById(R.id.tv_tbk_ad_goods_now_price);
         mPastPriceTv = view.findViewById(R.id.tv_tbk_ad_goods_preview_price);
 
-        mCreditTv.setText(String.format("恭喜你获得%d积分\n是否领取积分并查看商品详情？", mCredit));
-        mBtnGetCredit.setText("不了，只领取积分");
-        mGoodsDetailBtn.setText(String.format("查看详情", mCredit));
+        mCreditTv.setText(String.format("恭喜你获得%d积分\n是否领取双倍积分并查看商品详情？", mCredit));
+        mBtnGetCredit.setText("不了，只领取单倍积分");
+        mGoodsDetailBtn.setText(String.format("领取双倍积分", mCredit));
         mBtnGetCredit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,17 +75,22 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
         mGoodsDetailBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
-                Intent intent = new Intent(getContext(), AdDetailActivity.class);
-                AdDetailBean bean = new AdDetailBean();
-                Bundle bundle = new Bundle();
+                mCredit = 2*mCredit;
+                if (!TextUtils.isEmpty(mTaokouling)) {
+                    //复制淘口令
+                    ClipboardManager cm = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                    ClipData clipData = ClipData.newPlainText("Label",mTaokouling);
+                    if (cm != null) {
+                        cm.setPrimaryClip(clipData);
+                    }
+                    ZToastUtils.showShort(cn.zhenye.home.R.string.tbk_ad_taokouling_copy_success);
+                } else {
+                    // 提示用户暂无淘口令
+                    ZToastUtils.showShort(cn.zhenye.home.R.string.tbk_ad_taokouling_null);
+                }
 
-                bean.title = mItem.goodsName;
-                bean.num_iid = mItem.goodsId;
-                bean.tkl = mItem.goods_youhuiquan;
-                bundle.putParcelable(AdDetailActivity.KEY_BUNDLE, bean);
-                intent.putExtras(bundle);
-                ZActivityUtils.safeStartActivityWithIntent(getContext(), intent);
+                dismiss();
+                ZActivityUtils.startTaobaoActivity(getContext());
             }
         });
 
@@ -105,6 +116,7 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
             float nowPrice = primaryPrice - discount;
             mCurrentPriceTv.setText(String.format("￥%.2f",nowPrice));
             mPastPriceTv.setText(String.format("￥%.2f", primaryPrice));
+            mTaokouling = mItem.goods_taokouling;
 
         }
     }
