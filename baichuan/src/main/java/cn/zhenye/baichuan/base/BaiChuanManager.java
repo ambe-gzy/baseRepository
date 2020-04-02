@@ -27,20 +27,23 @@ public class BaiChuanManager {
     }
 
     public void openTb(String goodId, final Activity activity){
-        AlibcBasePage page = new AlibcDetailPage("599496118272");
+        AlibcBasePage page = new AlibcDetailPage(goodId);
+        //展示参数
         AlibcShowParams showParams = new AlibcShowParams();
         showParams.setOpenType(OpenType.Native);
         showParams.setClientType("taobao");
         showParams.setBackUrl("alisdk://");
         showParams.setNativeOpenFailedMode(AlibcFailModeType.AlibcNativeFailModeJumpBROWER);
 
-
         AlibcTaokeParams taokeParams = new AlibcTaokeParams("","","");
         taokeParams.setPid("mm_118744786_1281250035_109997750080");
         taokeParams.setAdzoneid("109997750080");
-        taokeParams.extraParams.put("taokeAppkey","28304735");
 
         Map<String,String> trackParams = new HashMap<>();
+        trackParams.put("taokeAppkey","28304735");
+        trackParams.put("sellerId","");
+
+        taokeParams.setExtraParams(trackParams);
 
         AlibcTrade.openByBizCode(activity, page, null,
                 new WebViewClient(), new WebChromeClient(), "detail",
