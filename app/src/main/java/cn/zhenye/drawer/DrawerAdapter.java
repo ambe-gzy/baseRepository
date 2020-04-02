@@ -21,7 +21,7 @@ import cn.zhenye.home.R;
 
 public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.DrawerHolder> {
     //列表数量
-    private static final int ITEM_COUNT = 4;
+    private static final int ITEM_COUNT = 3;
     private Context mContext;
     @NonNull
     @Override
