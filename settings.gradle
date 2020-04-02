@@ -1,2 +1,1 @@
-include ':app', ':common', ':base'
-include ':baichuan'
+include ':app', ':common', ':base', ':baichuan'

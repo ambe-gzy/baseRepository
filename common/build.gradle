@@ -40,7 +40,7 @@ dependencies {
     //友盟
     api  'com.umeng.umsdk:analytics:8.0.0'
     api  'com.umeng.umsdk:common:2.0.0'
-    api  'com.umeng.umsdk:utdid:1.1.5.3'
+//    api  'com.umeng.umsdk:utdid:1.1.5.3'
 
     //ffmpeg第三方库
     implementation 'com.github.yangjie10930:EpMedia:v0.9.5'
