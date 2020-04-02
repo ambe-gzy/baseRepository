@@ -13,8 +13,8 @@ import cn.zhenye.ad.vm.ZAdVMManager;
 import cn.zhenye.ad.vm.ZAdViewModel;
 import cn.zhenye.appcommon.ZyCommonActivity;
 import cn.zhenye.common.ad.response.ZAdResponse;
-import cn.zhenye.home.R;
 import cn.zhenye.common.ui.LoadingLayout;
+import cn.zhenye.home.R;
 
 public class AdActivity extends ZyCommonActivity {
     private ZAdViewModel mZAdViewModel;
@@ -52,7 +52,7 @@ public class AdActivity extends ZyCommonActivity {
     }
 
     private void initRecyclerView() {
-        mZAdAdapter = new ZAdAdapter();
+        mZAdAdapter = new ZAdAdapter(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mRecyclerView.setAdapter(mZAdAdapter);
     }

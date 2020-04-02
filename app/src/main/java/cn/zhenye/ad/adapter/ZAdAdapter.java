@@ -1,10 +1,9 @@
 package cn.zhenye.ad.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Paint;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import cn.zhenye.ad.AdDetailActivity;
-import cn.zhenye.ad.bean.AdDetailBean;
-import cn.zhenye.base.tool.ZActivityUtils;
+import cn.zhenye.baichuan.base.BaiChuanManager;
 import cn.zhenye.common.ad.response.ZAdResponse;
 import cn.zhenye.home.R;
 
@@ -27,6 +24,14 @@ public class ZAdAdapter extends RecyclerView.Adapter<ZAdAdapter.ViewHolder> {
 
     private Context mContext;
     private ZAdResponse mResponse;
+    private Activity mActivity;
+
+    private ZAdAdapter() {
+    }
+
+    public ZAdAdapter(Activity activity) {
+        mActivity = activity;
+    }
 
     @NonNull
     @Override
@@ -110,16 +115,7 @@ public class ZAdAdapter extends RecyclerView.Adapter<ZAdAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, AdDetailActivity.class);
-                AdDetailBean bean = new AdDetailBean();
-                Bundle bundle = new Bundle();
-
-                bean.title = childItem.goodsName;
-                bean.num_iid = childItem.goodsId;
-                bean.tkl = childItem.goods_youhuiquan;
-                bundle.putParcelable(AdDetailActivity.KEY_BUNDLE, bean);
-                intent.putExtras(bundle);
-                ZActivityUtils.safeStartActivityWithIntent(mContext, intent);
+                BaiChuanManager.getInstance().openTb(childItem.goodsId, mActivity);
             }
         });
 

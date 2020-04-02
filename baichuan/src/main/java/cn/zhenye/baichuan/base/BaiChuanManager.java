@@ -1,10 +1,8 @@
 package cn.zhenye.baichuan.base;
 
 import android.app.Activity;
-import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 import com.alibaba.baichuan.android.trade.AlibcTrade;
 import com.alibaba.baichuan.android.trade.callback.AlibcTradeCallback;
@@ -36,11 +34,11 @@ public class BaiChuanManager {
         showParams.setNativeOpenFailedMode(AlibcFailModeType.AlibcNativeFailModeJumpBROWER);
 
         AlibcTaokeParams taokeParams = new AlibcTaokeParams("","","");
-        taokeParams.setPid("mm_118744786_1281250035_109997750080");
-        taokeParams.setAdzoneid("109997750080");
+        taokeParams.setPid(BaiChuanConstants.PID);
+        taokeParams.setAdzoneid(BaiChuanConstants.ADZONE_ID);
 
         Map<String,String> trackParams = new HashMap<>();
-        trackParams.put("taokeAppkey","28304735");
+        trackParams.put("taokeAppkey", BaiChuanConstants.APP_KEY);
         trackParams.put("sellerId","");
 
         taokeParams.setExtraParams(trackParams);
