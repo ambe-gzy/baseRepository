@@ -23,6 +23,7 @@ import com.bumptech.glide.Glide;
 import cn.zhenye.ad.AdDetailActivity;
 import cn.zhenye.ad.bean.AdDetailBean;
 import cn.zhenye.ad.vm.ZAdVMManager;
+import cn.zhenye.baichuan.base.BaiChuanManager;
 import cn.zhenye.base.base.BaseFullScreenDialogFragment;
 import cn.zhenye.base.tool.ZActivityUtils;
 import cn.zhenye.base.tool.ZMathUtils;
@@ -76,21 +77,10 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
             @Override
             public void onClick(View v) {
                 mCredit = 2*mCredit;
-                if (!TextUtils.isEmpty(mTaokouling)) {
-                    //复制淘口令
-                    ClipboardManager cm = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                    ClipData clipData = ClipData.newPlainText("Label",mTaokouling);
-                    if (cm != null) {
-                        cm.setPrimaryClip(clipData);
-                    }
-                    ZToastUtils.showShort(cn.zhenye.home.R.string.tbk_ad_taokouling_copy_success);
-                } else {
-                    // 提示用户暂无淘口令
-                    ZToastUtils.showShort(cn.zhenye.home.R.string.tbk_ad_taokouling_null);
-                }
 
                 dismiss();
-                ZActivityUtils.startTaobaoActivity(getContext());
+
+                BaiChuanManager.getInstance().openTb(mItem.goodsId,getActivity());
             }
         });
 

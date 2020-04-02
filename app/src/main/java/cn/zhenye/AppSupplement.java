@@ -7,6 +7,7 @@ import com.meituan.android.walle.WalleChannelReader;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 
+import cn.zhenye.baichuan.base.BaiChuanSupplement;
 import cn.zhenye.base.cache.ZyCacheStorage;
 import cn.zhenye.common.constants.UMConstants;
 import cn.zhenye.common.db.DatabaseManager;
@@ -50,9 +51,10 @@ public class AppSupplement {
     }
 
     /**
-     * 初始化淘宝广告
+     * 初始化百川电商sdk
      * @param application
      */
-    public static void initTbAd(Application application){
+    public static void initBaichuanSdk(Application application){
+        BaiChuanSupplement.initBaichuanSdk(application);
     }
 }

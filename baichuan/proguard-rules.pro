@@ -1,5 +1,6 @@
 -keepattributes Signature
 -ignorewarnings
+-keep public class javax.**
 -keep class javax.ws.rs.** { *; }
 -keep class com.alibaba.fastjson.** { *; }
 -dontwarn com.alibaba.fastjson.**
