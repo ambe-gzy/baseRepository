@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //百川参考https://baichuan.taobao.com/docs/doc.htm?spm=a3c0d.7629140.0.0.78a9be48DRFmB0&treeId=129&articleId=118400&docType=1
+    //百川基础安全组件
+    implementation  'com.taobao.android:securityguardaar3:5.4.171@aar'
+    implementation 'com.taobao.android:securitybodyaar3:5.4.99@aar'
+    implementation 'com.taobao.android:avmpaar3:5.4.36@aar'
+    implementation 'com.taobao.android:sgmiddletieraar3:5.4.9@aar'
+    //mtop网关
+    implementation 'com.taobao.android:mtopsdk_allinone_open:3.1.2.5@jar'
+    //登录授权
+    implementation 'com.ali.auth.sdk:alibabauth_core:2.0.0.6@aar'
+    implementation 'com.ali.auth.sdk:alibabauth_ui:2.0.0.6@aar'
+    implementation 'com.ali.auth.sdk:alibabauth_ext:2.0.0.6@aar'
+    //applink
+    implementation 'com.alibaba.sdk.android:alibc_link_partner:4.1.15@aar'
+    //ut 分佣打点追踪
+    implementation 'com.taobao.android:utdid4all:1.5.2'
+    implementation 'com.alibaba.mtl:app-monitor-sdk:2.6.4.5_for_bc'
+    //基础电商组件
+    implementation 'com.alibaba.sdk.android:AlibcTradeCommon:4.0.0.8@aar'
+    implementation 'com.alibaba.sdk.android:AlibcTradeBiz:4.0.0.8@aar'
+    implementation 'com.alibaba.sdk.android:nb_trade:4.0.0.8@aar'
+}

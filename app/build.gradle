@@ -105,6 +105,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     implementation project(path: ':common')
     implementation project(path: ':base')
+    implementation project(path: 'baichuan')
 
     //RecyclerView
     implementation 'com.android.support:recyclerview-v7:29.0.0'
