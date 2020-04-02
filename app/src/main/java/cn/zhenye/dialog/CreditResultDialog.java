@@ -42,6 +42,7 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
     private TextView mCreditTv;
     private TextView mCurrentPriceTv;
     private TextView mPastPriceTv;
+    private TextView mTitleTv;
 
     private String mTaokouling;
 
@@ -62,6 +63,7 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
         mGoodsDetailBtn = view.findViewById(R.id.btn_goods_detail);
         mCurrentPriceTv = view.findViewById(R.id.tv_tbk_ad_goods_now_price);
         mPastPriceTv = view.findViewById(R.id.tv_tbk_ad_goods_preview_price);
+        mTitleTv = view.findViewById(R.id.tv_goods_title);
 
         mCreditTv.setText(String.format("恭喜你获得%d积分\n是否领取双倍积分并查看商品详情？", mCredit));
         mBtnGetCredit.setText("不了，只领取单倍积分");
@@ -106,6 +108,7 @@ public class CreditResultDialog extends BaseFullScreenDialogFragment {
             float nowPrice = primaryPrice - discount;
             mCurrentPriceTv.setText(String.format("￥%.2f",nowPrice));
             mPastPriceTv.setText(String.format("￥%.2f", primaryPrice));
+            mTitleTv.setText(mItem.goodsName);
             if (!TextUtils.isEmpty(mItem.goods_youhuiquan )) {
                 mTaokouling = mItem.goods_youhuiquan;
             } else {
